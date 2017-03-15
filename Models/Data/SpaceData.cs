@@ -15,7 +15,7 @@ namespace dpark.Models.Data
             _id = _title = _streetaddress = _imageurl = _urladdress = string.Empty;
             _geolatitude = _geolongitude = 0.0;
         }
-        public SpaceData(DeserializeSpace Item) : this()
+        public SpaceData(Post Item) : this()
         {
             _id = Item.ID;
             _title = Item.title;

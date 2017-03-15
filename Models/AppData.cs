@@ -38,10 +38,6 @@ namespace dpark.Models
                     _posts.Clear();
                     ServiceProvider = new Client();
                     isSuccess = await ServiceProvider.GetSpaces();
-
-                    #if DEBUG
-                    Debug.WriteLine("Successfully Load");
-                    #endif
                 }
                 catch (Exception)
                 {

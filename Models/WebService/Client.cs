@@ -43,20 +43,22 @@ namespace dpark.Models.WebService
                 var token = await Get(RequestSpaces);
                 var rootObject = JsonConvert.DeserializeObject<RootObject>(token);
 
-                foreach(var post in rootObject.posts)
+                List<Post> posts = rootObject.posts;
+                
+                foreach(var post in posts)
                 {
-                    var deserializespace = JsonConvert.DeserializeObject<DeserializeSpace>(rootObject.ToString());
-                    SpaceData spacedata = new SpaceData(deserializespace);
+                    var serialize = JsonConvert.SerializeObject(post);
+                    var deserializePosts = JsonConvert.DeserializeObject<Post>(serialize);
+                    //SpaceData spacedata = new SpaceData(post.ToString());
+
+                    Debug.WriteLine(deserializePosts);
                 }
-               
-                #if DEBUG
-                Debug.WriteLine(rootObject);
-                #endif
-               
+                
                 isSuccess = true;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Debug.WriteLine(ex);
                 isSuccess = false;
             }
 

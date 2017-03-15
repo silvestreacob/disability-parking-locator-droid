@@ -12,16 +12,16 @@ namespace dpark.Models.WebService
         public string title { get; set; }
         public string URL { get; set; }
         public string featured_image { get; set; }
-        public List<Metadata> metadata { get; set; }
+        public List<Metadata2> metadata { get; set; }
     }
-    public class Metadata
+    public class Metadata2
     {
         public string id { get; set; }
         public string key { get; set; }
         public string value { get; set; }
     }
 
-    public class RootObject
+    public class RootObject2
     {
         public List<DeserializeSpace> posts { get; set; }
     }

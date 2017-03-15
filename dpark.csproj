@@ -54,6 +54,7 @@
     <Compile Include="Models\WebService\Config.cs" />
     <Compile Include="Models\WebService\DeserializeSpace.cs" />
     <Compile Include="Models\WebService\IClient.cs" />
+    <Compile Include="Models\WebService\Post.cs" />
     <Compile Include="Pages\Base\ModelBoundContentPage.cs" />
     <Compile Include="Pages\MapPage1.xaml.cs">
       <DependentUpon>MapPage1.xaml</DependentUpon>

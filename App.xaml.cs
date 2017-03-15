@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Plugin.Connectivity;
 using dpark.Localization;
+using dpark.Models.Data;
 
 namespace dpark
 {
@@ -26,7 +27,8 @@ namespace dpark
             //Target IOS Phone
             if (Device.OS == TargetPlatform.iOS && Device.Idiom == TargetIdiom.Phone)
             {
-                CurrentApp.MainPage = new Pages.MapPage1();
+                //CurrentApp.MainPage = new Pages.MapPage1();
+                CurrentApp.MainPage.DisplayAlert("Completed","Load completed","OK");
             }
 
             //IOS Tablet design

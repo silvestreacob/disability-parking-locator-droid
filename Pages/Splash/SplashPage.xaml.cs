@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,6 +17,7 @@ namespace dpark.Pages.Splash
         public SplashPage()
         {
             InitializeComponent();
+            BindingContext = new SplashViewModel();
         }
         protected async override void OnAppearing()
         {
