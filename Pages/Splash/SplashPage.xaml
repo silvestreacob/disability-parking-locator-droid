@@ -1,5 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="dpark.Pages.Splash.SplashPage">
-</ContentPage>
+<page:SplashPageXaml
+  xmlns="http://xamarin.com/schemas/2014/forms"
+  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+  x:Class="dpark.Pages.Splash.SplashPage"
+  xmlns:app="clr-namespace:dpark"
+  xmlns:page="clr-namespace:dpark.Pages.Splash"
+  xmlns:i18n="clr-namespace:Dpark.Localization"
+	BackgroundColor="White">
+
+	<page:SplashPageXaml.Content>
+
+	</page:SplashPageXaml.Content>
+</page:SplashPageXaml>

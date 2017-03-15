@@ -8,17 +8,17 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace dpark.Pages.Splash {
+namespace dpark.Pages {
     using System;
     using Xamarin.Forms;
     using Xamarin.Forms.Xaml;
     
     
-    public partial class SplashPage : global::dpark.Pages.Splash.SplashPageXaml {
+    public partial class TestTabPage : global::Xamarin.Forms.TabbedPage {
         
         [System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
         private void InitializeComponent() {
-            this.LoadFromXaml(typeof(SplashPage));
+            this.LoadFromXaml(typeof(TestTabPage));
         }
     }
 }
