@@ -1,9 +1,7 @@
 ﻿
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Diagnostics;
+using System.Globalization;
 using dpark.Models.WebService;
 
 namespace dpark.Models.Data
@@ -17,6 +15,10 @@ namespace dpark.Models.Data
         }
         public SpaceData(Post Item) : this()
         {
+            //NumberFormatInfo format = new NumberFormatInfo();
+            //format.NumberGroupSeparator = ",";
+            //format.NumberDecimalSeparator = ".";
+
             _id = Item.ID;
             _title = Item.title;
 
@@ -31,21 +33,25 @@ namespace dpark.Models.Data
                 #endregion
 
                 #region _geolatitude
-                if (item.key.Contains("geo_latitude") && item.value != null)
-                    _geolatitude = Double.Parse(item.value);
+                if (item.key.Contains("geo_latitude") && item.value != string.Empty)
+                    _geolatitude = Convert.ToDouble(item.value);
 
-                else if(item.key.Contains("lat") && item.value !=null)
-                    _geolatitude = Double.Parse(item.value);
+                else if (item.key.Contains("lat") && item.value != string.Empty)
+                    _geolatitude = Convert.ToDouble(item.value);
                 #endregion
 
                 #region _geolongitude
-                if ((item.key.Contains("geo_longitude") && item.value != null) || (item.key.Contains("lon") && item.value != null))
-                    _geolongitude = Double.Parse(item.value);
+                if ((item.key.Contains("geo_longitude") && item.value != string.Empty) || (item.key.Contains("lon") && item.value != string.Empty))
+                    _geolongitude = Convert.ToDouble(item.value);
                 #endregion
             }
 
             _imageurl = Config.ServerAddress + Item.featured_image;
             _urladdress = Item.URL;
+
+#if DEBUG
+            Debug.WriteLine(_id + "\n" + _title + "\n" + _streetaddress + "\n" + _geolatitude + " " + _geolongitude + "\n" + _imageurl + "\n" + _urladdress + "\n");
+#endif
 
         }
         #region ID

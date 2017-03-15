@@ -49,9 +49,7 @@ namespace dpark.Models.WebService
                 {
                     var serialize = JsonConvert.SerializeObject(post);
                     var deserializePosts = JsonConvert.DeserializeObject<Post>(serialize);
-                    //SpaceData spacedata = new SpaceData(post.ToString());
-
-                    Debug.WriteLine(deserializePosts);
+                    SpaceData spacedata = new SpaceData(deserializePosts);
                 }
                 
                 isSuccess = true;
