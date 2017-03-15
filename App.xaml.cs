@@ -8,7 +8,7 @@ namespace dpark
 		{
 			InitializeComponent();
 
-			MainPage = new MapPage();
+			MainPage = new Pages.Splash.SplashPage();
 		}
 
 		protected override void OnStart()
