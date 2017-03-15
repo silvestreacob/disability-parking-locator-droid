@@ -8,7 +8,7 @@ namespace dpark
 		{
 			InitializeComponent();
 
-			MainPage = new dparkPage();
+			MainPage = new MapPage();
 		}
 
 		protected override void OnStart()
