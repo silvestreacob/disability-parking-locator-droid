@@ -15,20 +15,16 @@ namespace dpark.Models.Data
         }
         public SpaceData(Post Item) : this()
         {
-            //NumberFormatInfo format = new NumberFormatInfo();
-            //format.NumberGroupSeparator = ",";
-            //format.NumberDecimalSeparator = ".";
-
             _id = Item.ID;
             _title = Item.title;
 
             foreach (var item in Item.metadata)
             {
                 #region _streetaddress
-                if (item.key.Contains("street_address") && item.value != null)
+                if (item.key.Contains("street_address") && item.value != string.Empty)
                     _streetaddress = item.value;
 
-                else if (item.key.Contains("geo_address") && item.value != null)
+                else if (item.key.Contains("geo_address") && item.value != string.Empty)
                     _streetaddress = item.value;
                 #endregion
 

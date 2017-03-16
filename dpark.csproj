@@ -42,28 +42,29 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CustomRenderer\CustomMap.cs" />
+    <Compile Include="CustomRenderer\CustomPinDetail.cs" />
     <Compile Include="Localization\TextResources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>TextResources.resx</DependentUpon>
     </Compile>
     <Compile Include="Models\AppData.cs" />
+    <Compile Include="Models\Data\MapPinData.cs" />
     <Compile Include="Models\Data\SpaceData.cs" />
     <Compile Include="Models\NotifyPropertyChanged.cs" />
     <Compile Include="Models\WebService\Client.cs" />
     <Compile Include="Models\WebService\Config.cs" />
-    <Compile Include="Models\WebService\DeserializeSpace.cs" />
     <Compile Include="Models\WebService\IClient.cs" />
     <Compile Include="Models\WebService\Post.cs" />
     <Compile Include="Pages\Base\ModelBoundContentPage.cs" />
-    <Compile Include="Pages\MapPage1.xaml.cs">
-      <DependentUpon>MapPage1.xaml</DependentUpon>
-    </Compile>
+    <Compile Include="Pages\MapSearch\MainMapPage.cs" />
     <Compile Include="Pages\Splash\SplashPage.xaml.cs">
       <DependentUpon>SplashPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\Base\BaseViewModel.cs" />
+    <Compile Include="ViewModels\MapSearch\MainViewModel.cs" />
     <Compile Include="ViewModels\Splash\SplashViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -110,12 +111,7 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Pages\MapPage1.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="packages\Xamarin.Forms.2.3.3.193\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets" Condition="Exists('packages\Xamarin.Forms.2.3.3.193\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" />
   <Import Project="packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />

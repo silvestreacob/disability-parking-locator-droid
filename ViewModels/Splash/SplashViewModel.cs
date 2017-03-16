@@ -10,26 +10,27 @@ namespace dpark.ViewModels.Splash
 {
     public class SplashViewModel : BaseViewModel
     {
-        private Client ServiceProvider { get; set; }
-
+       
         public async Task<bool> IsLoadSpaceData()
         {
             bool isSuccess = false;
             
             try
             {
-                ServiceProvider = new Client();
-                isSuccess = await ServiceProvider.GetSpaces();
+                isSuccess = await AppData.Spaces.LoadSpaces();
+                
             }
             catch (Exception)
             {
                 isSuccess = false;
             }
 
-#if DEBUG
-            Debug.WriteLine(isSuccess);
-#endif 
             return isSuccess;           
+        }
+
+        async private void DelayInit()
+        {
+            await Task.Delay(1000);
         }
     }
 }

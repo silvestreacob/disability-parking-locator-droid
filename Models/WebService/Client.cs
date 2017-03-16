@@ -37,8 +37,7 @@ namespace dpark.Models.WebService
 
             try
             {
-                //dont forget to clear existing data collection
-                AppData.Spaces.Posts.Clear();
+                AppData.Spaces.PostsCollection.Clear();
 
                 var token = await Get(RequestSpaces);
                 var rootObject = JsonConvert.DeserializeObject<RootObject>(token);
