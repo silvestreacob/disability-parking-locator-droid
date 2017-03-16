@@ -59,10 +59,23 @@ namespace dpark.Models
             }
 
             //to MainMapPage ViewModel
+            public async Task SaveMapData(SpaceData space)
+            {
+                MapPinData mapPinData = new MapPinData
+                {
+                    Title = space.Title,
+                    StreetAddress = space.StreetAddress,
+                    GeoLatitude = space.GeoLatitude,
+                    GeoLongitude = space.GeoLongitude,
+                    ImageURL = space.ImageURL
+                };
+
+                _mapPinCollection.Add(mapPinData);
+            }
             async public Task<bool> LoadMapData()
             {
                 bool isSuccess = false;
-
+                Debug.WriteLine( _posts.Count + "\n");
                 try
                 {
                     AppData.Spaces.MapPinCollection.Clear();
@@ -76,10 +89,13 @@ namespace dpark.Models
                         mapPinData.GeoLongitude = item.GeoLongitude;
                         mapPinData.ImageURL = item.ImageURL;
 
+#if DEBUG
+                        Debug.WriteLine(mapPinData.ImageURL + "\n");
+#endif
                         AppData.Spaces.MapPinCollection.Add(mapPinData);
                     }
 
-                    await Task.Delay(1000);
+                    //await Task.Delay(1000);
                     isSuccess = true;
                 }
 

@@ -70,5 +70,6 @@ D:\dpark.us cross-platform\versions\3\disability-parking-locator\iOS\obj\iPhoneS
 D:\dpark.us cross-platform\versions\3\disability-parking-locator\iOS\obj\iPhoneSimulator\Debug\dpark.iOS.csproj.dpark.iOS.exe.config
 D:\dpark.us cross-platform\versions\3\disability-parking-locator\iOS\obj\iPhoneSimulator\Debug\dpark.iOS.exe
 D:\dpark.us cross-platform\versions\3\disability-parking-locator\iOS\obj\iPhoneSimulator\Debug\dpark.iOS.pdb
+D:\dpark.us cross-platform\versions\3\disability-parking-locator\iOS\obj\iPhoneSimulator\Debug\optimized\pin.png
 D:\dpark.us cross-platform\versions\3\disability-parking-locator\iOS\obj\iPhoneSimulator\Debug\dpark.iOS.exe.mdb
 D:\dpark.us cross-platform\versions\3\disability-parking-locator\iOS\bin\iPhoneSimulator\Debug\dpark.iOS.exe.mdb

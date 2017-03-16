@@ -17,6 +17,10 @@ namespace dpark.Models.Data
         {
             _id = Item.ID;
             _title = Item.title;
+            _title = _title.Replace("&amp;", "&");
+            _title = _title.Replace("&#038;", "&");
+            _title = _title.Replace("&#8217;", "'");
+            _title = _title.Replace("&#8211;", "-");
 
             foreach (var item in Item.metadata)
             {

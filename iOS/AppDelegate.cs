@@ -13,8 +13,10 @@ namespace dpark.iOS
 			Forms.Init();
 
             Xamarin.FormsMaps.Init();
+            App.ScreenWidth = UIScreen.MainScreen.Bounds.Width;
+            App.ScreenHeight = UIScreen.MainScreen.Bounds.Height;
 
-			LoadApplication(new App());
+            LoadApplication(new App());
 
 			return base.FinishedLaunching(app, options);
 		}

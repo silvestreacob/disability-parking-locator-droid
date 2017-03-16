@@ -14,7 +14,10 @@ namespace dpark
         {
             get { return app; }
         }
-		public App()
+
+        public static double ScreenHeight;
+        public static double ScreenWidth;
+        public App()
 		{
 			InitializeComponent();
 
@@ -27,8 +30,8 @@ namespace dpark
             //Target IOS Phone
             if (Device.OS == TargetPlatform.iOS && Device.Idiom == TargetIdiom.Phone)
             {
-                //CurrentApp.MainPage = new Pages.MapPage1();
-                CurrentApp.MainPage.DisplayAlert("Completed","Load completed","OK");
+                //CurrentApp.MainPage.DisplayAlert("Completed","Load completed","OK");
+                CurrentApp.MainPage = new Pages.MapSearch.SampleMapPage();
             }
 
             //IOS Tablet design

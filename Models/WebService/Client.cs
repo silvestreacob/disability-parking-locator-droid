@@ -48,9 +48,22 @@ namespace dpark.Models.WebService
                 {
                     var serialize = JsonConvert.SerializeObject(post);
                     var deserializePosts = JsonConvert.DeserializeObject<Post>(serialize);
+
                     SpaceData spacedata = new SpaceData(deserializePosts);
+                    AppData.Spaces.PostsCollection.Add(spacedata);
+
+                    //MapPinData mapPinData = new MapPinData
+                    //{
+                    //    Title = space.Title,
+                    //    StreetAddress = space.StreetAddress,
+                    //    GeoLatitude = space.GeoLatitude,
+                    //    GeoLongitude = space.GeoLongitude,
+                    //    ImageURL = space.ImageURL
+                    //};
                 }
-                
+
+               
+
                 isSuccess = true;
             }
             catch (Exception ex)

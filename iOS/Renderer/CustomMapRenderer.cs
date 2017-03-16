@@ -1,47 +1,83 @@
-﻿using dpark.CustomRenderer;
-using dpark.iOS.Renderer;
-using dpark.Models.Data;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using CoreGraphics;
+using MapKit;
+using UIKit;
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
 using Xamarin.Forms.Maps.iOS;
 using Xamarin.Forms.Platform.iOS;
-
-using MapKit;
-using UIKit;
+using dpark.CustomRenderer;
+using dpark.iOS.Renderer;
 
 [assembly: ExportRenderer(typeof(CustomMap), typeof(CustomMapRenderer))]
 namespace dpark.iOS.Renderer
 {
     public class CustomMapRenderer : MapRenderer
     {
-        UIView customPinView;
-        List<MapPinData> customPins;
+        //UIView customPinView;
+        List<CustomPin> customPins;
 
         protected override void OnElementChanged(ElementChangedEventArgs<View> e)
         {
-            base.OnElementChanged(e);
+            base.OnElementChanged(e);            
+            var formsMap = (CustomMap)Element;
+            var nativeMap = Control as MKMapView;
 
-            if(e.OldElement != null)
+            if (e.OldElement == null)
             {
-                var nativeMap = Control as MKMapView;
-                nativeMap.GetViewForAnnotation = null;
-                //nativeMap.CalloutAccessoryControlTapped -= OnCalloutAccessoryControlTapped;
+                nativeMap.GetViewForAnnotation = UpdatePins;
             }
 
-            if (e.NewElement != null)
-            {
-                var formsMap = (CustomMap)e.NewElement;
-                var nativeMap = Control as MKMapView;
-                customPins = formsMap.PinList;
 
-                nativeMap.GetViewForAnnotation = GetViewForAnnotation;
-                //nativeMap.CalloutAccessoryControlTapped += OnCalloutAccessoryControlTapped;
-            }
+            //if(e.OldElement != null)
+            //{
+            //    var nativeMap = Control as MKMapView;
+            //    nativeMap.GetViewForAnnotation = null;
+            //    //nativeMap.CalloutAccessoryControlTapped -= OnCalloutAccessoryControlTapped;
+            //}
+
+            //if (e.NewElement != null)
+            //{
+            //    var formsMap = (CustomMap)e.NewElement;
+            //    var nativeMap = Control as MKMapView;
+            //    customPins = formsMap.CustomPins;
+
+            //    nativeMap.GetViewForAnnotation = GetViewForAnnotation;
+            //    //nativeMap.CalloutAccessoryControlTapped += OnCalloutAccessoryControlTapped;
+            //}
         }
 
+        MKAnnotationView UpdatePins(MKMapView mapView, IMKAnnotation annotation)
+        {
+            MKAnnotationView annotationView = null;
+            try
+            {
+                var formsMap = (CustomMap)Element;
+                var nativeMap = Control as MKMapView;
+
+                foreach(var item in formsMap.CustomPins)
+                {
+                    var anno = annotation as MKPointAnnotation;
+
+                    annotationView = (MKPinAnnotationView)mapView.DequeueReusableAnnotation(item.Id);
+                    if (annotationView == null)
+                    {
+                        annotationView = new MKPinAnnotationView(anno, item.Id);
+                        ((MKPinAnnotationView)annotationView).PinColor = MKPinAnnotationColor.Green;
+                        ((MKPinAnnotationView)annotationView).AnimatesDrop = true;
+                        annotationView.CanShowCallout = true;
+                    }
+
+                    formsMap.Pins.Add(item.Pin);
+                    return annotationView;
+                }
+                                
+            }
+            catch { }
+
+            return null;
+        }
         MKAnnotationView GetViewForAnnotation(MKMapView mapView, IMKAnnotation annotation)
         {
             MKAnnotationView annotationView = null;
@@ -56,33 +92,39 @@ namespace dpark.iOS.Renderer
                 throw new Exception("Custom pin not found");
             }
 
+            //annotationView = mapView.DequeueReusableAnnotation(customPin.Id);
+            //if (annotationView == null)
+            //{
+            //    annotationView = new CustomMKAnnotationView(annotation, customPin.Id);
+            //    annotationView.Image = UIImage.FromFile("pin.png");
+            //    annotationView.CalloutOffset = new CGPoint(0, 0);
+            //    annotationView.LeftCalloutAccessoryView = new UIImageView(UIImage.LoadFromData(customPin.Url));
+            //    annotationView.RightCalloutAccessoryView = UIButton.FromType(UIButtonType.DetailDisclosure);
+            //    ((CustomMKAnnotationView)annotationView).Id = customPin.Id;
+            //    ((CustomMKAnnotationView)annotationView).Url = customPin.Url;
+            //}
+
+            annotationView = (MKPinAnnotationView)mapView.DequeueReusableAnnotation(customPin.Id);
             if (annotationView == null)
             {
-                annotationView = (MKPinAnnotationView)mapView.DequeueReusableAnnotation(customPin.Title);
-
-                if (annotationView == null)
-                    annotationView = new MKPinAnnotationView(anno, customPin.Title);
-
+                annotationView = new MKPinAnnotationView(anno, customPin.Id);
                 ((MKPinAnnotationView)annotationView).PinColor = MKPinAnnotationColor.Green;
                 ((MKPinAnnotationView)annotationView).AnimatesDrop = true;
                 annotationView.CanShowCallout = true;
             }
-
             return annotationView;
         }
 
-        MapPinData GetCustomPin(MKPointAnnotation annotation)
+        CustomPin GetCustomPin(MKPointAnnotation annotation)
         {
-            try
+            var position = new Position(annotation.Coordinate.Latitude, annotation.Coordinate.Longitude);
+            foreach (var pin in customPins)
             {
-                foreach (var item in customPins)
-                {
-                    var position = new Position(item.GeoLatitude, item.GeoLongitude);
-                    return item;
-                }
-               
+                //if (pin.Pin.Position == position)
+                //{
+                    return pin;
+                //}
             }
-            catch { }
             return null;
         }
     }

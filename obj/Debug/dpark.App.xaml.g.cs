@@ -8,17 +8,17 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace dpark.iOS.Renderer {
+namespace dpark {
     using System;
     using Xamarin.Forms;
     using Xamarin.Forms.Xaml;
     
     
-    public partial class CustomMapRenderer : global::Xamarin.Forms.ContentPage {
+    public partial class App : global::Xamarin.Forms.Application {
         
         [System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
         private void InitializeComponent() {
-            this.LoadFromXaml(typeof(CustomMapRenderer));
+            this.LoadFromXaml(typeof(App));
         }
     }
 }
