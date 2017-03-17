@@ -14,36 +14,15 @@ namespace dpark.Models.Data
 
         }
 
-        //public MapPinData(Post Item) : this()
-        //{
-        //    _title = Item.title;
+        public MapPinData(SpaceData Item) : this()
+        {
+            _title = Item.Title;
+            _streetaddress = Item.StreetAddress;
+            _geolatitude = Item.GeoLatitude;
+            _geolongitude = Item.GeoLongitude;
 
-        //    foreach (var item in Item.metadata)
-        //    {
-        //        #region _streetaddress
-        //        if (item.key.Contains("street_address") && item.value != string.Empty)
-        //            _streetaddress = item.value;
-
-        //        else if (item.key.Contains("geo_address") && item.value != string.Empty)
-        //            _streetaddress = item.value;
-        //        #endregion
-
-        //        #region _geolatitude
-        //        if (item.key.Contains("geo_latitude") && item.value != string.Empty)
-        //            _geolatitude = Convert.ToDouble(item.value);
-
-        //        else if (item.key.Contains("lat") && item.value != string.Empty)
-        //            _geolatitude = Convert.ToDouble(item.value);
-        //        #endregion
-
-        //        #region _geolongitude
-        //        if ((item.key.Contains("geo_longitude") && item.value != string.Empty) || (item.key.Contains("lon") && item.value != string.Empty))
-        //            _geolongitude = Convert.ToDouble(item.value);
-        //        #endregion
-        //    }
-
-        //    _imageurl = Config.ServerAddress + Item.featured_image;
-        //}
+            _imageurl = Config.ServerAddress + Item.ImageURL;
+        }
 
         #region Title
         private string _title;

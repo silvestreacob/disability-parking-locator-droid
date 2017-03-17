@@ -31,7 +31,8 @@ namespace dpark
             if (Device.OS == TargetPlatform.iOS && Device.Idiom == TargetIdiom.Phone)
             {
                 //CurrentApp.MainPage.DisplayAlert("Completed","Load completed","OK");
-                CurrentApp.MainPage = new Pages.MapSearch.SampleMapPage();
+                //CurrentApp.MainPage = new Pages.MapSearch.SampleMapPage();
+                CurrentApp.MainPage = new Pages.RootTabPage();
             }
 
             //IOS Tablet design

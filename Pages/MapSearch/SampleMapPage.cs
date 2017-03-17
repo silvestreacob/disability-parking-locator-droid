@@ -37,30 +37,31 @@ namespace dpark.Pages.MapSearch
 
             Content = customMap;
 
-            //LoadPin();
-            Task.Delay(1000);
+            LoadPin();
+            //Task.Delay(1000);
+            //customMap.Pins.Clear();
 
-            foreach (var item in AppData.Spaces.PostsCollection)
-            {
-                var pin = new CustomPin
-                {
-                    Pin = new Pin
-                    {
-                        Type = PinType.Place,
-                        Position = new Position(item.GeoLatitude, item.GeoLongitude),
-                        Label = item.Title,
-                        Address = item.StreetAddress
-                    },
+            //foreach (var item in AppData.Spaces.PostsCollection)
+            //{
+            //    var pin = new CustomPin
+            //    {
+            //        Pin = new Pin
+            //        {
+            //            Type = PinType.Place,
+            //            Position = new Position(item.GeoLatitude, item.GeoLongitude),
+            //            Label = item.Title,
+            //            Address = item.StreetAddress
+            //        },
 
-                    Id = item.ID,
-                    Url = item.ImageURL
-                };
+            //        Id = item.ID,
+            //        Url = item.ImageURL
+            //    };
 
-                customMap.CustomPins = new List<CustomPin> { pin };
-                customMap.Pins.Add(pin.Pin);
-            }
+            //    customMap.CustomPins = new List<CustomPin> { pin };
+            //    customMap.Pins.Add(pin.Pin);
+            //}
 
-            Task.Delay(6000);
+            //Task.Delay(6000);
             //AnimateLoadPin();
 
         }
@@ -83,7 +84,7 @@ namespace dpark.Pages.MapSearch
         }
         async private void LoadPin()
         {
-            await Task.Delay(1000);
+            await Task.Delay(4000);
             customMap.Pins.Clear();
 
             foreach (var item in AppData.Spaces.PostsCollection)

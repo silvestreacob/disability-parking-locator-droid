@@ -10,122 +10,120 @@ using Xamarin.Forms.Platform.iOS;
 using dpark.CustomRenderer;
 using dpark.iOS.Renderer;
 
-[assembly: ExportRenderer(typeof(CustomMap), typeof(CustomMapRenderer))]
+//[assembly: ExportRenderer(typeof(CustomMap), typeof(CustomMapRenderer))]
 namespace dpark.iOS.Renderer
 {
     public class CustomMapRenderer : MapRenderer
     {
-        //UIView customPinView;
-        List<CustomPin> customPins;
-
+        List<CustomPin> _pins;
+        public CustomMapRenderer(List<CustomPin> pins)
+        {
+            _pins = pins;
+        }
         protected override void OnElementChanged(ElementChangedEventArgs<View> e)
         {
-            base.OnElementChanged(e);            
+            base.OnElementChanged(e);
             var formsMap = (CustomMap)Element;
             var nativeMap = Control as MKMapView;
 
             if (e.OldElement == null)
             {
+                //nativeMap.Delegate = new CustomMapRenderer(formsMap.CustomPins as List<CustomPin>);
                 nativeMap.GetViewForAnnotation = UpdatePins;
+                nativeMap.CalloutAccessoryControlTapped += OnCalloutAccessoryControlTapped;
             }
-
-
-            //if(e.OldElement != null)
-            //{
-            //    var nativeMap = Control as MKMapView;
-            //    nativeMap.GetViewForAnnotation = null;
-            //    //nativeMap.CalloutAccessoryControlTapped -= OnCalloutAccessoryControlTapped;
-            //}
-
-            //if (e.NewElement != null)
-            //{
-            //    var formsMap = (CustomMap)e.NewElement;
-            //    var nativeMap = Control as MKMapView;
-            //    customPins = formsMap.CustomPins;
-
-            //    nativeMap.GetViewForAnnotation = GetViewForAnnotation;
-            //    //nativeMap.CalloutAccessoryControlTapped += OnCalloutAccessoryControlTapped;
-            //}
         }
+
+        //MKAnnotationView UpdatePins(MKMapView mapView, IMKAnnotation annotation)
+        //{
+        //    MKAnnotationView annotationView = null;
+        //    try
+        //    {
+        //        var formsMap = (CustomMap)Element;
+        //        var nativeMap = Control as MKMapView;
+
+        //        foreach(var item in formsMap.CustomPins)
+        //        {
+        //            var anno = annotation as MKPointAnnotation;
+
+        //            annotationView = (MKPinAnnotationView)mapView.DequeueReusableAnnotation(item.Id);
+        //            if (annotationView == null)
+        //            {
+        //                annotationView = new CustomMKAnnotationView(anno, item.Id);
+        //                ((CustomMKAnnotationView)annotationView).Id = item.Id;
+        //                annotationView.RightCalloutAccessoryView = UIButton.FromType(UIButtonType.DetailDisclosure);
+        //                ((MKPinAnnotationView)annotationView).PinColor = MKPinAnnotationColor.Green;
+        //                ((MKPinAnnotationView)annotationView).AnimatesDrop = true;
+        //                annotationView.CanShowCallout = true;
+
+        //            }
+        //            //formsMap.Pins.Add(item.Pin);
+        //            return annotationView;
+        //        }
+
+        //    }
+        //    catch { }
+
+        //    return null;
+        //}
 
         MKAnnotationView UpdatePins(MKMapView mapView, IMKAnnotation annotation)
         {
             MKAnnotationView annotationView = null;
-            try
-            {
-                var formsMap = (CustomMap)Element;
-                var nativeMap = Control as MKMapView;
-
-                foreach(var item in formsMap.CustomPins)
-                {
-                    var anno = annotation as MKPointAnnotation;
-
-                    annotationView = (MKPinAnnotationView)mapView.DequeueReusableAnnotation(item.Id);
-                    if (annotationView == null)
-                    {
-                        annotationView = new MKPinAnnotationView(anno, item.Id);
-                        ((MKPinAnnotationView)annotationView).PinColor = MKPinAnnotationColor.Green;
-                        ((MKPinAnnotationView)annotationView).AnimatesDrop = true;
-                        annotationView.CanShowCallout = true;
-                    }
-
-                    formsMap.Pins.Add(item.Pin);
-                    return annotationView;
-                }
-                                
-            }
-            catch { }
-
-            return null;
-        }
-        MKAnnotationView GetViewForAnnotation(MKMapView mapView, IMKAnnotation annotation)
-        {
-            MKAnnotationView annotationView = null;
+            MKPointAnnotation anno = null;
 
             if (annotation is MKUserLocation)
-                return null;
-
-            var anno = annotation as MKPointAnnotation;
-            var customPin = GetCustomPin(anno);
-            if (customPin == null)
             {
-                throw new Exception("Custom pin not found");
+                return null;
+            }
+            else
+            {
+                anno = annotation as MKPointAnnotation;
             }
 
-            //annotationView = mapView.DequeueReusableAnnotation(customPin.Id);
-            //if (annotationView == null)
-            //{
-            //    annotationView = new CustomMKAnnotationView(annotation, customPin.Id);
-            //    annotationView.Image = UIImage.FromFile("pin.png");
-            //    annotationView.CalloutOffset = new CGPoint(0, 0);
-            //    annotationView.LeftCalloutAccessoryView = new UIImageView(UIImage.LoadFromData(customPin.Url));
-            //    annotationView.RightCalloutAccessoryView = UIButton.FromType(UIButtonType.DetailDisclosure);
-            //    ((CustomMKAnnotationView)annotationView).Id = customPin.Id;
-            //    ((CustomMKAnnotationView)annotationView).Url = customPin.Url;
-            //}
+            string identifier = GetIdentifier(anno);
 
-            annotationView = (MKPinAnnotationView)mapView.DequeueReusableAnnotation(customPin.Id);
+            if (identifier == "")
+                throw new Exception("No Identifier found for pin");
+
+            annotationView = (MKPinAnnotationView)mapView.DequeueReusableAnnotation(identifier);
+
             if (annotationView == null)
             {
-                annotationView = new MKPinAnnotationView(anno, customPin.Id);
+                annotationView = new CustomMKAnnotationView(anno, identifier);
+                ((CustomMKAnnotationView)annotationView).Id = identifier;
+                annotationView.RightCalloutAccessoryView = UIButton.FromType(UIButtonType.DetailDisclosure);
                 ((MKPinAnnotationView)annotationView).PinColor = MKPinAnnotationColor.Green;
                 ((MKPinAnnotationView)annotationView).AnimatesDrop = true;
                 annotationView.CanShowCallout = true;
             }
+      
             return annotationView;
+                
         }
 
-        CustomPin GetCustomPin(MKPointAnnotation annotation)
+        void OnCalloutAccessoryControlTapped(object sender, MKMapViewAccessoryTappedEventArgs e)
         {
-            var position = new Position(annotation.Coordinate.Latitude, annotation.Coordinate.Longitude);
-            foreach (var pin in customPins)
+            var formsMap = (CustomMap)Element;
+            //var customView = e.View as MKPinAnnotationView;
+            var customView = e.View as CustomMKAnnotationView;
+
+            if (!string.IsNullOrWhiteSpace(customView.Id))
             {
-                //if (pin.Pin.Position == position)
-                //{
-                    return pin;
-                //}
+                formsMap.ShowPinDetailInfo(customView.Id);
             }
-            return null;
         }
+
+        string GetIdentifier(MKPointAnnotation annotation)
+        {
+            Position annotationPosition = new Position(annotation.Coordinate.Latitude, annotation.Coordinate.Longitude);
+            foreach (var pin in _pins)
+            {
+                if (pin.Pin.Position == annotationPosition)
+                    return pin.Id;
+            }
+            return "";
+        }
+
     }
 }

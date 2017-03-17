@@ -58,8 +58,12 @@
     <Compile Include="Models\WebService\IClient.cs" />
     <Compile Include="Models\WebService\Post.cs" />
     <Compile Include="Pages\Base\ModelBoundContentPage.cs" />
+    <Compile Include="Pages\MapSearch\DetailInfoPage.xaml.cs">
+      <DependentUpon>DetailInfoPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\MapSearch\MainMapPage.cs" />
     <Compile Include="Pages\MapSearch\SampleMapPage.cs" />
+    <Compile Include="Pages\RootPage.cs" />
     <Compile Include="Pages\Splash\SplashPage.xaml.cs">
       <DependentUpon>SplashPage.xaml</DependentUpon>
     </Compile>
@@ -111,7 +115,12 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\MapSearch\DetailInfoPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="packages\Xamarin.Forms.2.3.3.193\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets" Condition="Exists('packages\Xamarin.Forms.2.3.3.193\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" />
   <Import Project="packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
