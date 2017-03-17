@@ -37,49 +37,56 @@ namespace dpark.iOS.CustomMapRenderer
             MKAnnotationView annotationView = null;
             MKPointAnnotation anno = null;
 
-            if (annotation is MKUserLocation)
-            {
-                return null;
-            }
-            else
-            {
-                anno = annotation as MKPointAnnotation;
-            }
+            if (annotation is MKUserLocation) { return null; }
+            else { anno = annotation as MKPointAnnotation; }
 
             string identifier = GetIdentifier(anno);
-
             if (identifier == "")
-                throw new Exception("No Identifier found for pin");
-
-            annotationView = mapView.DequeueReusableAnnotation(identifier);
-
-            if (annotationView == null)
             {
                 annotationView = new CustomMKPinAnnotationView(annotation, identifier);
-
-                annotationView.LeftCalloutAccessoryView = new UIImageView(UIImage.LoadFromData("http://dpark.us/wp-content/uploads/2014/09/image1-125x125.jpg"));
-                annotationView.RightCalloutAccessoryView = UIButton.FromType(UIButtonType.DetailDisclosure);
-                ((CustomMKPinAnnotationView)annotationView).PinColor = MKPinAnnotationColor.Green;
+                
+                //annotationView.RightCalloutAccessoryView = UIButton.FromType(UIButtonType.DetailDisclosure);
+                ((CustomMKPinAnnotationView)annotationView).PinColor = MKPinAnnotationColor.Red;
                 ((CustomMKPinAnnotationView)annotationView).FormsIdentifier = identifier;
                 ((CustomMKPinAnnotationView)annotationView).AnimatesDrop = true;
                 annotationView.CanShowCallout = true;
+                //throw new Exception("No Identifier found for pin");
             }
+            else
+            {
+                annotationView = mapView.DequeueReusableAnnotation(identifier);
+                if (annotationView == null)
+                {
+                    annotationView = new CustomMKPinAnnotationView(annotation, identifier);
 
+                    //annotationView.LeftCalloutAccessoryView = new UIImageView(UIImage.LoadFromData("http://dpark.us/wp-content/uploads/2014/09/image1-125x125.jpg"));
+                    annotationView.RightCalloutAccessoryView = UIButton.FromType(UIButtonType.DetailDisclosure);
+                    ((CustomMKPinAnnotationView)annotationView).PinColor = MKPinAnnotationColor.Green;
+                    ((CustomMKPinAnnotationView)annotationView).FormsIdentifier = identifier;
+                    ((CustomMKPinAnnotationView)annotationView).AnimatesDrop = true;
+                    annotationView.CanShowCallout = true;
+                }
+            }
             return annotationView;
         }
 
         string GetIdentifier(MKPointAnnotation annotation)
         {
-            var formsMap = (CustomMap)Element;
-            Position annotationPosition = new Position(annotation.Coordinate.Latitude, annotation.Coordinate.Longitude);
-
-            foreach (var item in formsMap.CustomPins)
+            try
             {
-                if (item.Pin.Position == annotationPosition)
-                {                    
-                    return item.Id;                    
-                }                                  
-            }         
+                var formsMap = (CustomMap)Element;
+                Position annotationPosition = new Position(annotation.Coordinate.Latitude, annotation.Coordinate.Longitude);
+
+                foreach (var item in formsMap.CustomPins)
+                {
+                    if (item.Pin.Position == annotationPosition)
+                    {
+                        return item.Id;
+                    }
+                }
+            }
+            catch { return ""; }
+
             return "";
         }
         void OnCalloutAccessoryControlTapped(object sender, MKMapViewAccessoryTappedEventArgs e)

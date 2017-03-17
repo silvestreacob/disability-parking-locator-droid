@@ -1,10 +1,3 @@
-D:\dpark.us cross-platform\versions\3\disability-parking-locator\iOS\obj\iPhoneSimulator\Debug\ibtool\_BundleResourceWithLogicalName.items
-D:\dpark.us cross-platform\versions\3\disability-parking-locator\iOS\obj\iPhoneSimulator\Debug\actool\_PartialAppManifest.items
-D:\dpark.us cross-platform\versions\3\disability-parking-locator\iOS\obj\iPhoneSimulator\Debug\actool\_BundleResourceWithLogicalName.items
-D:\dpark.us cross-platform\versions\3\disability-parking-locator\iOS\obj\iPhoneSimulator\Debug\optimized\pin.png
-D:\dpark.us cross-platform\versions\3\disability-parking-locator\iOS\obj\iPhoneSimulator\Debug\optimized\
-D:\dpark.us cross-platform\versions\3\disability-parking-locator\iOS\obj\iPhoneSimulator\Debug\dpark.iOS.csprojResolveAssemblyReference.cache
-D:\dpark.us cross-platform\versions\3\disability-parking-locator\iOS\obj\iPhoneSimulator\Debug\dpark.iOS.csproj.dpark.iOS.exe.config
 D:\dpark.us cross-platform\versions\3\disability-parking-locator\iOS\bin\iPhoneSimulator\Debug\dpark.iOS.exe.config
 D:\dpark.us cross-platform\versions\3\disability-parking-locator\iOS\bin\iPhoneSimulator\Debug\dpark.iOS.exe
 D:\dpark.us cross-platform\versions\3\disability-parking-locator\iOS\bin\iPhoneSimulator\Debug\dpark.iOS.pdb
@@ -69,6 +62,13 @@ D:\dpark.us cross-platform\versions\3\disability-parking-locator\iOS\bin\iPhoneS
 D:\dpark.us cross-platform\versions\3\disability-parking-locator\iOS\bin\iPhoneSimulator\Debug\zh-Hans\Xamarin.Forms.Platform.iOS.resources.dll
 D:\dpark.us cross-platform\versions\3\disability-parking-locator\iOS\bin\iPhoneSimulator\Debug\zh-Hant\Xamarin.Forms.Platform.iOS.resources.dll
 D:\dpark.us cross-platform\versions\3\disability-parking-locator\iOS\bin\iPhoneSimulator\Debug\zh-HK\Xamarin.Forms.Platform.iOS.resources.dll
+D:\dpark.us cross-platform\versions\3\disability-parking-locator\iOS\obj\iPhoneSimulator\Debug\ibtool\_BundleResourceWithLogicalName.items
+D:\dpark.us cross-platform\versions\3\disability-parking-locator\iOS\obj\iPhoneSimulator\Debug\actool\_PartialAppManifest.items
+D:\dpark.us cross-platform\versions\3\disability-parking-locator\iOS\obj\iPhoneSimulator\Debug\actool\_BundleResourceWithLogicalName.items
+D:\dpark.us cross-platform\versions\3\disability-parking-locator\iOS\obj\iPhoneSimulator\Debug\optimized\pin.png
+D:\dpark.us cross-platform\versions\3\disability-parking-locator\iOS\obj\iPhoneSimulator\Debug\optimized\
+D:\dpark.us cross-platform\versions\3\disability-parking-locator\iOS\obj\iPhoneSimulator\Debug\dpark.iOS.csprojResolveAssemblyReference.cache
+D:\dpark.us cross-platform\versions\3\disability-parking-locator\iOS\obj\iPhoneSimulator\Debug\dpark.iOS.csproj.dpark.iOS.exe.config
 D:\dpark.us cross-platform\versions\3\disability-parking-locator\iOS\obj\iPhoneSimulator\Debug\dpark.iOS.exe
 D:\dpark.us cross-platform\versions\3\disability-parking-locator\iOS\obj\iPhoneSimulator\Debug\dpark.iOS.pdb
 D:\dpark.us cross-platform\versions\3\disability-parking-locator\iOS\obj\iPhoneSimulator\Debug\dpark.iOS.exe.mdb

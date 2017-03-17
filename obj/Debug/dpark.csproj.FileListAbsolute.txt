@@ -24,7 +24,6 @@ D:\dpark.us cross-platform\versions\3\disability-parking-locator\bin\Debug\Xamar
 D:\dpark.us cross-platform\versions\3\disability-parking-locator\bin\Debug\Xamarin.Forms.Xaml.pdb
 D:\dpark.us cross-platform\versions\3\disability-parking-locator\bin\Debug\Xamarin.Forms.Xaml.xml
 D:\dpark.us cross-platform\versions\3\disability-parking-locator\obj\Debug\dpark.csproj.App.config
-D:\dpark.us cross-platform\versions\3\disability-parking-locator\obj\Debug\dpark.csprojResolveAssemblyReference.cache
 D:\dpark.us cross-platform\versions\3\disability-parking-locator\obj\Debug\dpark.Localization.TextResources.resources
 D:\dpark.us cross-platform\versions\3\disability-parking-locator\obj\Debug\dpark.csproj.GenerateResource.Cache
 D:\dpark.us cross-platform\versions\3\disability-parking-locator\obj\Debug\dpark.App.xaml.g.cs
@@ -32,5 +31,6 @@ D:\dpark.us cross-platform\versions\3\disability-parking-locator\obj\Debug\dpark
 D:\dpark.us cross-platform\versions\3\disability-parking-locator\obj\Debug\dpark.Pages.MapSearch.DetailInfoPage.xaml.g.cs
 D:\dpark.us cross-platform\versions\3\disability-parking-locator\obj\Debug\dpark.dll
 D:\dpark.us cross-platform\versions\3\disability-parking-locator\obj\Debug\dpark.pdb
+D:\dpark.us cross-platform\versions\3\disability-parking-locator\obj\Debug\dpark.csprojResolveAssemblyReference.cache
 D:\dpark.us cross-platform\versions\3\disability-parking-locator\obj\Debug\dpark.dll.mdb
 D:\dpark.us cross-platform\versions\3\disability-parking-locator\bin\Debug\dpark.dll.mdb

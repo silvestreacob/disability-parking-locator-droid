@@ -11,5 +11,6 @@ namespace dpark.Models.WebService
         public const string ServerAddress = @"https://dpark.us/";
         public const string GmapAddress = @"https://maps.googleapis.com/";
         public const string GmapApikey = @"&key=AIzaSyBDfduWEUY-HGMHzGwuLIejhCkM3ji7I7w";
+        public const string OnSpecificRegion = @"&components=administrative_area:HI|country:US";
     }
 }

@@ -23,7 +23,15 @@ namespace dpark.Pages.MapSearch
             searchStack.Children.Add(searchAddress);
 
             searchAddress.SearchButtonPressed += async (e, a) => {
+                //LoadPin();
                 var result = await AppData.Spaces.GeocodeAddress(searchAddress.Text);
+
+                if (result == "")
+                {
+                    Debug.WriteLine("No Identifier found for pin");
+                    return;
+                }
+
                 string[] index = result.Split('&');
 
                 var address = index[0];
@@ -34,12 +42,13 @@ namespace dpark.Pages.MapSearch
                 var position = new Position(lat, lon);
                 customMap.Pins.Add(new Pin
                 {
-                    Label = name,
+                    Label = "Search Location",
                     Position = position,
                     Address = address
                 });
 
-                customMap.MoveToRegion(MapSpan.FromCenterAndRadius(position, Distance.FromMiles(3)));
+                Debug.WriteLine(customMap.Pins.Count);
+                customMap.MoveToRegion(MapSpan.FromCenterAndRadius(position, Distance.FromMiles(2)));
             };
 
             customMap = new CustomMap()
