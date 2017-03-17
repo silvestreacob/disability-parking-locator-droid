@@ -14,79 +14,61 @@ namespace dpark.Pages.MapSearch
         CustomMap customMap;
         public SampleMapPage()
         {
+            LoadPin();
+
+            var stack = new StackLayout { Spacing = 0 };
+            var searchStack = new StackLayout { Opacity = 0.8, Padding = new Thickness(0, 0, 0, 0) };
+
+            var searchAddress = new SearchBar { Placeholder = "Search for place or address", BackgroundColor = Xamarin.Forms.Color.White };
+            searchStack.Children.Add(searchAddress);
+
+            searchAddress.SearchButtonPressed += async (e, a) => {
+                var result = await AppData.Spaces.GeocodeAddress(searchAddress.Text);
+                string[] index = result.Split('&');
+
+                var address = index[0];
+                var lat = Convert.ToDouble(index[1]);
+                var lon = Convert.ToDouble(index[2]);
+                var name = index[3];
+
+                var position = new Position(lat, lon);
+                customMap.Pins.Add(new Pin
+                {
+                    Label = name,
+                    Position = position,
+                    Address = address
+                });
+
+                customMap.MoveToRegion(MapSpan.FromCenterAndRadius(position, Distance.FromMiles(3)));
+            };
+
             customMap = new CustomMap()
             {
-                IsShowingUser = true,
-                WidthRequest = App.ScreenWidth,
-                HeightRequest = App.ScreenHeight,
+                IsShowingUser = true,  
                 VerticalOptions = LayoutOptions.FillAndExpand,
                 HorizontalOptions = LayoutOptions.FillAndExpand
             };
 
             customMap.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(21.300, -157.8167), Distance.FromMiles(5)));
 
-            Button button = new Button
-            {
-                Text = "Click Me!",
-                Font = Font.SystemFontOfSize(NamedSize.Large),
-                BorderWidth = 1,
-                HorizontalOptions = LayoutOptions.Center,
-                VerticalOptions = LayoutOptions.CenterAndExpand
-            };
-            button.Clicked += OnButtonClicked;
-
-            Content = customMap;
-
-            LoadPin();
-            //Task.Delay(1000);
-            //customMap.Pins.Clear();
-
-            //foreach (var item in AppData.Spaces.PostsCollection)
-            //{
-            //    var pin = new CustomPin
-            //    {
-            //        Pin = new Pin
-            //        {
-            //            Type = PinType.Place,
-            //            Position = new Position(item.GeoLatitude, item.GeoLongitude),
-            //            Label = item.Title,
-            //            Address = item.StreetAddress
-            //        },
-
-            //        Id = item.ID,
-            //        Url = item.ImageURL
-            //    };
-
-            //    customMap.CustomPins = new List<CustomPin> { pin };
-            //    customMap.Pins.Add(pin.Pin);
-            //}
-
-            //Task.Delay(6000);
-            //AnimateLoadPin();
+            stack.Children.Add(searchStack);
+            stack.Children.Add(customMap);
+                      
+            Content = stack;         
 
         }
 
         protected async override void OnAppearing()
         {
-            base.OnAppearing();
-            
+            base.OnAppearing();            
         }
-
-        async private void AnimateLoadPin()
-        {
-            //customMap.Pins.Clear();
-                      
-            foreach (var item in customMap.CustomPins)
-            {
-                customMap.CustomPins = new List<CustomPin> { item };
-                customMap.Pins.Add(item.Pin);
-            }           
-        }
+      
         async private void LoadPin()
         {
             await Task.Delay(4000);
-            customMap.Pins.Clear();
+            customMap.CustomPins = new List<CustomPin>();
 
+            customMap.Pins.Clear();
             foreach (var item in AppData.Spaces.PostsCollection)
             {
                 var pin = new CustomPin
@@ -101,16 +83,14 @@ namespace dpark.Pages.MapSearch
 
                     Id = item.ID,
                     Url = item.ImageURL
+
                 };
 
-                customMap.CustomPins = new List<CustomPin> { pin };
+                Debug.WriteLine(pin.Id.ToString());
+
+                customMap.CustomPins.Add(pin);               
                 customMap.Pins.Add(pin.Pin);
             }
-        }
-
-        public void OnButtonClicked(object sender, EventArgs args)
-        {
-            LoadPin();
         }
     }
 }

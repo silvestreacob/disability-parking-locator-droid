@@ -8,7 +8,7 @@ using CoreGraphics;
 using Xamarin.Forms.Maps;
 using dpark.CustomRenderer;
 
-namespace dpark.iOS.MapRenderer
+namespace dpark.iOS.CustomMapRenderer
 {
     public class CustomMapDelegate : MKMapViewDelegate
     {
@@ -38,13 +38,15 @@ namespace dpark.iOS.MapRenderer
             annotationView = mapView.DequeueReusableAnnotation(identifier);
 
             if (annotationView == null)
+            {
                 annotationView = new CustomMKPinAnnotationView(annotation, identifier);
 
-            annotationView.RightCalloutAccessoryView = UIButton.FromType(UIButtonType.DetailDisclosure);
-            ((CustomMKPinAnnotationView)annotationView).PinColor = MKPinAnnotationColor.Green;
-            ((CustomMKPinAnnotationView)annotationView).FormsIdentifier = identifier;
-            ((CustomMKPinAnnotationView)annotationView).AnimatesDrop = true;
-            annotationView.CanShowCallout = true;
+                annotationView.RightCalloutAccessoryView = UIButton.FromType(UIButtonType.DetailDisclosure);
+                ((CustomMKPinAnnotationView)annotationView).PinColor = MKPinAnnotationColor.Green;
+                ((CustomMKPinAnnotationView)annotationView).FormsIdentifier = identifier;
+                ((CustomMKPinAnnotationView)annotationView).AnimatesDrop = true;
+                annotationView.CanShowCallout = true;
+            }                
 
             return annotationView;
         }

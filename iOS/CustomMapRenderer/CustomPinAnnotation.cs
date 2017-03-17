@@ -1,7 +1,7 @@
 ﻿using MapKit;
 using CoreLocation;
 
-namespace dpark.iOS.MapRenderer
+namespace dpark.iOS.CustomMapRenderer
 {
     public class CustomPinAnnotation : MKAnnotation
     {

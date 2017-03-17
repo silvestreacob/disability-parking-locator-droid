@@ -9,8 +9,7 @@ namespace dpark.Models.WebService
     static public class Config
     {
         public const string ServerAddress = @"https://dpark.us/";
-        public const string DevAddress = @"HTTP://dev.dpark.us/";
-        public const string GmapAddress = @"";
-        public const string GmapApikey = @"";
+        public const string GmapAddress = @"https://maps.googleapis.com/";
+        public const string GmapApikey = @"&key=AIzaSyBDfduWEUY-HGMHzGwuLIejhCkM3ji7I7w";
     }
 }

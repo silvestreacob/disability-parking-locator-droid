@@ -58,54 +58,17 @@ namespace dpark.Models
                 return isSuccess;
             }
 
-            //to MainMapPage ViewModel
-            public async Task SaveMapData(SpaceData space)
+            
+            async public Task<string> GeocodeAddress(string address)
             {
-                MapPinData mapPinData = new MapPinData
-                {
-                    Title = space.Title,
-                    StreetAddress = space.StreetAddress,
-                    GeoLatitude = space.GeoLatitude,
-                    GeoLongitude = space.GeoLongitude,
-                    ImageURL = space.ImageURL
-                };
-
-                _mapPinCollection.Add(mapPinData);
-            }
-            async public Task<bool> LoadMapData()
-            {
-                bool isSuccess = false;
-                Debug.WriteLine( _posts.Count + "\n");
                 try
                 {
-                    AppData.Spaces.MapPinCollection.Clear();
-
-                    foreach (var item in PostsCollection)
-                    {
-                        MapPinData mapPinData = new MapPinData();
-                        mapPinData.Title = item.Title;
-                        mapPinData.StreetAddress = item.StreetAddress;
-                        mapPinData.GeoLatitude = item.GeoLatitude;
-                        mapPinData.GeoLongitude = item.GeoLongitude;
-                        mapPinData.ImageURL = item.ImageURL;
-
-#if DEBUG
-                        Debug.WriteLine(mapPinData.ImageURL + "\n");
-#endif
-                        AppData.Spaces.MapPinCollection.Add(mapPinData);
-                    }
-
-                    //await Task.Delay(1000);
-                    isSuccess = true;
+                    ServiceProvider = new Client();
+                    var results = await ServiceProvider.GeocodeEnteredAddress(address);
+                    return results;
                 }
-
-                catch (Exception)
-                {
-                    isSuccess = false;
-                }
-
-                return isSuccess;
-            }
+                catch { return ""; }
+            }            
 
         }
 

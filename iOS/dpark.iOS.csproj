@@ -161,10 +161,10 @@
   <ItemGroup>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
-    <Compile Include="MapRenderer\CustomMapDelegate.cs" />
-    <Compile Include="MapRenderer\CustomMKPinAnnotationView.cs" />
-    <Compile Include="MapRenderer\CustomPinAnnotation.cs" />
-    <Compile Include="MapRenderer\MapCustomRenderer.cs" />
+    <Compile Include="CustomMapRenderer\CustomMapDelegate.cs" />
+    <Compile Include="CustomMapRenderer\CustomMKPinAnnotationView.cs" />
+    <Compile Include="CustomMapRenderer\CustomPinAnnotation.cs" />
+    <Compile Include="CustomMapRenderer\MapCustomRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\pin.png" />

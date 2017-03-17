@@ -55,6 +55,7 @@
     <Compile Include="Models\NotifyPropertyChanged.cs" />
     <Compile Include="Models\WebService\Client.cs" />
     <Compile Include="Models\WebService\Config.cs" />
+    <Compile Include="Models\WebService\GeoCode.cs" />
     <Compile Include="Models\WebService\IClient.cs" />
     <Compile Include="Models\WebService\Post.cs" />
     <Compile Include="Pages\Base\ModelBoundContentPage.cs" />

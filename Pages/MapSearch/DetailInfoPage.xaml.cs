@@ -12,7 +12,6 @@ using dpark.Models;
 
 namespace dpark.Pages.MapSearch
 {
-    //[XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class DetailInfoPage : ContentPage
     {
         public SpaceData pinData { get; set; }
@@ -25,7 +24,7 @@ namespace dpark.Pages.MapSearch
             Title = pinData.Title;
            // _CurrentPage = currentPage;
 
-            Debug.WriteLine(AppData.Spaces.MapPinCollection.Count + "\n" + Title);
+            Debug.WriteLine(AppData.Spaces.MapPinCollection.Count + "\n" + pinData.ID + "\n" + Title);
         }
     }
 }

@@ -2,7 +2,7 @@
 using UIKit;
 using CoreGraphics;
 
-namespace dpark.iOS.MapRenderer
+namespace dpark.iOS.CustomMapRenderer
 {
     public class CustomMKPinAnnotationView : MKPinAnnotationView
     {

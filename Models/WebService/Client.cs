@@ -14,6 +14,7 @@ namespace dpark.Models.WebService
     {
         private const string RequestSpaces = @"allspaces.json";
         private const string RequestDev = @"wp-json/posts?type=space";
+        private const string RequestGeoApi = @"maps/api/geocode/json?address=";
 
         async public Task<bool> CheckConnection()
         {
@@ -31,6 +32,7 @@ namespace dpark.Models.WebService
             var response = await client.GetAsync(request);
             return response.Content.ReadAsStringAsync().Result;
         }
+       
         async public Task<bool> GetSpaces()
         {
             bool isSuccess = false;
@@ -51,18 +53,7 @@ namespace dpark.Models.WebService
 
                     SpaceData spacedata = new SpaceData(deserializePosts);
                     AppData.Spaces.PostsCollection.Add(spacedata);
-
-                    //MapPinData mapPinData = new MapPinData
-                    //{
-                    //    Title = space.Title,
-                    //    StreetAddress = space.StreetAddress,
-                    //    GeoLatitude = space.GeoLatitude,
-                    //    GeoLongitude = space.GeoLongitude,
-                    //    ImageURL = space.ImageURL
-                    //};
                 }
-
-               
 
                 isSuccess = true;
             }
@@ -74,5 +65,34 @@ namespace dpark.Models.WebService
 
             return isSuccess;
         }
+
+        #region GeocodeEnteredAddress
+        async private Task<string> GetGeocode(string request)
+        {
+#if DEBUG
+            var client = new HttpClient { BaseAddress = new Uri(Config.GmapAddress) };
+#else
+            var client = new HttpClient { BaseAddress = new Uri(Config.GmapAddress), Timeout = new TimeSpan(0, 0, 10)};
+#endif
+
+            var response = await client.GetAsync(request);
+            return response.Content.ReadAsStringAsync().Result;
+        }
+
+         async public Task <string> GeocodeEnteredAddress(string address)
+        {
+            address = address.Replace(" ", ",");
+
+            try
+            {
+                var token = await GetGeocode(RequestGeoApi + address + Config.GmapApikey);
+                var geoObject = JsonConvert.DeserializeObject<GeoObject>(token);
+                var results = geoObject.results[0].formatted_address + "&" + geoObject.results[0].geometry.location.lat + "&" + geoObject.results[0].geometry.location.lng + "&" + geoObject.results[0].address_components[1].short_name;
+
+                return results;
+            }
+            catch { return ""; }
+        }
+        #endregion
     }
 }
