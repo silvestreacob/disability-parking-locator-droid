@@ -1,6 +1,7 @@
 ﻿using Xamarin.Forms;
 
 using dpark.CustomRenderer;
+using dpark.ViewModels.MapSearch;
 using dpark.iOS.CustomMapRenderer;
 
 using MapKit;
@@ -96,7 +97,8 @@ namespace dpark.iOS.CustomMapRenderer
 
             if (!string.IsNullOrWhiteSpace(customView.FormsIdentifier))
             {
-                formsMap.ShowPinDetailInfo(customView.FormsIdentifier);               
+                formsMap.ShowPinDetailInfo(customView.FormsIdentifier);
+                //return;               
             }
         }
     }

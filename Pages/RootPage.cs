@@ -25,7 +25,7 @@ namespace dpark.Pages
     {
         public RootTabPage()
         {
-            Children.Add(new MyNavigationPage(new MapSearch.SampleMapPage
+            Children.Add(new MyNavigationPage(new MapSearch.MapSearchPage
             {
                 Title = "Map",
                 //Icon = new FileImageSource { File = "search.png" }

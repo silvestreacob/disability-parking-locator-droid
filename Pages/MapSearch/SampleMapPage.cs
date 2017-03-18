@@ -69,7 +69,8 @@ namespace dpark.Pages.MapSearch
 
         protected async override void OnAppearing()
         {
-            base.OnAppearing();            
+            base.OnAppearing();
+            await Task.Delay(0);           
         }
       
         async private void LoadPin()

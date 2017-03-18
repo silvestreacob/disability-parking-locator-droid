@@ -14,11 +14,11 @@ namespace dpark.Pages.MapSearch {
     using Xamarin.Forms.Xaml;
     
     
-    public partial class DetailInfoPage : global::Xamarin.Forms.ContentPage {
+    public partial class DetailPage : global::Xamarin.Forms.ContentPage {
         
         [System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
         private void InitializeComponent() {
-            this.LoadFromXaml(typeof(DetailInfoPage));
+            this.LoadFromXaml(typeof(DetailPage));
         }
     }
 }

@@ -18,6 +18,7 @@ namespace dpark.Models.WebService
 
         async public Task<bool> CheckConnection()
         {
+            await Task.Delay(0);
             return true;
         }
 
@@ -53,6 +54,9 @@ namespace dpark.Models.WebService
 
                     SpaceData spacedata = new SpaceData(deserializePosts);
                     AppData.Spaces.PostsCollection.Add(spacedata);
+
+                    tmpSpaceData tmp = new tmpSpaceData(spacedata, 0.0);
+                    AppData.Spaces.tmpSpaceCollection.Add(tmp);
                 }
 
                 isSuccess = true;

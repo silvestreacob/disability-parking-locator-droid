@@ -17,7 +17,7 @@ namespace dpark.Models
             public SpaceContainer()
             {
                 _posts = new List<SpaceData>();
-                _mapPinCollection = new ObservableCollection<MapPinData>();
+                _tmpSpaceCollection = new ObservableCollection<tmpSpaceData>();
             }
 
             #region Post Collection
@@ -29,10 +29,10 @@ namespace dpark.Models
             #endregion
 
             #region MapPinCollection
-            private ObservableCollection<MapPinData> _mapPinCollection;
-            public ObservableCollection<MapPinData> MapPinCollection
+            private ObservableCollection<tmpSpaceData> _tmpSpaceCollection;
+            public ObservableCollection<tmpSpaceData> tmpSpaceCollection
             {
-                get { return _mapPinCollection; }
+                get { return _tmpSpaceCollection; }
             }
             #endregion
 

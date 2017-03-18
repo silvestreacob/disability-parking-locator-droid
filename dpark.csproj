@@ -44,6 +44,7 @@
     </Compile>
     <Compile Include="CustomRenderer\CustomMap.cs" />
     <Compile Include="CustomRenderer\CustomPin.cs" />
+    <Compile Include="Helpers\GetDistance.cs" />
     <Compile Include="Localization\TextResources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -52,6 +53,7 @@
     <Compile Include="Models\AppData.cs" />
     <Compile Include="Models\Data\MapPinData.cs" />
     <Compile Include="Models\Data\SpaceData.cs" />
+    <Compile Include="Models\Data\tmpSpaceData.cs" />
     <Compile Include="Models\NotifyPropertyChanged.cs" />
     <Compile Include="Models\WebService\Client.cs" />
     <Compile Include="Models\WebService\Config.cs" />
@@ -59,10 +61,10 @@
     <Compile Include="Models\WebService\IClient.cs" />
     <Compile Include="Models\WebService\Post.cs" />
     <Compile Include="Pages\Base\ModelBoundContentPage.cs" />
-    <Compile Include="Pages\MapSearch\DetailInfoPage.xaml.cs">
-      <DependentUpon>DetailInfoPage.xaml</DependentUpon>
+    <Compile Include="Pages\MapSearch\DetailPage.xaml.cs">
+      <DependentUpon>DetailPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\MapSearch\MainMapPage.cs" />
+    <Compile Include="Pages\MapSearch\MapSearchPage.cs" />
     <Compile Include="Pages\MapSearch\SampleMapPage.cs" />
     <Compile Include="Pages\RootPage.cs" />
     <Compile Include="Pages\Splash\SplashPage.xaml.cs">
@@ -70,6 +72,7 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\Base\BaseViewModel.cs" />
+    <Compile Include="ViewModels\MapSearch\DetailInfoViewModel.cs" />
     <Compile Include="ViewModels\MapSearch\MainViewModel.cs" />
     <Compile Include="ViewModels\Splash\SplashViewModel.cs" />
   </ItemGroup>
@@ -117,7 +120,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Pages\MapSearch\DetailInfoPage.xaml">
+    <EmbeddedResource Include="Pages\MapSearch\DetailPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
