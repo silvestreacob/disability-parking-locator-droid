@@ -119,9 +119,9 @@ namespace dpark.ViewModels.MapSearch
 
         async public void ShowPinDetailInfo(string id)
         {
-            SpaceData detailInfo = null;
+            tmpSpaceData detailInfo = null;
 
-            foreach (var item in AppData.Spaces.PostsCollection)
+            foreach (var item in AppData.Spaces.tmpSpaceCollection)
                 if (item.ID == id)
                 {
                     detailInfo = item;
@@ -133,8 +133,8 @@ namespace dpark.ViewModels.MapSearch
 
             var detailInfoPage = new DetailPage()
             {
-                Title = detailInfo.Title
-                //BindingContext = new DetailInfoViewModel(detailInfo)
+                Title = detailInfo.Title,
+                BindingContext = new DetailInfoViewModel(detailInfo)
             };
             await Navigation.PushAsync(detailInfoPage);
 

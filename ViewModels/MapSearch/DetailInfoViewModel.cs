@@ -6,12 +6,16 @@ using dpark.Models.Data;
 using dpark.ViewModels.Base;
 using dpark.Pages.MapSearch;
 
+using Xamarin.Forms;
+
 namespace dpark.ViewModels.MapSearch
 {
     public class DetailInfoViewModel:BaseViewModel
     {
-        public DetailInfoViewModel(SpaceData spaceData)
+        public tmpSpaceData temp { get; set; }
+        public DetailInfoViewModel(tmpSpaceData spaceData)
         {
+            temp = spaceData;
             this.Title = spaceData.Title;
             Debug.WriteLine(Title);
         }

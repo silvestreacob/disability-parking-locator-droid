@@ -15,9 +15,9 @@ namespace dpark.CustomRenderer
         public string tmpID;
         async public void ShowPinDetailInfo(string id)
         {
-            SpaceData detailInfo = null;
+            tmpSpaceData detailInfo = null;
 
-            foreach (var item in AppData.Spaces.PostsCollection)
+            foreach (var item in AppData.Spaces.tmpSpaceCollection)
                 if (item.ID == id)
                 {
                     detailInfo = item;
@@ -30,7 +30,7 @@ namespace dpark.CustomRenderer
             var detailInfoPage = new DetailPage()
             {
                 Title = detailInfo.Title,
-                BindingContext = new MainViewModel()
+                BindingContext = new DetailInfoViewModel(detailInfo)
             };
             await Navigation.PushAsync(detailInfoPage);
 
