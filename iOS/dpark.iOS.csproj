@@ -161,7 +161,6 @@
   <ItemGroup>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
-    <Compile Include="CustomMapRenderer\CustomMapDelegate.cs" />
     <Compile Include="CustomMapRenderer\CustomMKPinAnnotationView.cs" />
     <Compile Include="CustomMapRenderer\CustomPinAnnotation.cs" />
     <Compile Include="CustomMapRenderer\MapCustomRenderer.cs" />

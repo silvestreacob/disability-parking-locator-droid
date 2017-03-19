@@ -65,7 +65,6 @@
       <DependentUpon>DetailPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\MapSearch\MapSearchPage.cs" />
-    <Compile Include="Pages\MapSearch\SampleMapPage.cs" />
     <Compile Include="Pages\RootPage.cs" />
     <Compile Include="Pages\Splash\SplashPage.xaml.cs">
       <DependentUpon>SplashPage.xaml</DependentUpon>

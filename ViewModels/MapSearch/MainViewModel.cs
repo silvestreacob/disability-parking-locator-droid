@@ -30,7 +30,7 @@ namespace dpark.ViewModels.MapSearch
 
         public MainViewModel()
         {
-
+           // _currentPage = ;
         }
                 
         async private void DelayInit()
@@ -38,7 +38,7 @@ namespace dpark.ViewModels.MapSearch
             await Task.Delay(1000);
         }
 
-        async public void LoadPin(CustomMap customMap)
+        async public Task LoadPin(CustomMap customMap)
         {
             if(IsInitialized == false)
                 await Task.Delay(4000);
@@ -48,9 +48,7 @@ namespace dpark.ViewModels.MapSearch
 
             customMap.Pins.Clear();
             foreach (var item in AppData.Spaces.tmpSpaceCollection)
-            {
-                //if (item.Title == "Office Max Ala Moana 1") //testing
-                //{
+            {        
                     var pin = new CustomPin
                     {
                         Pin = new Pin
@@ -68,21 +66,17 @@ namespace dpark.ViewModels.MapSearch
 
                     customMap.CustomPins.Add(pin);
                     customMap.Pins.Add(pin.Pin);
-                //}
             }
         }
 
-        async public Task OnButtonSearched(CustomMap customMap, string searchText)
+        async public Task <string> OnButtonSearched(CustomMap customMap, string searchText)
         {
             var result = await AppData.Spaces.GeocodeAddress(searchText);
 
-            if (result == "Hawaii, USA")
+            if (result == "")
             {
-                Debug.WriteLine("No Identifier found for pin");
-                return;
+                return "Not found";
             }
-
-            //LoadPin(customMap); //load pins again
 
             string[] index = result.Split('&');
 
@@ -102,10 +96,16 @@ namespace dpark.ViewModels.MapSearch
                     AppData.Spaces.tmpSpaceCollection.Add(tmp);
                     Debug.WriteLine(item.Title + "\n");
                 }
-            }            
+            }
 
-            LoadPin(customMap);
+            if (AppData.Spaces.tmpSpaceCollection.Count == 0)
+            {
+                return "No space nearby";
+            }
 
+            await LoadPin(customMap);
+
+            await Task.Delay(1000);
             var position = new Position(lat, lon);
             customMap.Pins.Add(new Pin
             {
@@ -114,6 +114,7 @@ namespace dpark.ViewModels.MapSearch
                 Address = address
             });
             customMap.MoveToRegion(MapSpan.FromCenterAndRadius(position, Distance.FromMiles(1.2)));
+            return "Found";
         }
 
         async public void ShowPinDetailInfo(string id)
@@ -126,9 +127,7 @@ namespace dpark.ViewModels.MapSearch
                     detailInfo = item;
                     break;
                 }
-#if DEBUG
-            Debug.WriteLine(detailInfo.ID);
-#endif
+
             if (detailInfo == null)
                 return;
 
@@ -139,8 +138,7 @@ namespace dpark.ViewModels.MapSearch
             };
             await Navigation.PushAsync(detailInfoPage);
 
-        }
+        }             
 
-       
     }
 }

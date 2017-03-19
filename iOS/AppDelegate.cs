@@ -3,6 +3,8 @@ using UIKit;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
 
+using UserNotifications;
+
 namespace dpark.iOS
 {
 	[Register("AppDelegate")]
@@ -16,9 +18,9 @@ namespace dpark.iOS
             App.ScreenWidth = UIScreen.MainScreen.Bounds.Width;
             App.ScreenHeight = UIScreen.MainScreen.Bounds.Height;
 
-            LoadApplication(new App());
+            LoadApplication(new App());            
 
-			return base.FinishedLaunching(app, options);
+            return base.FinishedLaunching(app, options);
 		}
 	}
 }

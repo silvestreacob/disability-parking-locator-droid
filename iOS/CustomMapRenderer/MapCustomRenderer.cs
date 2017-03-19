@@ -89,6 +89,7 @@ namespace dpark.iOS.CustomMapRenderer
             catch { return ""; }
 
             return "";
+
         }
         void OnCalloutAccessoryControlTapped(object sender, MKMapViewAccessoryTappedEventArgs e)
         {
@@ -101,5 +102,6 @@ namespace dpark.iOS.CustomMapRenderer
                 //return;               
             }
         }
+        
     }
 }

@@ -91,15 +91,20 @@ namespace dpark.Models.WebService
             {
                 var token = await GetGeocode(RequestGeoApi + searchaddress + Config.OnSpecificRegion + Config.GmapApikey);
                 var geoObject = JsonConvert.DeserializeObject<GeoObject>(token);
-
+                
                 var formatted_address = geoObject.results[0].formatted_address;
-                var lat = geoObject.results[0].geometry.location.lat;
-                var lon = geoObject.results[0].geometry.location.lng;
-                var name = geoObject.results[0].address_components[1].short_name;
-                Debug.WriteLine(formatted_address + "\n" + lat + "\n" + lon + "\n" + name + "\n");
+                if(formatted_address != "Hawaii, USA")
+                { 
+                    var lat = geoObject.results[0].geometry.location.lat;
+                    var lon = geoObject.results[0].geometry.location.lng;
+                    var name = geoObject.results[0].address_components[1].short_name;
+                    Debug.WriteLine(formatted_address + "\n" + lat + "\n" + lon + "\n" + name + "\n");
 
-                var results = geoObject.results[0].formatted_address + "&" + geoObject.results[0].geometry.location.lat + "&" + geoObject.results[0].geometry.location.lng + "&" + geoObject.results[0].address_components[1].short_name;
-                return results;
+                    var results = geoObject.results[0].formatted_address + "&" + geoObject.results[0].geometry.location.lat + "&" + geoObject.results[0].geometry.location.lng + "&" + geoObject.results[0].address_components[1].short_name;
+                    return results;
+                }
+
+                return "";
             }
             catch { return ""; }
         }

@@ -13,6 +13,8 @@ using dpark.CustomRenderer;
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
 
+using Plugin.Toasts;
+
 namespace dpark.Pages.MapSearch
 {
     public class MapSearchPage : ModelBoundContentPage<MainViewModel>
@@ -36,7 +38,18 @@ namespace dpark.Pages.MapSearch
 
             var searchAddress = new SearchBar { Placeholder = "Search for place or address", BackgroundColor = Xamarin.Forms.Color.White };
             searchAddress.SearchButtonPressed += async (e, a) => {
-                await ViewModel.OnButtonSearched(customMap, searchAddress.Text);
+                var result = await ViewModel.OnButtonSearched(customMap, searchAddress.Text);
+
+                if (result == "Not found")
+                {                    
+                    await DisplayAlert("Not Found?", "Please ensure the address is typed correctly.e.g / i.e 919 Ala Moana Blvd", "OK");
+                    searchAddress.Focus();
+                }
+
+                else if (result == "No space nearby")
+                {
+                    await DisplayAlert("Space nearby?", "We found no available parking space within the 10 mil radius.", "OK");
+                }
             };
             searchStack.Children.Add(searchAddress);            
 
@@ -48,7 +61,12 @@ namespace dpark.Pages.MapSearch
             ViewModel.LoadPin(customMap);
             ViewModel.IsBusy = false;
         }
+        private async void ShowErrorMessage(INotificationOptions options)
+        {
+            var notificator = DependencyService.Get<IToastNotificator>();
 
-        
+            var result = await notificator.Notify(options);
+
+        }
     }
 }
