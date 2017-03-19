@@ -13,8 +13,6 @@ using dpark.CustomRenderer;
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
 
-using Plugin.Toasts;
-
 namespace dpark.Pages.MapSearch
 {
     public class MapSearchPage : ModelBoundContentPage<MainViewModel>
@@ -61,12 +59,6 @@ namespace dpark.Pages.MapSearch
             ViewModel.LoadPin(customMap);
             ViewModel.IsBusy = false;
         }
-        private async void ShowErrorMessage(INotificationOptions options)
-        {
-            var notificator = DependencyService.Get<IToastNotificator>();
 
-            var result = await notificator.Notify(options);
-
-        }
     }
 }

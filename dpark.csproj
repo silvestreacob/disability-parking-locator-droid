@@ -74,6 +74,19 @@
     <Compile Include="ViewModels\MapSearch\DetailInfoViewModel.cs" />
     <Compile Include="ViewModels\MapSearch\MainViewModel.cs" />
     <Compile Include="ViewModels\Splash\SplashViewModel.cs" />
+    <Compile Include="Views\Base\ModelBoundContentView.cs" />
+    <Compile Include="Views\MapSearch\DetailPageHeaderView.xaml.cs">
+      <DependentUpon>DetailPageHeaderView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MapSearch\DetailPageLocationView.xaml.cs">
+      <DependentUpon>DetailPageLocationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MapSearch\DetailPageTitleView.xaml.cs">
+      <DependentUpon>DetailPageTitleView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\NonPersistentSelectedItemListView.xaml.cs">
+      <DependentUpon>NonPersistentSelectedItemListView.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
@@ -120,6 +133,31 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Pages\MapSearch\DetailPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\NonPersistentSelectedItemListView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Views\MapSearch\DetailPageHeaderView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\MapSearch\DetailPageTitleView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\MapSearch\DetailPageLocationView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
