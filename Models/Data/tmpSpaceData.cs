@@ -1,13 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using dpark.Models.WebService;
 
 namespace dpark.Models.Data
 {
     public class tmpSpaceData
     {
+        private Client ServiceProvider { get; set; }
         public tmpSpaceData(SpaceData item, double distance)
         {
             _id = item.ID;
@@ -17,8 +15,21 @@ namespace dpark.Models.Data
             _geolatitude = item.GeoLatitude;
             _geolongitude = item.GeoLongitude;
 
-            var miles = String.Format("{0:0.00}", distance);
-            _distance = Convert.ToDouble(miles);
+            //var miles = String.Format("{0:0.00}", distance);
+            //_distance = Convert.ToDouble(distance);
+            _distance = distance;
+
+            if (string.IsNullOrEmpty(_streetaddress))
+            {
+                string coor = _geolatitude.ToString() + "," + _geolongitude.ToString();
+                GetReverseGeoAddress(coor);
+            }
+        }
+        async void GetReverseGeoAddress(string coordinates)
+        {
+            ServiceProvider = new Client();
+            var result = await ServiceProvider.ReverseGeoCoding(coordinates);
+            _streetaddress = result;
         }
 
         #region ID
@@ -44,7 +55,7 @@ namespace dpark.Models.Data
         public string StreetAddress
         {
             get { return _streetaddress; }
-            set { _streetaddress = value; }
+            set { _streetaddress = value; }           
         }
         #endregion
 
@@ -102,9 +113,9 @@ namespace dpark.Models.Data
         {
             get
             {
-                var distance = DistanceFrom;
-                string extension = " miles away";
-                return string.Format("Approximately", distance, extension);
+                var miles = String.Format("{0:0.00}", _distance);
+                var distance = "Approx. " + miles + " mil away";
+                return distance;
             }
         }
     }

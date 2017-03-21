@@ -1,5 +1,44 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentView xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="dpark.Views.MapSearch.DetailPageLocationView">
-  <ContentView.Content>
-  </ContentView.Content>
-</ContentView>
+<base:DetailPageLocationViewXaml
+  xmlns="http://xamarin.com/schemas/2014/forms"
+  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+  x:Class="dpark.Views.MapSearch.DetailPageLocationView"
+  xmlns:base="clr-namespace:dpark.Views.MapSearch"
+  xmlns:statics="clr-namespace:dpark.Statics"
+  xmlns:core="clr-namespace:System">
+  
+  <StackLayout Spacing="5" Padding="30,10">
+    <StackLayout>
+      <Label Text="Title"
+             FontSize="Medium"
+             FontAttributes="Bold"
+             TextColor="{x:Static statics:Palette._005}"/>
+
+      <Label x:Name="txtTitle"
+             Text="{Binding temp.Title}"
+             Style="{DynamicResource Label_Default-Medium-Default}"
+             FontAttributes="Bold"
+             LineBreakMode="WordWrap"
+             TextColor="{x:Static statics:Palette._006}"/>
+
+    </StackLayout>
+
+    <StackLayout>
+      <Label Text="Location"
+             FontSize="Medium"
+             FontAttributes="Bold"
+             TextColor="{x:Static statics:Palette._005}"/>
+
+      <Label Text="{Binding temp.StreetAddress}"
+             Style="{DynamicResource Label_Default-Medium-Default}"
+             LineBreakMode="WordWrap"
+             TextColor="{x:Static statics:Palette._006}"/>
+
+      <Label Text="{Binding temp.ApproximateDistance}"
+             FontSize="Small"             
+             LineBreakMode="WordWrap"
+             TextColor="{x:Static statics:Palette._006}"/>
+
+    </StackLayout>
+  </StackLayout>
+</base:DetailPageLocationViewXaml>

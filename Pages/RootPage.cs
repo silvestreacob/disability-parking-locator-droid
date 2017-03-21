@@ -4,6 +4,9 @@ using System.Linq;
 using System.Reflection.Emit;
 using System.Text;
 
+using dpark.Pages.List;
+using dpark.ViewModels.List;
+
 using Xamarin.Forms;
 
 namespace dpark.Pages
@@ -33,6 +36,17 @@ namespace dpark.Pages
             {
                 Title = "Map",
                 //Icon = new FileImageSource { File = "search.png" }
+            });
+
+            Children.Add(new MyNavigationPage(new ListPage
+            {
+                Title = "List",
+                //Icon = new FileImageSource { File = "about.png" },
+                BindingContext = new ListViewModel() { Navigation = this.Navigation }
+            })
+            {
+                Title = "List",
+                //Icon = new FileImageSource { File = "about.png" }
             });
         }
 

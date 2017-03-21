@@ -31,6 +31,7 @@ namespace dpark.iOS.CustomMapRenderer
                 var nativeMap = Control as MKMapView;
                 nativeMap.GetViewForAnnotation = GetViewForAnnotation;
                 nativeMap.CalloutAccessoryControlTapped += OnCalloutAccessoryControlTapped;
+                nativeMap.DidDeselectAnnotationView +=OnDidDeselectAnnotationView;
             }
         }
         MKAnnotationView GetViewForAnnotation(MKMapView mapView, IMKAnnotation annotation)
@@ -102,6 +103,19 @@ namespace dpark.iOS.CustomMapRenderer
                 //return;               
             }
         }
-        
+
+        void OnDidDeselectAnnotationView(object sender, MKAnnotationViewEventArgs e)
+        {
+            var customView = e.View as CustomMKPinAnnotationView;
+
+            if (!e.View.Selected)
+            {
+                //customPinView.RemoveFromSuperview();
+                
+                customView.Dispose();
+                //customView = null;
+            }
+        }
+
     }
 }

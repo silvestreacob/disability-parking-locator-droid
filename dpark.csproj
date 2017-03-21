@@ -54,13 +54,19 @@
     <Compile Include="Models\Data\MapPinData.cs" />
     <Compile Include="Models\Data\SpaceData.cs" />
     <Compile Include="Models\Data\tmpSpaceData.cs" />
+    <Compile Include="Models\Grouping.cs" />
+    <Compile Include="Models\IListExtensions.cs" />
     <Compile Include="Models\NotifyPropertyChanged.cs" />
+    <Compile Include="Models\ObservableCollectionExtensions.cs" />
     <Compile Include="Models\WebService\Client.cs" />
     <Compile Include="Models\WebService\Config.cs" />
     <Compile Include="Models\WebService\GeoCode.cs" />
     <Compile Include="Models\WebService\IClient.cs" />
     <Compile Include="Models\WebService\Post.cs" />
     <Compile Include="Pages\Base\ModelBoundContentPage.cs" />
+    <Compile Include="Pages\List\ListPage.xaml.cs">
+      <DependentUpon>ListPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\MapSearch\DetailPage.xaml.cs">
       <DependentUpon>DetailPage.xaml</DependentUpon>
     </Compile>
@@ -70,19 +76,25 @@
       <DependentUpon>SplashPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Statics\Fonts.cs" />
+    <Compile Include="Statics\FontSizes.cs" />
+    <Compile Include="Statics\Palette.cs" />
+    <Compile Include="Statics\RowSizes.cs" />
+    <Compile Include="Statics\Thicknesses.cs" />
     <Compile Include="ViewModels\Base\BaseViewModel.cs" />
+    <Compile Include="ViewModels\List\ListViewModel.cs" />
     <Compile Include="ViewModels\MapSearch\DetailInfoViewModel.cs" />
     <Compile Include="ViewModels\MapSearch\MainViewModel.cs" />
     <Compile Include="ViewModels\Splash\SplashViewModel.cs" />
     <Compile Include="Views\Base\ModelBoundContentView.cs" />
+    <Compile Include="Views\List\ListPageView.xaml.cs">
+      <DependentUpon>ListPageView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\MapSearch\DetailPageHeaderView.xaml.cs">
       <DependentUpon>DetailPageHeaderView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MapSearch\DetailPageLocationView.xaml.cs">
       <DependentUpon>DetailPageLocationView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\MapSearch\DetailPageTitleView.xaml.cs">
-      <DependentUpon>DetailPageTitleView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\NonPersistentSelectedItemListView.xaml.cs">
       <DependentUpon>NonPersistentSelectedItemListView.xaml</DependentUpon>
@@ -143,7 +155,12 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Views\List\ListPageView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\MapSearch\DetailPageHeaderView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
@@ -151,13 +168,13 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\MapSearch\DetailPageTitleView.xaml">
+    <EmbeddedResource Include="Views\MapSearch\DetailPageLocationView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\MapSearch\DetailPageLocationView.xaml">
+    <EmbeddedResource Include="Pages\List\ListPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

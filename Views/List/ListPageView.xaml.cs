@@ -5,12 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
 
-namespace dpark.Views.MapSearch
+namespace dpark.Views.List
 {
-    public partial class DetailPageTitleView : ContentView
+    public partial class ListPageView : NonPersistentSelectedItemListView
     {
-        public DetailPageTitleView()
+        public ListPageView()
         {
             InitializeComponent();
         }

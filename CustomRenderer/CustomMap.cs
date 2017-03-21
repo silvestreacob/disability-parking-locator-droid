@@ -29,7 +29,6 @@ namespace dpark.CustomRenderer
 
             var detailInfoPage = new DetailPage()
             {
-                Title = detailInfo.Title,
                 BindingContext = new DetailInfoViewModel(detailInfo)
             };
             await Navigation.PushAsync(detailInfoPage);

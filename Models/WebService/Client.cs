@@ -15,7 +15,7 @@ namespace dpark.Models.WebService
         private const string RequestSpaces = @"allspaces.json";
         private const string RequestDev = @"wp-json/posts?type=space";
         private const string RequestGeoApi = @"maps/api/geocode/json?address=";
-
+        private const string RequestReverseGeo = @"maps/api/geocode/json?latlng=";
         async public Task<bool> CheckConnection()
         {
             await Task.Delay(0);
@@ -107,6 +107,24 @@ namespace dpark.Models.WebService
                 return "";
             }
             catch { return ""; }
+        }
+        #endregion
+
+        #region ReverseGeocoding
+        async public Task<string> ReverseGeoCoding(string coordinates)
+        {
+
+            try
+            {
+                var token = await GetGeocode(RequestReverseGeo + coordinates + Config.GmapApikey);
+                var geoObject = JsonConvert.DeserializeObject<GeoObject>(token);
+
+                return geoObject.results[0].formatted_address;
+            }
+            catch
+            {
+                return "";
+            }
         }
         #endregion
     }

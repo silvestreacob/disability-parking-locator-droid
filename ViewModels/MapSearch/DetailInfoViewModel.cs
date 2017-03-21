@@ -16,8 +16,6 @@ namespace dpark.ViewModels.MapSearch
         public DetailInfoViewModel(tmpSpaceData spaceData)
         {
             temp = spaceData;
-            this.Title = spaceData.Title;
-            Debug.WriteLine(Title);
         }
     }
 }

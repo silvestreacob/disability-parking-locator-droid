@@ -1,16 +1,20 @@
 ﻿
 using System;
 using System.Diagnostics;
+using System.Threading.Tasks;
+using System.Collections.Generic;
 using System.Globalization;
 using dpark.Models.WebService;
+using Xamarin.Forms.Maps;
 
 namespace dpark.Models.Data
 {
     public class SpaceData : NotifyPropertyChanged
     {
+        private Client ServiceProvider { get; set; }
         public SpaceData()
         {
-            _id = _title = _streetaddress = _imageurl = _urladdress = string.Empty;
+            _id = _title =_streetaddress = _imageurl = _urladdress = string.Empty;
             _geolatitude = _geolongitude = 0.0;
         }
         public SpaceData(Post Item) : this()
@@ -23,36 +27,38 @@ namespace dpark.Models.Data
             _title = _title.Replace("&#8211;", "-");
 
             foreach (var item in Item.metadata)
-            {
-                #region _streetaddress
-                if (item.key.Contains("street_address") && item.value != string.Empty)
-                    _streetaddress = item.value;
-
-                else if (item.key.Contains("geo_address") && item.value != string.Empty)
-                    _streetaddress = item.value;
-                #endregion
-
+            {                
                 #region _geolatitude
-                if (item.key.Contains("geo_latitude") && item.value != string.Empty)
-                    _geolatitude = Convert.ToDouble(item.value);
-
-                else if (item.key.Contains("lat") && item.value != string.Empty)
-                    _geolatitude = Convert.ToDouble(item.value);
+                if ((item.key.Contains("geo_latitude") && item.value != string.Empty) || (item.key.Contains("lat") && item.value != string.Empty))
+                    _geolatitude = Convert.ToDouble(item.value);              
                 #endregion
 
                 #region _geolongitude
                 if ((item.key.Contains("geo_longitude") && item.value != string.Empty) || (item.key.Contains("lon") && item.value != string.Empty))
                     _geolongitude = Convert.ToDouble(item.value);
                 #endregion
+
+                #region _streetaddress
+                if ((item.key.Contains("street_address") && item.value != string.Empty) || (item.key.Contains("geo_address") && item.value != string.Empty))
+                    _streetaddress = item.value;
+                #endregion
             }
 
             _imageurl = Config.ServerAddress + Item.featured_image;
             _urladdress = Item.URL;
 
-#if DEBUG
-            Debug.WriteLine(_id + "\n" + _title + "\n" + _streetaddress + "\n" + _geolatitude + " " + _geolongitude + "\n" + _imageurl + "\n" + _urladdress + "\n");
-#endif
+            if (string.IsNullOrEmpty(_streetaddress)) //if address if empty, reverse geocode.
+            {
+                string coor = _geolatitude.ToString() + "," + _geolongitude.ToString();
+                GetReverseGeoAddress(coor);
+            }
+        }
 
+        async void GetReverseGeoAddress(string coordinates)
+        {
+            ServiceProvider = new Client();
+            var result = await ServiceProvider.ReverseGeoCoding(coordinates);
+            _reverseaddress = result;
         }
         #region ID
         private string _id;
@@ -91,11 +97,20 @@ namespace dpark.Models.Data
         #endregion
 
         #region StreetAddress
+        private string _reverseaddress;
         private string _streetaddress;
         public string StreetAddress
         {
-            get { return _streetaddress; }
-            set { _streetaddress = value; }
+
+            get
+            {
+                if (string.IsNullOrEmpty(_streetaddress))
+                {
+                    return _reverseaddress;
+                }
+
+                return _streetaddress;
+            }
         }
         #endregion
 

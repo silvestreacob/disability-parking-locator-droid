@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<views:NonPersistentSelectedItemListView
+  xmlns="http://xamarin.com/schemas/2014/forms"
+  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+  x:Class="dpark.Views.List.ListPageView"
+  xmlns:views="clr-namespace:dpark.Views"
+  xmlns:statics="clr-namespace:dpark.Statics"
+  HasUnevenRows="True">
+
+  <views:NonPersistentSelectedItemListView.ItemTemplate>
+    <DataTemplate>
+      <ViewCell>
+        <Grid Padding="10,8">
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+          </Grid.ColumnDefinitions>
+
+          <StackLayout Grid.Column="1"
+                   Padding="8"
+                   Spacing="2"
+                   VerticalOptions="Center">
+
+            <Label Text="{Binding Title}"
+                   FontSize="Medium"
+                   TextColor="{x:Static statics:Palette._005}"
+                   LineBreakMode="WordWrap"/>
+
+            <Label Text="{Binding StreetAddress}"
+                   x:Name="AddressText"
+                   TextColor="{x:Static statics:Palette._006}"
+                   FontSize="Small"
+                   LineBreakMode="WordWrap"/>
+
+            <Label Text="{Binding ApproximateDistance}"
+                  x:Name="ApproxText"
+                  TextColor="{x:Static statics:Palette._006}"
+                  FontSize="Small"
+                  LineBreakMode="WordWrap"/>
+          </StackLayout>
+          
+        </Grid>
+      </ViewCell>
+    </DataTemplate>
+  </views:NonPersistentSelectedItemListView.ItemTemplate>
+
+</views:NonPersistentSelectedItemListView>

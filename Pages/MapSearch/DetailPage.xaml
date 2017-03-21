@@ -22,13 +22,13 @@
               </ViewCell>
             </TableSection>
 
-            <!--<TableSection Title="Details">
-              <ViewCell Height="200">
-                
+            <TableSection Title="Details">
+              <ViewCell>
+                <views:DetailPageLocationView/>
               </ViewCell>
             </TableSection>
 
-            <TableSection Title="Options">
+            <!--<TableSection Title="Options">
               <ViewCell Height="200">
 
               </ViewCell>
