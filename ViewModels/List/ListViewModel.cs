@@ -65,7 +65,7 @@ namespace dpark.ViewModels.List
         }
         static IEnumerable<tmpSpaceData> Sort(IEnumerable<tmpSpaceData> temp)
         {
-            return temp.OrderByDescending(x => x.ID).ThenByDescending(x => x.DistanceFrom);
+            return temp.OrderBy(x => x.DistanceFrom).ThenBy(x => x.Title);
         }
     }
 }

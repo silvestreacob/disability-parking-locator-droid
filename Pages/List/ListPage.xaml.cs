@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using dpark.Pages.Base;
+﻿using dpark.Pages.Base;
 using dpark.ViewModels.List;
-
+using dpark.Models;
+using dpark.Models.Data;
+using dpark.Pages.MapSearch;
+using dpark.ViewModels.MapSearch;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
 namespace dpark.Pages.List
 {    
@@ -17,13 +13,29 @@ namespace dpark.Pages.List
         public ListPage()
         {
             InitializeComponent();
+            BindingContext = new ListViewModel();       
         }
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
 
+            if (AppData.Spaces.IsListDataUpdated == false)
+                return;
+
+            AppData.Spaces.IsListDataUpdated = false;
             ViewModel.LoadSpaces.Execute(null);
+        }
+
+        async void OnItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            tmpSpaceData detailInfo = (tmpSpaceData)e.Item;
+
+            var detailInfoPage = new DetailPage()
+            {
+                BindingContext = new DetailInfoViewModel(detailInfo) { Navigation = this.Navigation }
+            };
+            await Navigation.PushAsync(detailInfoPage);
         }
     }
 

@@ -8,6 +8,9 @@ using System.Net.Http;
 using Newtonsoft.Json;
 using dpark.Models.Data;
 
+using Xamarin.Forms.Maps;
+using System.Text.RegularExpressions;
+
 namespace dpark.Models.WebService
 {
     public class Client : IClient
@@ -73,12 +76,7 @@ namespace dpark.Models.WebService
         #region GeocodeEnteredAddress
         async private Task<string> GetGeocode(string request)
         {
-#if DEBUG
-            var client = new HttpClient { BaseAddress = new Uri(Config.GmapAddress) };
-#else
             var client = new HttpClient { BaseAddress = new Uri(Config.GmapAddress), Timeout = new TimeSpan(0, 0, 10)};
-#endif
-
             var response = await client.GetAsync(request);
             return response.Content.ReadAsStringAsync().Result;
         }
@@ -86,40 +84,64 @@ namespace dpark.Models.WebService
          async public Task <string> GeocodeEnteredAddress(string searchaddress)
         {
             searchaddress = searchaddress.Replace(" ", ",");
+            string results = "";
 
             try
             {
-                var token = await GetGeocode(RequestGeoApi + searchaddress + Config.OnSpecificRegion + Config.GmapApikey);
+                var token = await GetGeocode(RequestGeoApi + searchaddress + Config.OnSpecificRegion + Config.GmapApikey); //initially search query
                 var geoObject = JsonConvert.DeserializeObject<GeoObject>(token);
-                
-                var formatted_address = geoObject.results[0].formatted_address;
-                if(formatted_address != "Hawaii, USA")
-                { 
-                    var lat = geoObject.results[0].geometry.location.lat;
-                    var lon = geoObject.results[0].geometry.location.lng;
-                    var name = geoObject.results[0].address_components[1].short_name;
-                    Debug.WriteLine(formatted_address + "\n" + lat + "\n" + lon + "\n" + name + "\n");
 
-                    var results = geoObject.results[0].formatted_address + "&" + geoObject.results[0].geometry.location.lat + "&" + geoObject.results[0].geometry.location.lng + "&" + geoObject.results[0].address_components[1].short_name;
+                if(geoObject.results[0].formatted_address == "Hawaii, USA")
+                {
+                    searchaddress = searchaddress.Replace(",", " "); //search with space _
+
+                    token = await GetGeocode(RequestGeoApi + searchaddress + Config.OnSpecificRegion + Config.GmapApikey);
+                    geoObject = JsonConvert.DeserializeObject<GeoObject>(token);
+
+                    if (geoObject.results[0].formatted_address == "Hawaii, USA")
+                    {
+                        searchaddress = searchaddress.Replace(" ", ","); //search outside the region
+
+                        token = await GetGeocode(RequestGeoApi + searchaddress + Config.GmapApikey);
+                        geoObject = JsonConvert.DeserializeObject<GeoObject>(token);
+ 
+                        results = geoObject.results[0].formatted_address + "&" + geoObject.results[0].geometry.location.lat + "&" + geoObject.results[0].geometry.location.lng + "&" + geoObject.results[0].address_components[1].short_name;
+                        return results;
+                    }
+
+                    results = geoObject.results[0].formatted_address + "&" + geoObject.results[0].geometry.location.lat + "&" + geoObject.results[0].geometry.location.lng + "&" + geoObject.results[0].address_components[1].short_name;
                     return results;
                 }
 
-                return "";
+                results = geoObject.results[0].formatted_address + "&" + geoObject.results[0].geometry.location.lat + "&" + geoObject.results[0].geometry.location.lng + "&" + geoObject.results[0].address_components[1].short_name;
+                return results;         
             }
+
             catch { return ""; }
         }
         #endregion
 
         #region ReverseGeocoding
-        async public Task<string> ReverseGeoCoding(string coordinates)
+        async public Task<string> ReverseGeoCoding(double lat, double lng)
         {
+            Geocoder geo = new Geocoder();
+            Position p = new Position(lat, lng);
 
             try
             {
-                var token = await GetGeocode(RequestReverseGeo + coordinates + Config.GmapApikey);
-                var geoObject = JsonConvert.DeserializeObject<GeoObject>(token);
 
-                return geoObject.results[0].formatted_address;
+                string result="";
+
+                var addresses = await geo.GetAddressesForPositionAsync(p);
+                foreach(var address in addresses)
+                    result += address;
+
+                //result = Regex.Replace(result, @"\t|\n|\r", "&");
+
+                string[] index = result.Split('\n');
+                string newaddress = index[0];
+            
+                return newaddress;
             }
             catch
             {

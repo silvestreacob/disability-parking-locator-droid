@@ -38,6 +38,8 @@ namespace dpark.Models
 
             private Client ServiceProvider { get; set; }
 
+            public bool IsDataUpdated { get; set; }
+            public bool IsListDataUpdated { get; set; }
             //to SplashViewModel
             async public Task<bool> LoadSpaces()
             {

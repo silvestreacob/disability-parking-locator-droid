@@ -4,7 +4,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
 using dpark.Statics;
 
-using UserNotifications;
+using ImageCircle.Forms.Plugin.iOS;
 
 namespace dpark.iOS
 {
@@ -19,9 +19,10 @@ namespace dpark.iOS
             App.ScreenWidth = UIScreen.MainScreen.Bounds.Width;
             App.ScreenHeight = UIScreen.MainScreen.Bounds.Height;
 
-            LoadApplication(new App());            
+            ImageCircleRenderer.Init();
+            ConfigureApplicationTheming();
 
-            
+            LoadApplication(new App());                
             return base.FinishedLaunching(app, options);
 		}
         void ConfigureApplicationTheming()

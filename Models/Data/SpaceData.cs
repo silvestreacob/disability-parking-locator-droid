@@ -47,19 +47,8 @@ namespace dpark.Models.Data
             _imageurl = Config.ServerAddress + Item.featured_image;
             _urladdress = Item.URL;
 
-            if (string.IsNullOrEmpty(_streetaddress)) //if address if empty, reverse geocode.
-            {
-                string coor = _geolatitude.ToString() + "," + _geolongitude.ToString();
-                GetReverseGeoAddress(coor);
-            }
         }
 
-        async void GetReverseGeoAddress(string coordinates)
-        {
-            ServiceProvider = new Client();
-            var result = await ServiceProvider.ReverseGeoCoding(coordinates);
-            _reverseaddress = result;
-        }
         #region ID
         private string _id;
         public string ID
@@ -97,20 +86,11 @@ namespace dpark.Models.Data
         #endregion
 
         #region StreetAddress
-        private string _reverseaddress;
         private string _streetaddress;
         public string StreetAddress
         {
-
-            get
-            {
-                if (string.IsNullOrEmpty(_streetaddress))
-                {
-                    return _reverseaddress;
-                }
-
-                return _streetaddress;
-            }
+            get { return _streetaddress; }
+            set { _streetaddress = value; }
         }
         #endregion
 
@@ -134,7 +114,7 @@ namespace dpark.Models.Data
                 var index = ImageURL.LastIndexOf('.');
                 var name = ImageURL.Substring(0, index);
                 var extension = ImageURL.Substring(index);
-                return string.Format(name, "-125x125", extension);
+                return string.Format(name + "-125x125" + extension);
             }
         }
         #endregion

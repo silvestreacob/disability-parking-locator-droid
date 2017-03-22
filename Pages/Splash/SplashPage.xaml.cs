@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using dpark.Pages.Base;
 using dpark.ViewModels.Splash;
+using dpark.Models;
 
 using Xamarin.Forms.Xaml;
 
@@ -40,6 +41,8 @@ namespace dpark.Pages.Splash
                     return;
                 }
 
+                AppData.Spaces.IsListDataUpdated = true;
+                AppData.Spaces.IsDataUpdated = true;
                 App.GoToRoot();
             });
 

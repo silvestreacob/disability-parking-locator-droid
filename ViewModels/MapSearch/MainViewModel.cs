@@ -30,7 +30,8 @@ namespace dpark.ViewModels.MapSearch
 
         public MainViewModel()
         {
-           // _currentPage = ;
+            // _currentPage = ;
+            //IsBusy = true;
         }
                 
         async private void DelayInit()
@@ -40,6 +41,7 @@ namespace dpark.ViewModels.MapSearch
 
         async public Task LoadPin(CustomMap customMap)
         {
+            IsBusy = true;
             if(IsInitialized == false)
                 await Task.Delay(4000);
 
@@ -67,14 +69,16 @@ namespace dpark.ViewModels.MapSearch
                     customMap.CustomPins.Add(pin);
                     customMap.Pins.Add(pin.Pin);
             }
+
+            IsBusy = false;
         }
 
         async public Task <string> OnButtonSearched(CustomMap customMap, string searchText)
         {
             var result = await AppData.Spaces.GeocodeAddress(searchText);
-
             if (result == "")
             {
+                IsBusy = false;
                 return "Not found";
             }
 
@@ -85,7 +89,6 @@ namespace dpark.ViewModels.MapSearch
             var lon = Convert.ToDouble(index[2]);
             var name = index[3];
 
-            //create new TempSorted SpaceData
             AppData.Spaces.tmpSpaceCollection.Clear();
             foreach (var item in AppData.Spaces.PostsCollection)
             {
@@ -94,7 +97,7 @@ namespace dpark.ViewModels.MapSearch
                 {
                     tmpSpaceData tmp = new tmpSpaceData(item, value);
                     AppData.Spaces.tmpSpaceCollection.Add(tmp);
-                    Debug.WriteLine(item.Title + "\n");
+                    Debug.WriteLine(item.ThumbnailImageUrl + "\n");
                 }
             }
 
@@ -114,30 +117,10 @@ namespace dpark.ViewModels.MapSearch
                 Address = address
             });
             customMap.MoveToRegion(MapSpan.FromCenterAndRadius(position, Distance.FromMiles(1.2)));
+
+            AppData.Spaces.IsListDataUpdated = true;
             return "Found";
-        }
-
-        async public void ShowPinDetailInfo(string id)
-        {
-            tmpSpaceData detailInfo = null;
-
-            foreach (var item in AppData.Spaces.tmpSpaceCollection)
-                if (item.ID == id)
-                {
-                    detailInfo = item;
-                    break;
-                }
-
-            if (detailInfo == null)
-                return;
-
-            var detailInfoPage = new DetailPage()
-            {
-                BindingContext = new DetailInfoViewModel(detailInfo)
-            };
-            await Navigation.PushAsync(detailInfoPage);
-
-        }             
+        }        
 
     }
 }

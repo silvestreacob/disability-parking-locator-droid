@@ -4,6 +4,8 @@ using System.Linq;
 using System.Reflection.Emit;
 using System.Text;
 
+using dpark.Pages.MapSearch;
+using dpark.ViewModels.MapSearch;
 using dpark.Pages.List;
 using dpark.ViewModels.List;
 
@@ -28,10 +30,11 @@ namespace dpark.Pages
     {
         public RootTabPage()
         {
-            Children.Add(new MyNavigationPage(new MapSearch.MapSearchPage
+            Children.Add(new MyNavigationPage(new MapSearchPages
             {
                 Title = "Map",
                 //Icon = new FileImageSource { File = "search.png" }
+                BindingContext = new MainViewModel() { Navigation = this.Navigation }
             })
             {
                 Title = "Map",
@@ -48,6 +51,7 @@ namespace dpark.Pages
                 Title = "List",
                 //Icon = new FileImageSource { File = "about.png" }
             });
+           
         }
 
         protected override void OnCurrentPageChanged()

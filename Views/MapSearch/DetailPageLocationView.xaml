@@ -35,7 +35,8 @@
              TextColor="{x:Static statics:Palette._006}"/>
 
       <Label Text="{Binding temp.ApproximateDistance}"
-             FontSize="Small"             
+             FontSize="Small"
+             FontAttributes="Italic"
              LineBreakMode="WordWrap"
              TextColor="{x:Static statics:Palette._006}"/>
 

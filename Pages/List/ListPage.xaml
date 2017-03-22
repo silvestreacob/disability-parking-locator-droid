@@ -1,12 +1,31 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<base:ListPageXaml
+<page:ListPageXaml
   xmlns="http://xamarin.com/schemas/2014/forms"
   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
   x:Class="dpark.Pages.List.ListPage"
-  xmlns:base="clr-namespace:dpark.Pages.List"
-  xmlns:listviews="clr-namespace:dpark.Views.List">
+  xmlns:page="clr-namespace:dpark.Pages.List"
+  xmlns:listviews="clr-namespace:dpark.Views.List"
+  xmlns:statics="clr-namespace:dpark.Statics">
 
+  <AbsoluteLayout>
   <listviews:ListPageView
-    ItemsSource="{Binding SortedSpaceData}"/>
-  
-</base:ListPageXaml>
+    AbsoluteLayout.LayoutFlags="All"
+    AbsoluteLayout.LayoutBounds="0,0,1,1"
+    x:Name="List"
+    IsPullToRefreshEnabled="True"
+	  ItemsSource="{Binding SortedSpaceData}"
+	  RefreshCommand="{Binding LoadAccountsRefreshCommand}"
+	  IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+	  ItemTapped="OnItemTapped" />    
+
+    <ActivityIndicator
+                 x:Name="ActIndicator"
+							   IsEnabled="{Binding IsBusy}"
+							   IsVisible="{Binding IsBusy}"
+							   IsRunning="{Binding IsBusy}"
+							   AbsoluteLayout.LayoutBounds="0.5, 0.5, AutoSize, AutoSize"
+							   AbsoluteLayout.LayoutFlags="PositionProportional" 
+                 Color="Black"/>
+    
+  </AbsoluteLayout>
+</page:ListPageXaml>

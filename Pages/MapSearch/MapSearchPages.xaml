@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<page:MapSearchPagesXaml
+  xmlns="http://xamarin.com/schemas/2014/forms"
+  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+  x:Class="dpark.Pages.MapSearch.MapSearchPages"
+  xmlns:page="clr-namespace:dpark.Pages.MapSearch"
+  xmlns:renderer="clr-namespace:dpark.CustomRenderer"
+  xmlns:local="clr-namespace:dpark;assembly=dpark">
+
+  <page:MapSearchPagesXaml.Content>
+    <StackLayout Spacing="0">
+      
+    <StackLayout Orientation="Vertical">
+    <SearchBar x:Name="SearchFor"
+               Placeholder="Search for place or address"
+               SearchButtonPressed="OnSearch"/>
+      
+    </StackLayout>
+      
+    <StackLayout>
+      <AbsoluteLayout>      
+      <renderer:CustomMap x:Name="customMap"
+                       WidthRequest="{x:Static local:App.ScreenWidth}"
+                       HeightRequest="{x:Static local:App.ScreenHeight}"  
+                       AbsoluteLayout.LayoutFlags="All"
+                       AbsoluteLayout.LayoutBounds="0,0,1,1"
+                       MapType="Street"
+                       IsShowingUser="true"
+                       VerticalOptions="FillAndExpand"
+                       HorizontalOptions="FillAndExpand"/>
+
+      <ActivityIndicator 
+                      x:Name="ActIndicator"
+							        IsEnabled="{Binding IsBusy}"
+							        IsVisible="{Binding IsBusy}"
+							        IsRunning="{Binding IsBusy}"
+							        AbsoluteLayout.LayoutBounds="0.5, 0.5, AutoSize, AutoSize"
+							        AbsoluteLayout.LayoutFlags="PositionProportional" />
+      
+      </AbsoluteLayout>
+    </StackLayout>
+    </StackLayout>
+    
+  </page:MapSearchPagesXaml.Content>
+</page:MapSearchPagesXaml>

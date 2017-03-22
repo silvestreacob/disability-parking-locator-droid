@@ -15,20 +15,17 @@ namespace dpark.Models.Data
             _geolatitude = item.GeoLatitude;
             _geolongitude = item.GeoLongitude;
 
-            //var miles = String.Format("{0:0.00}", distance);
-            //_distance = Convert.ToDouble(distance);
             _distance = distance;
 
-            if (string.IsNullOrEmpty(_streetaddress))
+            if (string.IsNullOrEmpty(_streetaddress) || string.IsNullOrWhiteSpace(_streetaddress))
             {
-                string coor = _geolatitude.ToString() + "," + _geolongitude.ToString();
-                GetReverseGeoAddress(coor);
+                GetReverseGeoAddress(_geolatitude, _geolongitude);
             }
         }
-        async void GetReverseGeoAddress(string coordinates)
+        async void GetReverseGeoAddress(double lat, double lng)
         {
             ServiceProvider = new Client();
-            var result = await ServiceProvider.ReverseGeoCoding(coordinates);
+            var result = await ServiceProvider.ReverseGeoCoding(lat,lng);
             _streetaddress = result;
         }
 
@@ -105,7 +102,7 @@ namespace dpark.Models.Data
                 var index = ImageURL.LastIndexOf('.');
                 var name = ImageURL.Substring(0, index);
                 var extension = ImageURL.Substring(index);
-                return string.Format(name, "-125x125", extension);
+                return string.Format(name + "-125x125" + extension);
             }
         }       
 
@@ -113,8 +110,9 @@ namespace dpark.Models.Data
         {
             get
             {
-                var miles = String.Format("{0:0.00}", _distance);
-                var distance = "Approx. " + miles + " mil away";
+                var miles = _distance * 0.621371; //convert to km
+                var km = String.Format("{0:0.00}", miles);
+                var distance = "Approx. " + km + " km away";
                 return distance;
             }
         }
