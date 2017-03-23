@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using dpark.Models.Data;
 using dpark.Models.WebService;
@@ -52,9 +49,8 @@ namespace dpark.Models
                     isSuccess = await ServiceProvider.GetSpaces();
 
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Debug.WriteLine(ex);
                     isSuccess = false;
                 }
                 

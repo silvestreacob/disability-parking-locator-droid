@@ -52,7 +52,6 @@
     <BuildIpa>True</BuildIpa>
     <IpaIncludeArtwork>False</IpaIncludeArtwork>
     <MtouchDebug>False</MtouchDebug>
-    <CodesignProvision>a457bef7-329c-4da6-91df-5fe79c7fcede</CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>pdbonly</DebugType>

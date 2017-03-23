@@ -55,3 +55,5 @@ D:\dpark.us cross-platform\versions\3\disability-parking-locator\obj\Debug\dpark
 D:\dpark.us cross-platform\versions\3\disability-parking-locator\obj\Debug\dpark.pdb
 D:\dpark.us cross-platform\versions\3\disability-parking-locator\obj\Debug\dpark.dll.mdb
 D:\dpark.us cross-platform\versions\3\disability-parking-locator\bin\Debug\dpark.dll.mdb
+D:\dpark.us cross-platform\versions\3\disability-parking-locator\obj\Debug\dpark.dll.mdb
+D:\dpark.us cross-platform\versions\3\disability-parking-locator\bin\Debug\dpark.dll.mdb
