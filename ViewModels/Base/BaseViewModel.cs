@@ -16,6 +16,8 @@ namespace dpark.ViewModels.Base
 
         public bool IsInitialized { get; set; }
 
+        public bool IsFirstime { get; set; }
+
         public async Task PushModalAsync(Page page)
         {
             if (Navigation != null)
@@ -53,6 +55,13 @@ namespace dpark.ViewModels.Base
             set { SetProperty(ref canLoadMore, value, CanLoadMorePropertyName); }
         }
 
+        bool isSearching;
+        public const string IsSearchingPropertyName = "IsSearching";
+        public bool IsSearching
+        {
+            get { return isSearching; }
+            set { SetProperty(ref isSearching, value, IsSearchingPropertyName); }
+        }
         bool isBusy;
         /// <summary>
         /// Gets or sets the "IsBusy" property

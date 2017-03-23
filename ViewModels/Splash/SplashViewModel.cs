@@ -13,6 +13,7 @@ namespace dpark.ViewModels.Splash
        
         public async Task<bool> IsLoadSpaceData()
         {
+            IsBusy = true;
             bool isSuccess = false;
             
             try
@@ -25,6 +26,7 @@ namespace dpark.ViewModels.Splash
                 isSuccess = false;
             }
 
+            IsBusy = false;
             return isSuccess;           
         }
 
@@ -32,5 +34,6 @@ namespace dpark.ViewModels.Splash
         {
             await Task.Delay(1000);
         }
+  
     }
 }

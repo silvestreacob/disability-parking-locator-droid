@@ -9,7 +9,7 @@ using Newtonsoft.Json;
 using dpark.Models.Data;
 
 using Xamarin.Forms.Maps;
-using System.Text.RegularExpressions;
+using Plugin.Geolocator;
 
 namespace dpark.Models.WebService
 {
@@ -41,6 +41,21 @@ namespace dpark.Models.WebService
         {
             bool isSuccess = false;
 
+            double lat, lon;
+            try
+            {
+                var locator = CrossGeolocator.Current;
+                locator.DesiredAccuracy = 50;
+                var p = await locator.GetPositionAsync(timeoutMilliseconds: 1000);
+                lat = p.Latitude;
+                lon = p.Longitude;
+            }
+            catch (Exception)
+            {
+                lat = 21.300;
+                lon = -157.8167;
+            }
+
             try
             {
                 AppData.Spaces.PostsCollection.Clear();
@@ -58,15 +73,14 @@ namespace dpark.Models.WebService
                     SpaceData spacedata = new SpaceData(deserializePosts);
                     AppData.Spaces.PostsCollection.Add(spacedata);
 
-                    tmpSpaceData tmp = new tmpSpaceData(spacedata, 0.0);
+                    tmpSpaceData tmp = new tmpSpaceData(spacedata, lat, lon);
                     AppData.Spaces.tmpSpaceCollection.Add(tmp);
                 }
 
                 isSuccess = true;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Debug.WriteLine(ex);
                 isSuccess = false;
             }
 
@@ -76,7 +90,12 @@ namespace dpark.Models.WebService
         #region GeocodeEnteredAddress
         async private Task<string> GetGeocode(string request)
         {
+             #if DEBUG
+            var client = new HttpClient { BaseAddress = new Uri(Config.GmapAddress) };
+            #else
             var client = new HttpClient { BaseAddress = new Uri(Config.GmapAddress), Timeout = new TimeSpan(0, 0, 10)};
+            #endif
+
             var response = await client.GetAsync(request);
             return response.Content.ReadAsStringAsync().Result;
         }
@@ -135,8 +154,6 @@ namespace dpark.Models.WebService
                 var addresses = await geo.GetAddressesForPositionAsync(p);
                 foreach(var address in addresses)
                     result += address;
-
-                //result = Regex.Replace(result, @"\t|\n|\r", "&");
 
                 string[] index = result.Split('\n');
                 string newaddress = index[0];

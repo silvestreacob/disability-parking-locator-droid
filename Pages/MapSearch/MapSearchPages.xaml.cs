@@ -1,39 +1,29 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+using dpark.Localization;
 using dpark.Pages.Base;
 using dpark.ViewModels.MapSearch;
 using dpark.Models;
-
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 using Xamarin.Forms.Maps;
-
-using static dpark.Statics.FontSizes;
-
-using System.Diagnostics;
 
 namespace dpark.Pages.MapSearch
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
+
     public partial class MapSearchPages : MapSearchPagesXaml
     {
         public MapSearchPages()
         {
             InitializeComponent();
             BindingContext = new MainViewModel();
-            
-            customMap.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(21.300, -157.8167), Distance.FromMiles(5))); //Honolulu initial location            
+
+            SetToolBarItems();
+            customMap.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(21.300, -157.8167), Distance.FromMiles(5))); //Honolulu initial location                         
         }
 
         protected override async void OnAppearing()
         {
             base.OnAppearing();
-            //await Navigation.PopAsync();
-            
+
             if (AppData.Spaces.IsDataUpdated == false)
                 return;
 
@@ -41,24 +31,51 @@ namespace dpark.Pages.MapSearch
             await ViewModel.LoadPin(customMap);           
         }
 
+        void SetToolBarItems()
+        {
+            ToolbarItems.Clear();
+            ToolbarItems.Add(GetRefreshToolBarItem());
+        }
+
+        ToolbarItem GetRefreshToolBarItem()
+        {
+            ToolbarItem refreshToolBarItem = new ToolbarItem();
+            refreshToolBarItem.Text = TextResources.Refresh_Space;
+            refreshToolBarItem.Icon = "refresh.png";
+            refreshToolBarItem.Clicked += RefreshToolBarItem_Clicked;
+            return refreshToolBarItem;
+        }
+
+        void RefreshToolBarItem_Clicked(object sender, EventArgs e)
+        {
+            customMap.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(21.300, -157.8167), Distance.FromMiles(5))); //Honolulu initial location 
+            ViewModel.IsFirstime = false;    
+            ViewModel.IsInitialized = false;
+            ViewModel.RefreshPin(customMap);
+        }
+
         async public void OnSearch(object sender, EventArgs e)
         {
-            ViewModel.IsBusy = true;
             var result = await ViewModel.OnButtonSearched(customMap, SearchFor.Text);
 
             if (result == "Not found")
             {
-                await DisplayAlert("Not Found?", "Please ensure the address is typed correctly. e.g / i.e 919 Ala Moana Blvd", "OK");
                 SearchFor.Focus();
+
+                await DisplayAlert(TextResources.SearchNotFound_Title,
+                    TextResources.SearchNotFound_Title,
+                    TextResources.Ok);
             }
 
             else if (result == "No space nearby")
             {
-                await DisplayAlert("Space nearby?", "We found no available parking space within the 10 mil radius.", "OK");
-            }
+                SearchFor.Focus();
 
-            await Task.Delay(5000);
-            ViewModel.IsBusy = false;
+                await DisplayAlert(TextResources.SearchSpaceNearby_Title,
+                    TextResources.SearchSpaceNearby_Message,
+                    TextResources.Ok);
+            }
+          
         }
     }
 

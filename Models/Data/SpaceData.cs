@@ -46,7 +46,7 @@ namespace dpark.Models.Data
 
             _imageurl = Config.ServerAddress + Item.featured_image;
             _urladdress = Item.URL;
-
+            
         }
 
         #region ID

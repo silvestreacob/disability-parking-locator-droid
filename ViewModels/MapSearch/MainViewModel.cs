@@ -1,18 +1,15 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 
 using dpark.Models;
 using dpark.Models.Data;
 using dpark.ViewModels.Base;
-using dpark.Pages.MapSearch;
 using dpark.CustomRenderer;
 using dpark.Helpers;
 
-using Xamarin.Forms;
 using Xamarin.Forms.Maps;
+using Plugin.Geolocator;
 
 namespace dpark.ViewModels.MapSearch
 {
@@ -21,12 +18,6 @@ namespace dpark.ViewModels.MapSearch
         #region SpaceData
         public SpaceData SpaceData { get; set; }
         #endregion
-
-        readonly Page _currentPage;
-        public Page CurrentPage
-        {
-            get { return _currentPage; }
-        }
 
         public MainViewModel()
         {
@@ -72,13 +63,68 @@ namespace dpark.ViewModels.MapSearch
 
             IsBusy = false;
         }
+        async public void RefreshPin(CustomMap customMap)
+        {
+            IsBusy = true;
+            if (IsInitialized == false)
+                await Task.Delay(0);
+
+            IsInitialized = true;
+            customMap.CustomPins = new List<CustomPin>();
+
+
+            double lat, lon;
+            try
+            {
+                var locator = CrossGeolocator.Current;
+                locator.DesiredAccuracy = 50;
+                var p = await locator.GetPositionAsync(timeoutMilliseconds: 1000);
+                lat = p.Latitude;
+                lon = p.Longitude;
+            }
+            catch(Exception)
+            {
+                lat = 21.300;
+                lon = -157.8167;
+            }
+
+            customMap.Pins.Clear();
+            AppData.Spaces.tmpSpaceCollection.Clear();
+            foreach (var item in AppData.Spaces.PostsCollection)
+            {
+                tmpSpaceData tmp = new tmpSpaceData(item, lat, lon);
+                AppData.Spaces.tmpSpaceCollection.Add(tmp);
+
+                var pin = new CustomPin
+                {
+                    Pin = new Pin
+                    {
+                        Type = PinType.Place,
+                        Position = new Position(item.GeoLatitude, item.GeoLongitude),
+                        Label = item.Title,
+                        Address = item.StreetAddress
+                    },
+
+                    Id = item.ID,
+                    Url = item.ImageURL
+
+                };
+
+                customMap.CustomPins.Add(pin);
+                customMap.Pins.Add(pin.Pin);
+            }
+
+            AppData.Spaces.IsListDataUpdated = true;
+            IsBusy = false;
+        }
 
         async public Task <string> OnButtonSearched(CustomMap customMap, string searchText)
         {
+            IsSearching = true;
             var result = await AppData.Spaces.GeocodeAddress(searchText);
             if (result == "")
             {
-                IsBusy = false;
+                IsSearching = false;
                 return "Not found";
             }
 
@@ -95,20 +141,24 @@ namespace dpark.ViewModels.MapSearch
                 double value = GetDistance.DistanceFromMeToLocation(lat, lon, item.GeoLatitude, item.GeoLongitude);
                 if(value <= 10) //within the 10 mi radius
                 {
-                    tmpSpaceData tmp = new tmpSpaceData(item, value);
+                    tmpSpaceData tmp = new tmpSpaceData(item, lat, lon);
                     AppData.Spaces.tmpSpaceCollection.Add(tmp);
-                    Debug.WriteLine(item.ThumbnailImageUrl + "\n");
                 }
             }
 
             if (AppData.Spaces.tmpSpaceCollection.Count == 0)
             {
+                IsSearching = false;
                 return "No space nearby";
             }
+            AppData.Spaces.IsListDataUpdated = true;
+            IsFirstime = true;
+            IsSearching = false;
 
+            IsBusy = true;
             await LoadPin(customMap);
 
-            await Task.Delay(1000);
+            //await Task.Delay(1000);
             var position = new Position(lat, lon);
             customMap.Pins.Add(new Pin
             {
@@ -118,7 +168,8 @@ namespace dpark.ViewModels.MapSearch
             });
             customMap.MoveToRegion(MapSpan.FromCenterAndRadius(position, Distance.FromMiles(1.2)));
 
-            AppData.Spaces.IsListDataUpdated = true;
+            
+            IsBusy = false;
             return "Found";
         }        
 

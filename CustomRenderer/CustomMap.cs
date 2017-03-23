@@ -4,7 +4,6 @@ using dpark.Models.Data;
 using dpark.Models;
 using dpark.Pages.MapSearch;
 using dpark.ViewModels.MapSearch;
-using System.Diagnostics;
 
 namespace dpark.CustomRenderer
 {
@@ -15,6 +14,7 @@ namespace dpark.CustomRenderer
         public string tmpID;
         async public void ShowPinDetailInfo(string id)
         {
+            await Navigation.PopAsync();
             tmpSpaceData detailInfo = null;
 
             foreach (var item in AppData.Spaces.tmpSpaceCollection)

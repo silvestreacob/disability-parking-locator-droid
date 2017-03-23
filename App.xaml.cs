@@ -29,16 +29,14 @@ namespace dpark
         {
             //Target IOS Phone
             if (Device.OS == TargetPlatform.iOS && Device.Idiom == TargetIdiom.Phone)
-            {
-                //CurrentApp.MainPage.DisplayAlert("Completed","Load completed","OK");
-                //CurrentApp.MainPage = new Pages.MapSearch.SampleMapPage();
+            {                
                 CurrentApp.MainPage = new Pages.RootTabPage();
             }
 
             //IOS Tablet design
             else if (Device.OS == TargetPlatform.iOS && Device.Idiom == TargetIdiom.Tablet)
             {
-
+                CurrentApp.MainPage = new Pages.RootTabPage();
             }
 
             //Android phones
@@ -66,16 +64,12 @@ namespace dpark
         }
         static async Task ShowNetworkConnectionAlert()
         {
-            var alert = await CurrentApp.MainPage.DisplayAlert(
+            await CurrentApp.MainPage.DisplayAlert(
                 TextResources.NetworkConnection_Alert_Title,
                 TextResources.NetworkConnection_Alert_Message,
-                TextResources.Cancel,
                 TextResources.NetworkConnection_Alert_TryAgain);
 
-            if (alert == true) //if Try Again
-            {
                 CurrentApp.MainPage = new Pages.Splash.SplashPage();
-            }
         }
         public static bool IsConnected
         {

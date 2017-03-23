@@ -11,10 +11,23 @@
     <StackLayout Spacing="0">
       
     <StackLayout Orientation="Vertical">
-    <SearchBar x:Name="SearchFor"
+      <AbsoluteLayout>
+        <SearchBar x:Name="SearchFor"
                Placeholder="Search for place or address"
-               SearchButtonPressed="OnSearch"/>
-      
+               SearchButtonPressed="OnSearch"
+               AbsoluteLayout.LayoutFlags="All"
+               AbsoluteLayout.LayoutBounds="0,0,1,1"/>
+        
+        <ActivityIndicator
+                      x:Name="IsIndicator"
+							        IsEnabled="{Binding IsSearching}"
+							        IsVisible="{Binding IsSearching}"
+							        IsRunning="{Binding IsSearching}"
+							        AbsoluteLayout.LayoutBounds="0.5, 0.5, AutoSize, AutoSize"
+							        AbsoluteLayout.LayoutFlags="PositionProportional" />
+
+
+      </AbsoluteLayout>
     </StackLayout>
       
     <StackLayout>

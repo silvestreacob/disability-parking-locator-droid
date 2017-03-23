@@ -8,24 +8,12 @@
   xmlns:statics="clr-namespace:dpark.Statics">
 
   <AbsoluteLayout>
-  <listviews:ListPageView
-    AbsoluteLayout.LayoutFlags="All"
-    AbsoluteLayout.LayoutBounds="0,0,1,1"
-    x:Name="List"
+  <listviews:ListPageView    
     IsPullToRefreshEnabled="True"
 	  ItemsSource="{Binding SortedSpaceData}"
-	  RefreshCommand="{Binding LoadAccountsRefreshCommand}"
+	  RefreshCommand="{Binding LoadSpaces}"
 	  IsRefreshing="{Binding IsBusy, Mode=OneWay}"
 	  ItemTapped="OnItemTapped" />    
-
-    <ActivityIndicator
-                 x:Name="ActIndicator"
-							   IsEnabled="{Binding IsBusy}"
-							   IsVisible="{Binding IsBusy}"
-							   IsRunning="{Binding IsBusy}"
-							   AbsoluteLayout.LayoutBounds="0.5, 0.5, AutoSize, AutoSize"
-							   AbsoluteLayout.LayoutFlags="PositionProportional" 
-                 Color="Black"/>
     
   </AbsoluteLayout>
 </page:ListPageXaml>

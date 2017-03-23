@@ -8,6 +8,9 @@ using dpark.Pages.MapSearch;
 using dpark.ViewModels.MapSearch;
 using dpark.Pages.List;
 using dpark.ViewModels.List;
+using dpark.Pages.Submit;
+using dpark.Pages.About;
+using dpark.ViewModels.About;
 
 using Xamarin.Forms;
 
@@ -33,25 +36,47 @@ namespace dpark.Pages
             Children.Add(new MyNavigationPage(new MapSearchPages
             {
                 Title = "Map",
-                //Icon = new FileImageSource { File = "search.png" }
+                Icon = new FileImageSource { File = "map.png" },
                 BindingContext = new MainViewModel() { Navigation = this.Navigation }
             })
             {
                 Title = "Map",
-                //Icon = new FileImageSource { File = "search.png" }
+                Icon = new FileImageSource { File = "map.png" }
             });
 
             Children.Add(new MyNavigationPage(new ListPage
             {
-                Title = "List",
-                //Icon = new FileImageSource { File = "about.png" },
+                Title = "Results List",
+                Icon = new FileImageSource { File = "list.png" },
                 BindingContext = new ListViewModel() { Navigation = this.Navigation }
             })
             {
-                Title = "List",
-                //Icon = new FileImageSource { File = "about.png" }
+                Title = "Results List",
+                Icon = new FileImageSource { File = "list.png" }
             });
-           
+
+            Children.Add(new MyNavigationPage(new WebSubmitPage
+            {
+                Title = "Submit Space",
+                Icon = new FileImageSource { File = "add.png" }
+                //BindingContext = new ListViewModel() { Navigation = this.Navigation }
+            })
+            {
+                Title = "Submit Space",
+                Icon = new FileImageSource { File = "add.png" }
+            });
+
+            Children.Add(new MyNavigationPage(new AboutPage
+            {
+                Title = "About",
+                Icon = new FileImageSource { File = "about.png" },
+                BindingContext = new AboutViewModel() { Navigation = this.Navigation }
+            })
+            {
+                Title = "About",
+                Icon = new FileImageSource { File = "about.png" }
+            });
+
         }
 
         protected override void OnCurrentPageChanged()

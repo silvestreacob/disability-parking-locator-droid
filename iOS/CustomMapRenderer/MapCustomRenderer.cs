@@ -111,9 +111,9 @@ namespace dpark.iOS.CustomMapRenderer
             if (!e.View.Selected)
             {
                 //customPinView.RemoveFromSuperview();
-                
+                customView.Selected = false;
                 customView.Dispose();
-                //customView = null;
+                customView = null;
             }
         }
 

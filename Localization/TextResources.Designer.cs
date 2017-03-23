@@ -71,6 +71,42 @@ namespace dpark.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Get Directions.
+        /// </summary>
+        internal static string Get_Directions {
+            get {
+                return ResourceManager.GetString("Get_Directions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Leave Application?.
+        /// </summary>
+        internal static string Leave_Application {
+            get {
+                return ResourceManager.GetString("Leave_Application", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Yes, Leave.
+        /// </summary>
+        internal static string Leave_Mapping_Yes {
+            get {
+                return ResourceManager.GetString("Leave_Mapping_Yes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Would you like to leave the Dpark app and get directions?.
+        /// </summary>
+        internal static string Leave_MappingDirections {
+            get {
+                return ResourceManager.GetString("Leave_MappingDirections", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to This action requires access to remote data, but you don&apos;t seem to currently have a network connnection. Check your connection and try again..
         /// </summary>
         internal static string NetworkConnection_Alert_Message {
@@ -80,7 +116,7 @@ namespace dpark.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Not Connected.
+        ///   Looks up a localized string similar to Not Connected?.
         /// </summary>
         internal static string NetworkConnection_Alert_Title {
             get {
@@ -94,6 +130,69 @@ namespace dpark.Localization {
         internal static string NetworkConnection_Alert_TryAgain {
             get {
                 return ResourceManager.GetString("NetworkConnection_Alert_TryAgain", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to OK.
+        /// </summary>
+        internal static string Ok {
+            get {
+                return ResourceManager.GetString("Ok", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Refresh.
+        /// </summary>
+        internal static string Refresh_Space {
+            get {
+                return ResourceManager.GetString("Refresh_Space", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please ensure the address is typed correctly. e.g / i.e 919 Ala Moana Blvd.
+        /// </summary>
+        internal static string SearchNotFound_Message {
+            get {
+                return ResourceManager.GetString("SearchNotFound_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Not Found?.
+        /// </summary>
+        internal static string SearchNotFound_Title {
+            get {
+                return ResourceManager.GetString("SearchNotFound_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Found no available parking space within the ten(10) miles radius..
+        /// </summary>
+        internal static string SearchSpaceNearby_Message {
+            get {
+                return ResourceManager.GetString("SearchSpaceNearby_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Space Nearby?.
+        /// </summary>
+        internal static string SearchSpaceNearby_Title {
+            get {
+                return ResourceManager.GetString("SearchSpaceNearby_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Try Again?.
+        /// </summary>
+        internal static string TryAgain {
+            get {
+                return ResourceManager.GetString("TryAgain", resourceCulture);
             }
         }
     }

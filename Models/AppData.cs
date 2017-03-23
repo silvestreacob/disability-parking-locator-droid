@@ -52,8 +52,9 @@ namespace dpark.Models
                     isSuccess = await ServiceProvider.GetSpaces();
 
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
+                    Debug.WriteLine(ex);
                     isSuccess = false;
                 }
                 

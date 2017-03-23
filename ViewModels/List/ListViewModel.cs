@@ -1,7 +1,6 @@
 ﻿using System.Linq;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
 
 using dpark.Models;
 using dpark.Models.Data;
@@ -41,8 +40,6 @@ namespace dpark.ViewModels.List
 
         public async Task ExecuteLoadSpaceCommand()
         {
-            IsBusy = true;
-
             var items = new List<tmpSpaceData>();
             foreach (var item in AppData.Spaces.tmpSpaceCollection)
             {
@@ -50,22 +47,36 @@ namespace dpark.ViewModels.List
             }
 
             _tmpSpaceData.Clear();
-            _tmpSpaceData.AddRange(Sort(items));
 
+            if(IsFirstime == false)
+            {
+                _tmpSpaceData.AddRange(InitialSort(items));
+                IsFirstime = true;
+            }
+            else
+            {
+                _tmpSpaceData.AddRange(Sort(items));
+            }    
+           
             SortedItems();
           
+            await Task.Delay(1000);
             IsBusy = false;
         }
 
         void SortedItems()
         {
+            IsBusy = true;
             SortedSpaceData.Clear();
             SortedSpaceData.AddRange(_tmpSpaceData);
-            Debug.WriteLine(SortedSpaceData.Count);
         }
         static IEnumerable<tmpSpaceData> Sort(IEnumerable<tmpSpaceData> temp)
-        {
+        {            
             return temp.OrderBy(x => x.DistanceFrom).ThenBy(x => x.Title);
+        }
+        static IEnumerable<tmpSpaceData> InitialSort(IEnumerable<tmpSpaceData> temp)
+        {
+            return temp.OrderBy(x => x.Title);
         }
     }
 }

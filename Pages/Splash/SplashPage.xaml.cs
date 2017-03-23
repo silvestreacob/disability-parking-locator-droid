@@ -26,30 +26,36 @@ namespace dpark.Pages.Splash
             await AppLoading();
         }
 
-        async Task AppLoading()
+        async public Task AppLoading()
         {
             IsBusy = true;
 
             await App.ExecuteIfConnected(async () =>
             {
-                //ViewModel.IsPresentingLoginUI = true;
-
-                if (!await ViewModel.IsLoadSpaceData())
+                try
                 {
-                    await DisplayAlert("Loading data error", "An unknown error has occurred.Please try again.", "OK");
-                    ViewModel.IsInitialized = false;
-                    return;
+                    if (await ViewModel.IsLoadSpaceData())
+                    {
+                        ViewModel.IsInitialized = true;
+                        IsBusy = false;
+                        AppData.Spaces.IsListDataUpdated = true;
+                        AppData.Spaces.IsDataUpdated = true;
+                        App.GoToRoot();
+                    }
+                    
                 }
-
-                AppData.Spaces.IsListDataUpdated = true;
-                AppData.Spaces.IsDataUpdated = true;
-                App.GoToRoot();
+                catch (Exception ex)
+                {
+                    await DisplayAlert("Loading data error", ex.ToString(), "OK");
+                    ViewModel.IsInitialized = false;
+                }
+                
             });
-
-            ViewModel.IsInitialized = true;
-            IsBusy = false;
+            IsBusy = false;           
         }
+
+
     }
-    
+
     public abstract class SplashPageXaml : ModelBoundContentPage<SplashViewModel> { }
 }

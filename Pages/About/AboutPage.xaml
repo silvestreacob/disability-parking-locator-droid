@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<base:AboutPageXaml
+  xmlns="http://xamarin.com/schemas/2014/forms"
+  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+  x:Class="dpark.Pages.About.AboutPage"
+  xmlns:statics="clr-namespace:dpark.Statics"
+  xmlns:base="clr-namespace:dpark.Pages.About">
+
+  <TableView Intent="Menu" HasUnevenRows="true">
+    <TableRoot>
+
+      <TableSection>
+        <ViewCell>
+          <StackLayout Spacing="0" BackgroundColor="White">
+            <ContentView Padding="20">
+              <Label
+                TextColor="{x:Static statics:Palette._006}"
+                Style="{DynamicResource Label_Default-Small-Default}"
+                LineBreakMode="WordWrap"
+                Text="{Binding Overview}" />
+            </ContentView>
+            <ContentView Padding="20">
+              <Label
+                TextColor="{x:Static statics:Palette._006}"
+                Style="{DynamicResource Label_Default-Small-Default}"
+                LineBreakMode="WordWrap"
+                Text="{Binding Notes}" />
+            </ContentView>
+            <Image
+            Source="about_background.png"
+            Aspect="AspectFit" />
+            <ContentView Padding="20">
+              <Label
+                TextColor="{x:Static statics:Palette._006}"
+                Style="{DynamicResource Label_Default-Small-Default}"
+                LineBreakMode="WordWrap"
+                Text="{Binding ListHeading}" />
+            </ContentView>
+          </StackLayout>
+        </ViewCell>
+      </TableSection>
+    </TableRoot>
+  </TableView>
+</base:AboutPageXaml>

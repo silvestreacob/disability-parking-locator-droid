@@ -28,11 +28,26 @@
               </ViewCell>
             </TableSection>
 
-            <!--<TableSection Title="Options">
-              <ViewCell Height="200">
+            <TableSection Title="Options">
+                <ImageCell
+                    Text="Get Directions"
+                    ImageSource="getdirection"
+                    StyleId="disclosure"
+                    Tapped="GetDirectionTapped"/>
+              
+                <ImageCell
+                    Text="Show on Map"
+                    ImageSource="map"
+                    StyleId="disclosure"
+                    Tapped="ShowMapTapped"/>
 
-              </ViewCell>
-            </TableSection>-->
+                <ImageCell
+                    Text="Flag Space"
+                    ImageSource="flag"
+                    StyleId="disclosure"
+                    Tapped="FlagSpaceTapped"/>
+
+            </TableSection>
             
           </TableRoot>
         </TableView>

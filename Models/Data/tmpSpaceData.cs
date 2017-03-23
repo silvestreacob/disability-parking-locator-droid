@@ -1,13 +1,16 @@
 ﻿using System;
+using System.Diagnostics;
 using dpark.Models.WebService;
+using dpark.Helpers;
 
 namespace dpark.Models.Data
 {
     public class tmpSpaceData
     {
         private Client ServiceProvider { get; set; }
-        public tmpSpaceData(SpaceData item, double distance)
+        public tmpSpaceData(SpaceData item, double lat, double lon)
         {
+
             _id = item.ID;
             _title = item.Title;
             _streetaddress = item.StreetAddress;
@@ -15,7 +18,10 @@ namespace dpark.Models.Data
             _geolatitude = item.GeoLatitude;
             _geolongitude = item.GeoLongitude;
 
+            double distance = GetDistance.DistanceFromMeToLocation(lat, lon, item.GeoLatitude, item.GeoLongitude);
             _distance = distance;
+
+            Debug.WriteLine(_distance);
 
             if (string.IsNullOrEmpty(_streetaddress) || string.IsNullOrWhiteSpace(_streetaddress))
             {

@@ -5,10 +5,33 @@
   x:Class="dpark.Pages.Splash.SplashPage"
   xmlns:app="clr-namespace:dpark"
   xmlns:page="clr-namespace:dpark.Pages.Splash"
-  xmlns:i18n="clr-namespace:Dpark.Localization"
+  xmlns:statics="clr-namespace:dpark.Statics"
+  xmlns:local="clr-namespace:dpark;assembly=dpark"
 	BackgroundColor="White">
 
 	<page:SplashPageXaml.Content>
+    <AbsoluteLayout
+         HorizontalOptions="FillAndExpand"
+         VerticalOptions="FillAndExpand">
 
+      <BoxView AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+               AbsoluteLayout.LayoutFlags="All"
+               Color="{x:Static statics:Palette._001}" />
+
+      <Image x:Name="Logo"
+              Source="Launch.png"
+              WidthRequest="{x:Static local:App.ScreenWidth}"
+              HeightRequest="{x:Static local:App.ScreenHeight}"
+              AbsoluteLayout.LayoutFlags="All"
+              AbsoluteLayout.LayoutBounds="0,0,1,1"
+              Aspect="AspectFill"/>
+
+      <ActivityIndicator x:Name="LoadingActivityIndicator"
+							IsEnabled="{Binding IsBusy}"
+							IsVisible="{Binding IsBusy}"
+							IsRunning="{Binding IsBusy}"
+							AbsoluteLayout.LayoutBounds="0.5, 0.7, AutoSize, AutoSize"
+							AbsoluteLayout.LayoutFlags="PositionProportional" />      
+    </AbsoluteLayout>
 	</page:SplashPageXaml.Content>
 </page:SplashPageXaml>

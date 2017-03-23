@@ -7,6 +7,8 @@ using dpark.ViewModels.Base;
 using dpark.Pages.MapSearch;
 
 using Xamarin.Forms;
+using Xamarin.Forms.Maps;
+using System.Threading.Tasks;
 
 namespace dpark.ViewModels.MapSearch
 {
@@ -16,6 +18,20 @@ namespace dpark.ViewModels.MapSearch
         public DetailInfoViewModel(tmpSpaceData spaceData)
         {
             temp = spaceData;
+        }
+        public async Task<Pin> GetPin()
+        {
+            await Task.Delay(0);         
+            Position p = new Position(temp.Latitude, temp.Longitude);
+            var pin = new Pin
+            {
+                Type = PinType.Place,
+                Position = p,
+                Label = temp.Title,
+                Address = temp.StreetAddress
+            };
+
+            return pin;
         }
     }
 }
