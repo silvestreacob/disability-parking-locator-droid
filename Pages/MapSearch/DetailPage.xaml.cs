@@ -14,7 +14,11 @@ namespace dpark.Pages.MapSearch
     {
         public DetailPage()
         {
-            InitializeComponent();
+            InitializeComponent();           
+        }
+        async void OnBackButtonClicked(object sender, EventArgs args)
+        {
+            await Navigation.PopModalAsync();
         }
 
         async void GetDirectionTapped(object sender, EventArgs e)
@@ -30,24 +34,28 @@ namespace dpark.Pages.MapSearch
 
                 await CrossExternalMaps.Current.NavigateTo(pin.Label, pin.Position.Latitude, pin.Position.Longitude, NavigationType.Driving);
 
-                await ViewModel.PopAsync();
+                await ViewModel.PopModalAsync();
             }
         }
 
         async void ShowMapTapped(object sender, EventArgs e)
         {
+            await ViewModel.PopModalAsync();
+
             var detailMapPage = new DetailMapPage()
             {
                 BindingContext = new DetailInfoViewModel(ViewModel.temp)
             };
-            await Navigation.PushAsync(detailMapPage);
+            await Navigation.PushModalAsync(detailMapPage);
         }
 
         async void FlagSpaceTapped(object sender, EventArgs e)
         {
+            await ViewModel.PopModalAsync();
+
             var flagSpace = new FlagSpacePage();
-            await Navigation.PushAsync(flagSpace);
-        }
+            await Navigation.PushModalAsync(flagSpace);
+        }      
     }
 
     public abstract class DetailPageXaml : ModelBoundContentPage<DetailInfoViewModel> { }

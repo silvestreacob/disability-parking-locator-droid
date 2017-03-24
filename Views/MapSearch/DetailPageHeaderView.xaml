@@ -6,7 +6,7 @@ x:Class="dpark.Views.MapSearch.DetailPageHeaderView"
 xmlns:base="clr-namespace:dpark.Views.MapSearch">
 
   <base:DetailPageHeaderViewXaml.Content>
-    <AbsoluteLayout HeightRequest="300">
+    <AbsoluteLayout HeightRequest="285">
     
       <Image AbsoluteLayout.LayoutFlags="All"
         AbsoluteLayout.LayoutBounds="0,0,1,1"

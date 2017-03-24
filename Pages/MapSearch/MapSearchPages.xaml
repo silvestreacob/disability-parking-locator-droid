@@ -13,7 +13,7 @@
     <StackLayout Orientation="Vertical">
       <AbsoluteLayout>
         <SearchBar x:Name="SearchFor"
-               Placeholder="Search for place or address"
+               Placeholder="Enter an address to find accessible spots"
                SearchButtonPressed="OnSearch"
                AbsoluteLayout.LayoutFlags="All"
                AbsoluteLayout.LayoutBounds="0,0,1,1"/>

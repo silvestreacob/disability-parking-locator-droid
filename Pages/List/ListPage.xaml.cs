@@ -38,7 +38,7 @@ namespace dpark.Pages.List
             {
                 BindingContext = new DetailInfoViewModel(detailInfo) { Navigation = this.Navigation }
             };
-            await Navigation.PushAsync(detailInfoPage);           
+            await Navigation.PushModalAsync(detailInfoPage, true);           
         }
     }
 

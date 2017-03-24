@@ -4,53 +4,75 @@
   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
   x:Class="dpark.Pages.MapSearch.DetailPage"
   xmlns:base="clr-namespace:dpark.Pages.MapSearch"
-  xmlns:views="clr-namespace:dpark.Views.MapSearch">
-
-  <base:DetailPageXaml.Content>
-    <OnPlatform x:TypeArguments="View">
-      
+  xmlns:statics="clr-namespace:dpark.Statics"
+  xmlns:views="clr-namespace:dpark.Views.MapSearch"
+  xmlns:local="clr-namespace:dpark;assembly=dpark">
+   
+  <base:DetailPageXaml.Content>    
+    <OnPlatform x:TypeArguments="View">      
       <OnPlatform.iOS>
-        <StackLayout Spacing="0">
-        <TableView Intent="Menu" HasUnevenRows="true">
-          <TableRoot>
-            
-            <TableSection>
-              <ViewCell>
-              <StackLayout Spacing="0">
-                <views:DetailPageHeaderView/>
-              </StackLayout>
-              </ViewCell>
-            </TableSection>
-
-            <TableSection Title="Details">
-              <ViewCell>
-                <views:DetailPageLocationView/>
-              </ViewCell>
-            </TableSection>
-
-            <TableSection Title="Options">
-                <ImageCell
-                    Text="Get Directions"
-                    ImageSource="getdirection"
-                    StyleId="disclosure"
-                    Tapped="GetDirectionTapped"/>
+        <StackLayout Spacing="0">                    
+            <AbsoluteLayout>           
               
-                <ImageCell
-                    Text="Show on Map"
-                    ImageSource="map"
-                    StyleId="disclosure"
-                    Tapped="ShowMapTapped"/>
-
-                <ImageCell
-                    Text="Flag Space"
-                    ImageSource="flag"
-                    StyleId="disclosure"
-                    Tapped="FlagSpaceTapped"/>
-
-            </TableSection>
             
-          </TableRoot>
-        </TableView>
+             <StackLayout AbsoluteLayout.LayoutBounds="0.5, 0, AutoSize, AutoSize" AbsoluteLayout.LayoutFlags="PositionProportional">              
+              <TableView Intent="Menu"
+                       HasUnevenRows="true">                       
+
+              <TableRoot>
+                <TableSection>
+                  <ViewCell>
+                    <StackLayout Spacing="0">
+                      <views:DetailPageHeaderView/>
+                    </StackLayout>
+                  </ViewCell>
+                </TableSection>
+
+                <TableSection Title="Details">
+                  <ViewCell>
+                    <views:DetailPageLocationView/>
+                  </ViewCell>
+                </TableSection>
+
+                <TableSection Title="Options">
+                  <ImageCell
+                      Text="Get Directions"
+                      ImageSource="getdirection"
+                      StyleId="disclosure"
+                      Tapped="GetDirectionTapped"/>
+
+                  <ImageCell
+                      Text="Show on Map"
+                      ImageSource="map"
+                      StyleId="disclosure"
+                      Tapped="ShowMapTapped"/>
+
+                  <ImageCell
+                      Text="Flag Space"
+                      ImageSource="flag"
+                      StyleId="disclosure"
+                      Tapped="FlagSpaceTapped"/>
+
+                </TableSection>
+              </TableRoot>
+            </TableView>
+             </StackLayout>
+            
+             <StackLayout WidthRequest="{x:Static local:App.ScreenWidth}"
+                       AbsoluteLayout.LayoutFlags="PositionProportional"
+                       AbsoluteLayout.LayoutBounds="0,0,AutoSize,AutoSize"
+                       HorizontalOptions="FillAndExpand"
+                       BackgroundColor="{x:Static statics:Palette._005}"
+                       Padding="0,10,0,0">
+
+             <StackLayout HorizontalOptions="Start"
+                         VerticalOptions="Center"
+                         Padding="5,0,0,0">
+              <Button x:Name="backButton" Text="Back" TextColor="White" Image="back_ios.png" Clicked="OnBackButtonClicked"/>
+            </StackLayout>
+          </StackLayout>
+          </AbsoluteLayout>                   
+        
         </StackLayout>
       </OnPlatform.iOS>
       

@@ -122,6 +122,8 @@ namespace dpark.ViewModels.MapSearch
         {
             IsSearching = true;
             var result = await AppData.Spaces.GeocodeAddress(searchText);
+            System.Diagnostics.Debug.WriteLine(result);
+
             if (result == "")
             {
                 IsSearching = false;
@@ -158,7 +160,7 @@ namespace dpark.ViewModels.MapSearch
             IsBusy = true;
             await LoadPin(customMap);
 
-            //await Task.Delay(1000);
+            await Task.Delay(1000);
             var position = new Position(lat, lon);
             customMap.Pins.Add(new Pin
             {

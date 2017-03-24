@@ -148,16 +148,16 @@
     <value>Refresh</value>
   </data>
   <data name="SearchNotFound_Message" xml:space="preserve">
-    <value>Please ensure the address is typed correctly. e.g / i.e 919 Ala Moana Blvd</value>
+    <value>We were unable to determine the location. Please try updating your address again with more common street, city and region names.</value>
   </data>
   <data name="SearchNotFound_Title" xml:space="preserve">
     <value>Not Found?</value>
   </data>
   <data name="SearchSpaceNearby_Message" xml:space="preserve">
-    <value>Found no available parking space within the ten(10) miles radius.</value>
+    <value>Found no accessible spots within the ten miles radius. To make sure the address is search correctly, please try updating your address again with more common street, city and region names.</value>
   </data>
   <data name="SearchSpaceNearby_Title" xml:space="preserve">
-    <value>Space Nearby?</value>
+    <value>Spots Nearby?</value>
   </data>
   <data name="TryAgain" xml:space="preserve">
     <value>Try Again?</value>

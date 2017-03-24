@@ -47,16 +47,7 @@ namespace dpark.ViewModels.List
             }
 
             _tmpSpaceData.Clear();
-
-            if(IsFirstime == false)
-            {
-                _tmpSpaceData.AddRange(InitialSort(items));
-                IsFirstime = true;
-            }
-            else
-            {
-                _tmpSpaceData.AddRange(Sort(items));
-            }    
+            _tmpSpaceData.AddRange(Sort(items));               
            
             SortedItems();
           
@@ -73,10 +64,6 @@ namespace dpark.ViewModels.List
         static IEnumerable<tmpSpaceData> Sort(IEnumerable<tmpSpaceData> temp)
         {            
             return temp.OrderBy(x => x.DistanceFrom).ThenBy(x => x.Title);
-        }
-        static IEnumerable<tmpSpaceData> InitialSort(IEnumerable<tmpSpaceData> temp)
-        {
-            return temp.OrderBy(x => x.Title);
         }
     }
 }

@@ -14,7 +14,7 @@ namespace dpark.CustomRenderer
         public string tmpID;
         async public void ShowPinDetailInfo(string id)
         {
-            await Navigation.PopAsync();
+            await Navigation.PopToRootAsync();
             tmpSpaceData detailInfo = null;
 
             foreach (var item in AppData.Spaces.tmpSpaceCollection)
@@ -31,7 +31,7 @@ namespace dpark.CustomRenderer
             {
                 BindingContext = new DetailInfoViewModel(detailInfo)
             };
-            await Navigation.PushAsync(detailInfoPage);
+            await Navigation.PushModalAsync(detailInfoPage, true);
 
         }
     }

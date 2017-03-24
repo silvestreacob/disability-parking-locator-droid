@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
 using dpark.Models.WebService;
 using dpark.Helpers;
 
@@ -20,8 +19,6 @@ namespace dpark.Models.Data
 
             double distance = GetDistance.DistanceFromMeToLocation(lat, lon, item.GeoLatitude, item.GeoLongitude);
             _distance = distance;
-
-            Debug.WriteLine(_distance);
 
             if (string.IsNullOrEmpty(_streetaddress) || string.IsNullOrWhiteSpace(_streetaddress))
             {

@@ -28,22 +28,22 @@ namespace dpark.Pages.Splash
 
         async public Task AppLoading()
         {
-            IsBusy = true;
 
             await App.ExecuteIfConnected(async () =>
             {
+                ViewModel.IsBusy = true;
+
                 try
                 {
-                    if (await ViewModel.IsLoadSpaceData())
+                    if (await AppData.Spaces.LoadSpaces())
                     {
                         ViewModel.IsInitialized = true;
-                        IsBusy = false;
                         AppData.Spaces.IsListDataUpdated = true;
                         AppData.Spaces.IsDataUpdated = true;
                         App.GoToRoot();
-                    }
-                    
+                    }                    
                 }
+
                 catch (Exception ex)
                 {
                     await DisplayAlert("Loading data error", ex.ToString(), "OK");
@@ -51,9 +51,9 @@ namespace dpark.Pages.Splash
                 }
                 
             });
-            IsBusy = false;           
-        }
 
+            ViewModel.IsBusy = false;           
+        }
 
     }
 

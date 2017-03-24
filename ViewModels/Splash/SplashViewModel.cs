@@ -11,29 +11,29 @@ namespace dpark.ViewModels.Splash
     public class SplashViewModel : BaseViewModel
     {
        
-        public async Task<bool> IsLoadSpaceData()
-        {
-            IsBusy = true;
-            bool isSuccess = false;
+        //public async Task<bool> IsLoadSpaceData()
+        //{
+        //    IsBusy = true;
+        //    bool isSuccess = false;
             
-            try
-            {
-                isSuccess = await AppData.Spaces.LoadSpaces();
+        //    try
+        //    {
+        //        isSuccess = await AppData.Spaces.LoadSpaces();
                 
-            }
-            catch (Exception)
-            {
-                isSuccess = false;
-            }
+        //    }
+        //    catch (Exception)
+        //    {
+        //        isSuccess = false;
+        //    }
 
-            IsBusy = false;
-            return isSuccess;           
-        }
+        //    IsBusy = false;
+        //    return isSuccess;           
+        //}
 
-        async private void DelayInit()
-        {
-            await Task.Delay(1000);
-        }
+        //async private void DelayInit()
+        //{
+        //    await Task.Delay(1000);
+        //}
   
     }
 }

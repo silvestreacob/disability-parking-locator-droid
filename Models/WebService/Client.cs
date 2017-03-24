@@ -41,7 +41,10 @@ namespace dpark.Models.WebService
         {
             bool isSuccess = false;
 
-            double lat, lon;
+            //919 Ala Moana Blvd
+            double lat = 21.2951427;
+            double lon = -157.8609393;
+       
             try
             {
                 var locator = CrossGeolocator.Current;
@@ -50,11 +53,7 @@ namespace dpark.Models.WebService
                 lat = p.Latitude;
                 lon = p.Longitude;
             }
-            catch (Exception)
-            {
-                lat = 21.300;
-                lon = -157.8167;
-            }
+            catch (Exception) { }
 
             try
             {
@@ -112,24 +111,8 @@ namespace dpark.Models.WebService
 
                 if(geoObject.results[0].formatted_address == "Hawaii, USA")
                 {
-                    searchaddress = searchaddress.Replace(",", " "); //search with space _
-
-                    token = await GetGeocode(RequestGeoApi + searchaddress + Config.OnSpecificRegion + Config.GmapApikey);
-                    geoObject = JsonConvert.DeserializeObject<GeoObject>(token);
-
-                    if (geoObject.results[0].formatted_address == "Hawaii, USA")
-                    {
-                        searchaddress = searchaddress.Replace(" ", ","); //search outside the region
-
-                        token = await GetGeocode(RequestGeoApi + searchaddress + Config.GmapApikey);
-                        geoObject = JsonConvert.DeserializeObject<GeoObject>(token);
- 
-                        results = geoObject.results[0].formatted_address + "&" + geoObject.results[0].geometry.location.lat + "&" + geoObject.results[0].geometry.location.lng + "&" + geoObject.results[0].address_components[1].short_name;
-                        return results;
-                    }
-
-                    results = geoObject.results[0].formatted_address + "&" + geoObject.results[0].geometry.location.lat + "&" + geoObject.results[0].geometry.location.lng + "&" + geoObject.results[0].address_components[1].short_name;
-                    return results;
+                    var resultwithspace = await GeocodeEnteredAddressWithSpace(searchaddress);
+                    return resultwithspace;                    
                 }
 
                 results = geoObject.results[0].formatted_address + "&" + geoObject.results[0].geometry.location.lat + "&" + geoObject.results[0].geometry.location.lng + "&" + geoObject.results[0].address_components[1].short_name;
@@ -140,6 +123,48 @@ namespace dpark.Models.WebService
         }
         #endregion
 
+        async private Task<string> GeocodeEnteredAddressWithSpace(string searchaddress)
+        {
+            string result = "";
+
+            try
+            {
+                searchaddress = searchaddress.Replace(",", " "); //search with space _
+
+                var token = await GetGeocode(RequestGeoApi + searchaddress + Config.OnSpecificRegion + Config.GmapApikey);
+                var geoObject = JsonConvert.DeserializeObject<GeoObject>(token);
+
+                if(geoObject.results[0].formatted_address == "Hawaii, USA")
+                {
+                    var resultoutsideregion = await GeocodeEnteredAddressOutsideAdministrativeRegion(searchaddress);
+                    return resultoutsideregion;
+                }
+
+                result = geoObject.results[0].formatted_address + "&" + geoObject.results[0].geometry.location.lat + "&" + geoObject.results[0].geometry.location.lng + "&" + geoObject.results[0].address_components[1].short_name;
+                return result;
+            }
+            catch { return ""; }
+        }
+
+        async private Task<string> GeocodeEnteredAddressOutsideAdministrativeRegion(string searchaddress)
+        {
+            string result = "";
+
+            try
+            {
+                searchaddress = searchaddress.Replace(" ", ","); //search outside administrative region
+
+                var token = await GetGeocode(RequestGeoApi + searchaddress + Config.GmapApikey);
+                var geoObject = JsonConvert.DeserializeObject<GeoObject>(token);
+
+                if (geoObject.results[0].formatted_address == "Hawaii, USA")
+                    return "";
+
+                result = geoObject.results[0].formatted_address + "&" + geoObject.results[0].geometry.location.lat + "&" + geoObject.results[0].geometry.location.lng + "&" + geoObject.results[0].address_components[1].short_name;
+                return result;
+            }
+            catch { return ""; }
+        }
         #region ReverseGeocoding
         async public Task<string> ReverseGeoCoding(double lat, double lng)
         {

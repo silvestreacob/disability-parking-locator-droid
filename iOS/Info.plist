@@ -48,9 +48,9 @@
 		</dict>
 	</dict>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>Will you allow this app to always know your location?</string>
+	<string>Allowing location service will improve the app experience. These can be configured in Settings.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Do you allow this app to know your current location?</string>
+	<string>Allowing location service will improve the app experience. These can be configured in Settings.</string>
 	<key>NSCameraUsageDescription</key>
 	<string>Used to upload new available parking space.</string>
 	<key>NSPhotoLibraryUsageDescription</key>

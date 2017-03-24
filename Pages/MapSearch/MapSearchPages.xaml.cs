@@ -58,13 +58,14 @@ namespace dpark.Pages.MapSearch
         {
             var result = await ViewModel.OnButtonSearched(customMap, SearchFor.Text);
 
+
             if (result == "Not found")
             {
                 SearchFor.Focus();
 
                 await DisplayAlert(TextResources.SearchNotFound_Title,
-                    TextResources.SearchNotFound_Title,
-                    TextResources.Ok);
+                    TextResources.SearchNotFound_Message,
+                    TextResources.TryAgain);
             }
 
             else if (result == "No space nearby")
@@ -73,7 +74,7 @@ namespace dpark.Pages.MapSearch
 
                 await DisplayAlert(TextResources.SearchSpaceNearby_Title,
                     TextResources.SearchSpaceNearby_Message,
-                    TextResources.Ok);
+                    TextResources.TryAgain);
             }
           
         }

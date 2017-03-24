@@ -7,12 +7,14 @@ using Xamarin.Forms;
 using Xamarin.Forms.Maps;
 using Plugin.ExternalMaps;
 using Plugin.ExternalMaps.Abstractions;
+using System;
 
 namespace dpark.Pages.MapSearch
 {
     public class DetailMapPage : ModelBoundContentPage<DetailInfoViewModel>
     {
         Map map;
+        Button backButton;
         public DetailMapPage()
         {
             map = new Map()
@@ -23,33 +25,22 @@ namespace dpark.Pages.MapSearch
                 HorizontalOptions = LayoutOptions.FillAndExpand
             };
 
-            //ToolbarItems.Add(
-            //    new ToolbarItem(
-            //        TextResources.Get_Directions,
-            //        null,
-            //        async () =>
-            //        {
-            //            if (await DisplayAlert(
-            //                    TextResources.Leave_Application,
-            //                    TextResources.Leave_MappingDirections,
-            //                    TextResources.Leave_Mapping_Yes,
-            //                    TextResources.Cancel))
-            //            {
-
-            //                var pin = await ViewModel.GetPin();
-
-            //                await CrossExternalMaps.Current.NavigateTo(pin.Label, pin.Position.Latitude, pin.Position.Longitude, NavigationType.Driving);
-
-            //                await ViewModel.PopAsync();
-            //            }
-            //        }
-            //    )
-            //);
+            backButton = new Button
+            {
+                Text = "Back",
+                TextColor = Color.White,
+                Image = "back_ios.png"
+            };
+            backButton.Clicked += OnBackButtonClicked;
         }
         protected async override void OnAppearing()
         {
             base.OnAppearing();
             await MakeMap();
+        }
+        async void OnBackButtonClicked(object sender, EventArgs args)
+        {
+            await Navigation.PopModalAsync();
         }
         public async Task MakeMap()
         {
@@ -62,15 +53,16 @@ namespace dpark.Pages.MapSearch
 
             map.MoveToRegion(MapSpan.FromCenterAndRadius(pin.Position, Distance.FromMiles(5)));
 
-            RelativeLayout relativeLayout = new RelativeLayout();
+            //RelativeLayout relativeLayout = new RelativeLayout();
 
-            relativeLayout.Children.Add(
-                view: map,
-                widthConstraint: Constraint.RelativeToParent(parent => parent.Width),
-                heightConstraint: Constraint.RelativeToParent(parent => parent.Height)
-            );
+            //relativeLayout.Children.Add(
+            //    view: map,
+            //    widthConstraint: Constraint.RelativeToParent(parent => parent.Width),
+            //    heightConstraint: Constraint.RelativeToParent(parent => parent.Height)
+            //);
 
-            Content = relativeLayout;
+            StackLayout stackLayout = new StackLayout();
+            Content = stackLayout;
         }
     }
 }

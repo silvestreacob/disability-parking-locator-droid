@@ -152,7 +152,7 @@ namespace dpark.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please ensure the address is typed correctly. e.g / i.e 919 Ala Moana Blvd.
+        ///   Looks up a localized string similar to We were unable to determine the location. Please try updating your address again with more common street, city and region names..
         /// </summary>
         internal static string SearchNotFound_Message {
             get {
@@ -170,7 +170,7 @@ namespace dpark.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Found no available parking space within the ten(10) miles radius..
+        ///   Looks up a localized string similar to Found no accessible spots within the ten miles radius. To make sure the address is search correctly, please try updating your address again with more common street, city and region names..
         /// </summary>
         internal static string SearchSpaceNearby_Message {
             get {
@@ -179,7 +179,7 @@ namespace dpark.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Space Nearby?.
+        ///   Looks up a localized string similar to Spots Nearby?.
         /// </summary>
         internal static string SearchSpaceNearby_Title {
             get {
