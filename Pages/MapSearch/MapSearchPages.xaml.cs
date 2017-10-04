@@ -16,8 +16,19 @@ namespace dpark.Pages.MapSearch
             InitializeComponent();
             BindingContext = new MainViewModel();
 
-            SetToolBarItems();
-            customMap.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(21.300, -157.8167), Distance.FromMiles(5))); //Honolulu initial location                         
+            //SetToolBarItems();
+            customMap.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(21.300, -157.8167), Distance.FromMiles(5))); //Honolulu initial location   
+
+            //RelativeLayout relativeLayout = new RelativeLayout();
+
+            //relativeLayout.Children.Add(
+            //    view: customMap,
+            //    widthConstraint: Constraint.RelativeToParent(parent => parent.Width),
+            //    heightConstraint: Constraint.RelativeToParent(parent => parent.Height)
+            //);
+
+            //StackLayout stackLayout = new StackLayout();
+            //Content = relativeLayout;
         }
 
         protected override async void OnAppearing()
@@ -41,14 +52,15 @@ namespace dpark.Pages.MapSearch
         {
             ToolbarItem refreshToolBarItem = new ToolbarItem();
             refreshToolBarItem.Text = TextResources.Refresh_Space;
-            refreshToolBarItem.Icon = "refresh.png";
+            refreshToolBarItem.Icon = "icon.png";
+            refreshToolBarItem.Priority = 0;
             refreshToolBarItem.Clicked += RefreshToolBarItem_Clicked;
             return refreshToolBarItem;
         }
 
         void RefreshToolBarItem_Clicked(object sender, EventArgs e)
         {
-            customMap.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(21.300, -157.8167), Distance.FromMiles(5))); //Honolulu initial location 
+            customMap.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(21.300, -157.8167), Distance.FromMiles(7))); //Honolulu initial location 
             ViewModel.IsFirstime = false;    
             ViewModel.IsInitialized = false;
             ViewModel.RefreshPin(customMap);

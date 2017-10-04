@@ -9,24 +9,23 @@
 //------------------------------------------------------------------------------
 
 namespace dpark.Pages.Splash {
-    using System;
-    using Xamarin.Forms;
-    using Xamarin.Forms.Xaml;
     
     
+    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("D:\\dpark.us cross-platform\\versions\\4.droid\\disability-parking-locator-droid\\Page" +
+        "s\\Splash\\SplashPage.xaml")]
     public partial class SplashPage : global::dpark.Pages.Splash.SplashPageXaml {
         
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
         private global::Xamarin.Forms.Image Logo;
         
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
         private global::Xamarin.Forms.ActivityIndicator LoadingActivityIndicator;
         
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
         private void InitializeComponent() {
-            this.LoadFromXaml(typeof(SplashPage));
-            Logo = this.FindByName<global::Xamarin.Forms.Image>("Logo");
-            LoadingActivityIndicator = this.FindByName<global::Xamarin.Forms.ActivityIndicator>("LoadingActivityIndicator");
+            global::Xamarin.Forms.Xaml.Extensions.LoadFromXaml(this, typeof(SplashPage));
+            Logo = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Image>(this, "Logo");
+            LoadingActivityIndicator = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.ActivityIndicator>(this, "LoadingActivityIndicator");
         }
     }
 }

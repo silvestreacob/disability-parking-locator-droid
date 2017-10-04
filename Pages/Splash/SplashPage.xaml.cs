@@ -31,7 +31,7 @@ namespace dpark.Pages.Splash
 
             await App.ExecuteIfConnected(async () =>
             {
-                ViewModel.IsBusy = true;
+                ViewModel.isBusy = true;
 
                 try
                 {
@@ -52,7 +52,7 @@ namespace dpark.Pages.Splash
                 
             });
 
-            ViewModel.IsBusy = false;           
+           ViewModel.isBusy = false;           
         }
 
     }

@@ -9,20 +9,19 @@
 //------------------------------------------------------------------------------
 
 namespace dpark.Views.MapSearch {
-    using System;
-    using Xamarin.Forms;
-    using Xamarin.Forms.Xaml;
     
     
+    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("D:\\dpark.us cross-platform\\versions\\4.droid\\disability-parking-locator-droid\\View" +
+        "s\\MapSearch\\DetailPageLocationView.xaml")]
     public partial class DetailPageLocationView : global::dpark.Views.MapSearch.DetailPageLocationViewXaml {
         
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
         private global::Xamarin.Forms.Label txtTitle;
         
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
         private void InitializeComponent() {
-            this.LoadFromXaml(typeof(DetailPageLocationView));
-            txtTitle = this.FindByName<global::Xamarin.Forms.Label>("txtTitle");
+            global::Xamarin.Forms.Xaml.Extensions.LoadFromXaml(this, typeof(DetailPageLocationView));
+            txtTitle = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Label>(this, "txtTitle");
         }
     }
 }

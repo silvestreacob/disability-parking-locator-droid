@@ -74,6 +74,9 @@ namespace dpark.Models.WebService
 
                     tmpSpaceData tmp = new tmpSpaceData(spacedata, lat, lon);
                     AppData.Spaces.tmpSpaceCollection.Add(tmp);
+
+                    //debugging may delete after
+                    Debug.WriteLine(post.title);
                 }
 
                 isSuccess = true;

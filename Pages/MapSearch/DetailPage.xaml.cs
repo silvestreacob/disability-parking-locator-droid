@@ -14,8 +14,30 @@ namespace dpark.Pages.MapSearch
     {
         public DetailPage()
         {
-            InitializeComponent();           
+            InitializeComponent();
+            SetToolBarBack();
         }
+
+        void SetToolBarBack()
+        {
+            ToolbarItems.Clear();
+            ToolbarItems.Add(GetRefreshToolBarItem());
+        }
+
+        ToolbarItem GetRefreshToolBarItem()
+        {
+            ToolbarItem refreshToolBarItem = new ToolbarItem();
+            refreshToolBarItem.Text = "Close";
+            refreshToolBarItem.Icon = "close.png";
+            refreshToolBarItem.Clicked += RefreshToolBarItem_Clicked;
+            return refreshToolBarItem;
+        }
+
+        async void RefreshToolBarItem_Clicked(object sender, EventArgs e)
+        {
+            await Application.Current.MainPage.Navigation.PopModalAsync();
+        }
+
         async void OnBackButtonClicked(object sender, EventArgs args)
         {
             await Navigation.PopModalAsync();
@@ -34,27 +56,28 @@ namespace dpark.Pages.MapSearch
 
                 await CrossExternalMaps.Current.NavigateTo(pin.Label, pin.Position.Latitude, pin.Position.Longitude, NavigationType.Driving);
 
-                await ViewModel.PopModalAsync();
+                //await ViewModel.PopModalAsync();
+                await ViewModel.PopAsync();
             }
         }
 
         async void ShowMapTapped(object sender, EventArgs e)
         {
-            await ViewModel.PopModalAsync();
+            //await ViewModel.PopModalAsync();
 
             var detailMapPage = new DetailMapPage()
             {
                 BindingContext = new DetailInfoViewModel(ViewModel.temp)
             };
-            await Navigation.PushModalAsync(detailMapPage);
+            await Navigation.PushAsync(detailMapPage);
         }
 
         async void FlagSpaceTapped(object sender, EventArgs e)
         {
-            await ViewModel.PopModalAsync();
+           // await ViewModel.PopModalAsync();
 
             var flagSpace = new FlagSpacePage();
-            await Navigation.PushModalAsync(flagSpace);
+            await Navigation.PushAsync(flagSpace);
         }      
     }
 

@@ -4,6 +4,7 @@ using dpark.Models.Data;
 using dpark.Models;
 using dpark.Pages.MapSearch;
 using dpark.ViewModels.MapSearch;
+using Xamarin.Forms;
 
 namespace dpark.CustomRenderer
 {
@@ -31,7 +32,8 @@ namespace dpark.CustomRenderer
             {
                 BindingContext = new DetailInfoViewModel(detailInfo)
             };
-            await Navigation.PushModalAsync(detailInfoPage, true);
+                        
+            await Application.Current.MainPage.Navigation.PushModalAsync(new NavigationPage(detailInfoPage));
 
         }
     }

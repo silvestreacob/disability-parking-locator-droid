@@ -7,7 +7,7 @@
   xmlns:listviews="clr-namespace:dpark.Views.List"
   xmlns:statics="clr-namespace:dpark.Statics">
 
-  <AbsoluteLayout>
+  <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
   <listviews:ListPageView    
     IsPullToRefreshEnabled="True"
 	  ItemsSource="{Binding SortedSpaceData}"
@@ -15,5 +15,5 @@
 	  IsRefreshing="{Binding IsBusy, Mode=OneWay}"
 	  ItemTapped="OnItemTapped" />    
     
-  </AbsoluteLayout>
+  </StackLayout>
 </page:ListPageXaml>

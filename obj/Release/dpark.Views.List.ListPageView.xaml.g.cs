@@ -9,16 +9,15 @@
 //------------------------------------------------------------------------------
 
 namespace dpark.Views.List {
-    using System;
-    using Xamarin.Forms;
-    using Xamarin.Forms.Xaml;
     
     
+    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("D:\\dpark.us cross-platform\\versions\\4.droid\\disability-parking-locator-droid\\View" +
+        "s\\List\\ListPageView.xaml")]
     public partial class ListPageView : global::dpark.Views.NonPersistentSelectedItemListView {
         
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
         private void InitializeComponent() {
-            this.LoadFromXaml(typeof(ListPageView));
+            global::Xamarin.Forms.Xaml.Extensions.LoadFromXaml(this, typeof(ListPageView));
         }
     }
 }

@@ -10,7 +10,7 @@
    
   <base:DetailPageXaml.Content>    
     <OnPlatform x:TypeArguments="View">      
-      <OnPlatform.iOS>
+     <OnPlatform.iOS>
         <StackLayout Spacing="0">                    
             <AbsoluteLayout>           
               
@@ -75,6 +75,32 @@
         
         </StackLayout>
       </OnPlatform.iOS>
+
+      <OnPlatform.Android>
+        
+        
+        <ScrollView>
+          <StackLayout Spacing="0">
+            <views:DetailPageHeaderView/>
+            <views:DetailPageLocationView/>
+            
+              <StackLayout Spacing="5" Padding="30,10">
+                <StackLayout>
+                  <Label Text="Options"
+                         FontSize="Medium"
+                         FontAttributes="Bold"
+                         TextColor="{x:Static statics:Palette._005}"/>
+        
+                  <Button Text="Get Directions" Image="map_android.png" Clicked="GetDirectionTapped"/>
+                  <Button Text="Show on Map" Image="map_android.png" Clicked="ShowMapTapped"/>
+                  <Button Text="Flag Space" Image="map_android.png" Clicked="FlagSpaceTapped"/>
+                </StackLayout>
+              </StackLayout>
+              
+          </StackLayout>    
+        </ScrollView>
+
+      </OnPlatform.Android>
       
     </OnPlatform>
   </base:DetailPageXaml.Content>

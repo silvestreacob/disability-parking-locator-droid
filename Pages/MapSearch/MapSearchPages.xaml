@@ -8,7 +8,7 @@
   xmlns:local="clr-namespace:dpark;assembly=dpark">
 
   <page:MapSearchPagesXaml.Content>
-    <StackLayout Spacing="0">
+    <StackLayout Spacing="0" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" x:Name="stacklayout">
       
     <StackLayout Orientation="Vertical">
       <AbsoluteLayout>
@@ -16,7 +16,14 @@
                Placeholder="Enter an address to find accessible spots"
                SearchButtonPressed="OnSearch"
                AbsoluteLayout.LayoutFlags="All"
-               AbsoluteLayout.LayoutBounds="0,0,1,1"/>
+               AbsoluteLayout.LayoutBounds="0,0,1,1">
+          <SearchBar.FontSize>
+            <OnPlatform x:TypeArguments="x:Double"
+                        WinPhone="10"
+                        Android="15"
+                        iOS="20" />
+          </SearchBar.FontSize>
+        </SearchBar>
         
         <ActivityIndicator
                       x:Name="IsIndicator"
@@ -30,11 +37,12 @@
       </AbsoluteLayout>
     </StackLayout>
       
-    <StackLayout>
-      <AbsoluteLayout>      
+    <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+      <AbsoluteLayout>
+        
       <renderer:CustomMap x:Name="customMap"
                        WidthRequest="{x:Static local:App.ScreenWidth}"
-                       HeightRequest="{x:Static local:App.ScreenHeight}"  
+                       HeightRequest="{x:Static local:App.ScreenHeight}"
                        AbsoluteLayout.LayoutFlags="All"
                        AbsoluteLayout.LayoutBounds="0,0,1,1"
                        MapType="Street"

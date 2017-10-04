@@ -18,12 +18,12 @@ namespace dpark.Statics
         /// <summary>
         /// iOS blue
         /// </summary>
-        public static readonly Color _005 = Color.FromHex("0079FF");
+        public static readonly Color _005 = Color.FromHex("000");
 
         /// <summary>
         /// Primary (dark) label color.
         /// </summary>
-        public static readonly Color _006 = Color.FromHex("4D4D4D");
+        public static readonly Color _006 = Color.FromHex("000");
 
         /// <summary>
         /// Secondary (light) label color.

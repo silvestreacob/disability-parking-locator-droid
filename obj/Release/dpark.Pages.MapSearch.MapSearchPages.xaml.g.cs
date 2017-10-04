@@ -9,32 +9,35 @@
 //------------------------------------------------------------------------------
 
 namespace dpark.Pages.MapSearch {
-    using System;
-    using Xamarin.Forms;
-    using Xamarin.Forms.Xaml;
     
     
+    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("D:\\dpark.us cross-platform\\versions\\4.droid\\disability-parking-locator-droid\\Page" +
+        "s\\MapSearch\\MapSearchPages.xaml")]
     public partial class MapSearchPages : global::dpark.Pages.MapSearch.MapSearchPagesXaml {
         
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
+        private global::Xamarin.Forms.StackLayout stacklayout;
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
         private global::Xamarin.Forms.SearchBar SearchFor;
         
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
         private global::Xamarin.Forms.ActivityIndicator IsIndicator;
         
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
         private global::dpark.CustomRenderer.CustomMap customMap;
         
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
         private global::Xamarin.Forms.ActivityIndicator ActIndicator;
         
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
         private void InitializeComponent() {
-            this.LoadFromXaml(typeof(MapSearchPages));
-            SearchFor = this.FindByName<global::Xamarin.Forms.SearchBar>("SearchFor");
-            IsIndicator = this.FindByName<global::Xamarin.Forms.ActivityIndicator>("IsIndicator");
-            customMap = this.FindByName<global::dpark.CustomRenderer.CustomMap>("customMap");
-            ActIndicator = this.FindByName<global::Xamarin.Forms.ActivityIndicator>("ActIndicator");
+            global::Xamarin.Forms.Xaml.Extensions.LoadFromXaml(this, typeof(MapSearchPages));
+            stacklayout = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.StackLayout>(this, "stacklayout");
+            SearchFor = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.SearchBar>(this, "SearchFor");
+            IsIndicator = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.ActivityIndicator>(this, "IsIndicator");
+            customMap = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::dpark.CustomRenderer.CustomMap>(this, "customMap");
+            ActIndicator = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.ActivityIndicator>(this, "ActIndicator");
         }
     }
 }

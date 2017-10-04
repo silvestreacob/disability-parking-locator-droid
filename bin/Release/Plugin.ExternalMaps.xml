@@ -9,9 +9,14 @@
             Cross platform ExternalMaps implemenations
             </summary>
         </member>
+        <member name="P:Plugin.ExternalMaps.CrossExternalMaps.IsSupported">
+            <summary>
+            Gets if the plugin is supported on the current platform.
+            </summary>
+        </member>
         <member name="P:Plugin.ExternalMaps.CrossExternalMaps.Current">
             <summary>
-            Current settings to use
+            Current plugin implementation to use
             </summary>
         </member>
     </members>

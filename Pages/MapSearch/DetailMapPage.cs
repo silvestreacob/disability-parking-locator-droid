@@ -25,13 +25,13 @@ namespace dpark.Pages.MapSearch
                 HorizontalOptions = LayoutOptions.FillAndExpand
             };
 
-            backButton = new Button
-            {
-                Text = "Back",
-                TextColor = Color.White,
-                Image = "back_ios.png"
-            };
-            backButton.Clicked += OnBackButtonClicked;
+            //backButton = new Button
+            //{
+            //    Text = "Back",
+            //    TextColor = Color.White,
+            //    Image = "back_ios.png"
+            //};
+            //backButton.Clicked += OnBackButtonClicked;
         }
         protected async override void OnAppearing()
         {
@@ -53,16 +53,16 @@ namespace dpark.Pages.MapSearch
 
             map.MoveToRegion(MapSpan.FromCenterAndRadius(pin.Position, Distance.FromMiles(5)));
 
-            //RelativeLayout relativeLayout = new RelativeLayout();
+            RelativeLayout relativeLayout = new RelativeLayout();
 
-            //relativeLayout.Children.Add(
-            //    view: map,
-            //    widthConstraint: Constraint.RelativeToParent(parent => parent.Width),
-            //    heightConstraint: Constraint.RelativeToParent(parent => parent.Height)
-            //);
+            relativeLayout.Children.Add(
+                view: map,
+                widthConstraint: Constraint.RelativeToParent(parent => parent.Width),
+                heightConstraint: Constraint.RelativeToParent(parent => parent.Height)
+            );
 
-            StackLayout stackLayout = new StackLayout();
-            Content = stackLayout;
+            //StackLayout stackLayout = new StackLayout();
+            Content = relativeLayout;
         }
     }
 }
