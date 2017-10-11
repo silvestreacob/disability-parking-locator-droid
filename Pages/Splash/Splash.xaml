@@ -15,7 +15,7 @@
                  Color="{x:Static statics:Palette._001}" />
         
         <Image x:Name="Logo"
-                Source="splashlogo.png"
+                Source="splashlogo2.png"
                 HeightRequest="{x:Static local:App.logoHeight}"
                 WidthRequest="{x:Static local:App.logoWidth}"              
                 AbsoluteLayout.LayoutBounds="0.5,0.2,AutoSize,AutoSize"

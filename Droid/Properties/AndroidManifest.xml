@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="2.0.1" package="com.lyon.us.dpark" android:installLocation="auto">
-	<uses-sdk android:minSdkVersion="17" />
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="5" android:versionName="2.0.5" package="com.lyon.us.dpark" android:installLocation="auto">
+	<uses-sdk android:minSdkVersion="19" />
 	<application android:label="dpark" android:icon="@drawable/icon">
 		<meta-data android:name="com.google.android.maps.v2.API_KEY" android:value="@string/GoogleMapsKey" />
 		<meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />

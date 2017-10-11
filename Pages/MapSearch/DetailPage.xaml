@@ -6,7 +6,8 @@
   xmlns:base="clr-namespace:dpark.Pages.MapSearch"
   xmlns:statics="clr-namespace:dpark.Statics"
   xmlns:views="clr-namespace:dpark.Views.MapSearch"
-  xmlns:local="clr-namespace:dpark;assembly=dpark">
+  xmlns:local="clr-namespace:dpark;assembly=dpark"
+  BackgroundColor="White">
    
   <base:DetailPageXaml.Content>    
     <OnPlatform x:TypeArguments="View">      

@@ -37,6 +37,11 @@ namespace dpark
             MainPage = new Pages.Splash.Splash();
         }
 
+        public static void NewEventHandler(object sender, WebNavigatedEventArgs e)
+        {
+            Debug.WriteLine("[Forms WebView] {0}", e.Url.ToString());
+        }
+
         protected override async void OnStart()
         {
             base.OnStart();
@@ -123,12 +128,13 @@ namespace dpark
                 TextResources.NetworkConnection_Alert_Message,
                 TextResources.NetworkConnection_Alert_TryAgain);
 
-                CurrentApp.MainPage = new Pages.Splash.SplashPage();
+                CurrentApp.MainPage = new Pages.Splash.Splash();
         }
         public static bool IsConnected
         {
             get { return CrossConnectivity.Current.IsConnected; }
         }
+
 
         public static int AnimationSpeed = 250;
     }

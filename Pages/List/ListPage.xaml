@@ -5,7 +5,8 @@
   x:Class="dpark.Pages.List.ListPage"
   xmlns:page="clr-namespace:dpark.Pages.List"
   xmlns:listviews="clr-namespace:dpark.Views.List"
-  xmlns:statics="clr-namespace:dpark.Statics">
+  xmlns:statics="clr-namespace:dpark.Statics"
+  BackgroundColor="White">
 
   <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
   <listviews:ListPageView    

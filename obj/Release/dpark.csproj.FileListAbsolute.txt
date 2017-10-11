@@ -50,7 +50,6 @@ C:\LYONDev\dpark\obj\Release\dpark.csproj.App.config
 C:\LYONDev\dpark\obj\Release\dpark.Localization.TextResources.resources
 C:\LYONDev\dpark\obj\Release\dpark.csproj.GenerateResource.Cache
 C:\LYONDev\dpark\obj\Release\dpark.App.xaml.g.cs
-C:\LYONDev\dpark\obj\Release\dpark.Pages.Splash.SplashPage.xaml.g.cs
 C:\LYONDev\dpark\obj\Release\dpark.Pages.MapSearch.DetailPage.xaml.g.cs
 C:\LYONDev\dpark\obj\Release\dpark.Views.NonPersistentSelectedItemListView.xaml.g.cs
 C:\LYONDev\dpark\obj\Release\dpark.Views.List.ListPageView.xaml.g.cs

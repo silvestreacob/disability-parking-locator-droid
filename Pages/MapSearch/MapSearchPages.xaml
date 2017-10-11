@@ -5,7 +5,8 @@
   x:Class="dpark.Pages.MapSearch.MapSearchPages"
   xmlns:page="clr-namespace:dpark.Pages.MapSearch"
   xmlns:renderer="clr-namespace:dpark.CustomRenderer"
-  xmlns:local="clr-namespace:dpark;assembly=dpark">
+  xmlns:local="clr-namespace:dpark;assembly=dpark"
+  BackgroundColor="White">
 
   <page:MapSearchPagesXaml.Content>
     <StackLayout Spacing="0" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" x:Name="stacklayout">

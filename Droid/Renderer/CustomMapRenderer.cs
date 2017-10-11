@@ -23,7 +23,7 @@ namespace dpark.Droid.Renderer
         //List<CustomPin> customPins;
         bool isDrawn;
 
-        protected override void OnElementChanged(Xamarin.Forms.Platform.Android.ElementChangedEventArgs<Map> e)
+        protected override void OnElementChanged(ElementChangedEventArgs<Map> e)
         {
             base.OnElementChanged(e);
 
@@ -34,10 +34,11 @@ namespace dpark.Droid.Renderer
 
             if (e.NewElement != null)
             {
-                var formsMap = (CustomMap)e.NewElement;
-                //customPins = formsMap.CustomPins;
-                //Control.GetMapAsync(this);                           
-                ((MapView)Control).GetMapAsync(this);
+                NativeMap.InfoWindowClick -= OnInfoWindowClick;
+
+                //var formsMap = (CustomMap)e.NewElement;
+                ////customPins = formsMap.CustomPins;
+                //Control.GetMapAsync(this);                            
             }
         }
 
@@ -99,40 +100,40 @@ namespace dpark.Droid.Renderer
         }
         public Android.Views.View GetInfoContents(Marker marker)
         {
-            var inflater = Android.App.Application.Context.GetSystemService(Context.LayoutInflaterService) as Android.Views.LayoutInflater;
-            if (inflater != null)
-            {
-                Android.Views.View view;
+            //var inflater = Android.App.Application.Context.GetSystemService(Context.LayoutInflaterService) as Android.Views.LayoutInflater;
+            //if (inflater != null)
+            //{
+            //    Android.Views.View view;
 
-                var customPin = GetCustomPin(marker);
-                //if (customPin == null)
-                //{
-                //    throw new Exception("Custom pin not found");
-                //}
+            //    var customPin = GetCustomPin(marker);
+            //    //if (customPin == null)
+            //    //{
+            //    //    throw new Exception("Custom pin not found");
+            //    //}
 
-                //if (customPin.Id == "Xamarin")
-                //{
-                //    view = inflater.Inflate(Resource.Layout.XamarinMapInfoWindow, null);
-                //}
-                //else
-                //{
-                //    view = inflater.Inflate(Resource.Layout.MapInfoWindow, null);
-                //}
-                view = inflater.Inflate(Resource.Layout.MapInfoWindow, null);
-                var infoTitle = view.FindViewById<TextView>(Resource.Id.InfoWindowTitle);
-                var infoSubtitle = view.FindViewById<TextView>(Resource.Id.InfoWindowSubtitle);
+            //    //if (customPin.Id == "Xamarin")
+            //    //{
+            //    //    view = inflater.Inflate(Resource.Layout.XamarinMapInfoWindow, null);
+            //    //}
+            //    //else
+            //    //{
+            //    //    view = inflater.Inflate(Resource.Layout.MapInfoWindow, null);
+            //    //}
+            //    view = inflater.Inflate(Resource.Layout.MapInfoWindow, null);
+            //    var infoTitle = view.FindViewById<TextView>(Resource.Id.InfoWindowTitle);
+            //    var infoSubtitle = view.FindViewById<TextView>(Resource.Id.InfoWindowSubtitle);
 
-                if (infoTitle != null)
-                {
-                    infoTitle.Text = marker.Title;
-                }
-                if (infoSubtitle != null)
-                {
-                    infoSubtitle.Text = marker.Snippet;
-                }
+            //    if (infoTitle != null)
+            //    {
+            //        infoTitle.Text = marker.Title;
+            //    }
+            //    if (infoSubtitle != null)
+            //    {
+            //        infoSubtitle.Text = marker.Snippet;
+            //    }
 
-                return view;
-            }
+            //    return view;
+            //}
             return null;
         }
 

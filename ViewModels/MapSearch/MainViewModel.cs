@@ -57,8 +57,23 @@ namespace dpark.ViewModels.MapSearch
 
                     };
 
-                    customMap.CustomPins.Add(pin);
-                    customMap.Pins.Add(pin.Pin);
+                var pinMap = new Pin
+                {
+                    Type = PinType.Place,
+                    Position = new Position(item.Latitude, item.Longitude),
+                    Label = item.Title,
+                    Address = item.StreetAddress
+                };
+
+                pinMap.Clicked += (sender, e) =>
+                {
+                    customMap.ShowPinDetailInfo(item.ID);
+                };
+
+                customMap.CustomPins.Add(pin);
+
+                customMap.Pins.Add(pinMap);              
+                
             }
 
             IsBusy = false;
