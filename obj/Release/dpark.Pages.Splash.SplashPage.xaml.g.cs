@@ -11,8 +11,7 @@
 namespace dpark.Pages.Splash {
     
     
-    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("D:\\dpark.us cross-platform\\versions\\4.droid\\disability-parking-locator-droid\\Page" +
-        "s\\Splash\\SplashPage.xaml")]
+    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("C:\\LYONDev\\dpark\\Pages\\Splash\\SplashPage.xaml")]
     public partial class SplashPage : global::dpark.Pages.Splash.SplashPageXaml {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]

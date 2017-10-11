@@ -1,64 +1,64 @@
-D:\dpark.us cross-platform\versions\4.droid\disability-parking-locator-droid\bin\Release\dpark.dll.config
-D:\dpark.us cross-platform\versions\4.droid\disability-parking-locator-droid\bin\Release\dpark.dll
-D:\dpark.us cross-platform\versions\4.droid\disability-parking-locator-droid\bin\Release\ImageCircle.Forms.Plugin.Abstractions.dll
-D:\dpark.us cross-platform\versions\4.droid\disability-parking-locator-droid\bin\Release\Mono.Android.dll
-D:\dpark.us cross-platform\versions\4.droid\disability-parking-locator-droid\bin\Release\Newtonsoft.Json.dll
-D:\dpark.us cross-platform\versions\4.droid\disability-parking-locator-droid\bin\Release\Plugin.Connectivity.Abstractions.dll
-D:\dpark.us cross-platform\versions\4.droid\disability-parking-locator-droid\bin\Release\Plugin.Connectivity.dll
-D:\dpark.us cross-platform\versions\4.droid\disability-parking-locator-droid\bin\Release\Plugin.ExternalMaps.Abstractions.dll
-D:\dpark.us cross-platform\versions\4.droid\disability-parking-locator-droid\bin\Release\Plugin.ExternalMaps.dll
-D:\dpark.us cross-platform\versions\4.droid\disability-parking-locator-droid\bin\Release\Plugin.Geolocator.Abstractions.dll
-D:\dpark.us cross-platform\versions\4.droid\disability-parking-locator-droid\bin\Release\Plugin.Geolocator.dll
-D:\dpark.us cross-platform\versions\4.droid\disability-parking-locator-droid\bin\Release\Plugin.Media.Abstractions.dll
-D:\dpark.us cross-platform\versions\4.droid\disability-parking-locator-droid\bin\Release\Plugin.Media.dll
-D:\dpark.us cross-platform\versions\4.droid\disability-parking-locator-droid\bin\Release\System.Net.Http.Extensions.dll
-D:\dpark.us cross-platform\versions\4.droid\disability-parking-locator-droid\bin\Release\System.Net.Http.Primitives.dll
-D:\dpark.us cross-platform\versions\4.droid\disability-parking-locator-droid\bin\Release\Xamarin.Forms.Core.dll
-D:\dpark.us cross-platform\versions\4.droid\disability-parking-locator-droid\bin\Release\Xamarin.Forms.Maps.dll
-D:\dpark.us cross-platform\versions\4.droid\disability-parking-locator-droid\bin\Release\Xamarin.Forms.Platform.dll
-D:\dpark.us cross-platform\versions\4.droid\disability-parking-locator-droid\bin\Release\Xamarin.Forms.Xaml.dll
-D:\dpark.us cross-platform\versions\4.droid\disability-parking-locator-droid\bin\Release\ImageCircle.Forms.Plugin.Abstractions.pdb
-D:\dpark.us cross-platform\versions\4.droid\disability-parking-locator-droid\bin\Release\ImageCircle.Forms.Plugin.Abstractions.xml
-D:\dpark.us cross-platform\versions\4.droid\disability-parking-locator-droid\bin\Release\Mono.Android.pdb
-D:\dpark.us cross-platform\versions\4.droid\disability-parking-locator-droid\bin\Release\Mono.Android.xml
-D:\dpark.us cross-platform\versions\4.droid\disability-parking-locator-droid\bin\Release\Newtonsoft.Json.xml
-D:\dpark.us cross-platform\versions\4.droid\disability-parking-locator-droid\bin\Release\Plugin.Connectivity.pdb
-D:\dpark.us cross-platform\versions\4.droid\disability-parking-locator-droid\bin\Release\Plugin.Connectivity.xml
-D:\dpark.us cross-platform\versions\4.droid\disability-parking-locator-droid\bin\Release\Plugin.Connectivity.Abstractions.pdb
-D:\dpark.us cross-platform\versions\4.droid\disability-parking-locator-droid\bin\Release\Plugin.Connectivity.Abstractions.xml
-D:\dpark.us cross-platform\versions\4.droid\disability-parking-locator-droid\bin\Release\Plugin.ExternalMaps.pdb
-D:\dpark.us cross-platform\versions\4.droid\disability-parking-locator-droid\bin\Release\Plugin.ExternalMaps.xml
-D:\dpark.us cross-platform\versions\4.droid\disability-parking-locator-droid\bin\Release\Plugin.ExternalMaps.Abstractions.pdb
-D:\dpark.us cross-platform\versions\4.droid\disability-parking-locator-droid\bin\Release\Plugin.ExternalMaps.Abstractions.xml
-D:\dpark.us cross-platform\versions\4.droid\disability-parking-locator-droid\bin\Release\Plugin.Geolocator.pdb
-D:\dpark.us cross-platform\versions\4.droid\disability-parking-locator-droid\bin\Release\Plugin.Geolocator.xml
-D:\dpark.us cross-platform\versions\4.droid\disability-parking-locator-droid\bin\Release\Plugin.Geolocator.Abstractions.pdb
-D:\dpark.us cross-platform\versions\4.droid\disability-parking-locator-droid\bin\Release\Plugin.Geolocator.Abstractions.xml
-D:\dpark.us cross-platform\versions\4.droid\disability-parking-locator-droid\bin\Release\Plugin.Media.pdb
-D:\dpark.us cross-platform\versions\4.droid\disability-parking-locator-droid\bin\Release\Plugin.Media.xml
-D:\dpark.us cross-platform\versions\4.droid\disability-parking-locator-droid\bin\Release\Plugin.Media.Abstractions.pdb
-D:\dpark.us cross-platform\versions\4.droid\disability-parking-locator-droid\bin\Release\Plugin.Media.Abstractions.xml
-D:\dpark.us cross-platform\versions\4.droid\disability-parking-locator-droid\bin\Release\System.Net.Http.Extensions.xml
-D:\dpark.us cross-platform\versions\4.droid\disability-parking-locator-droid\bin\Release\System.Net.Http.Primitives.xml
-D:\dpark.us cross-platform\versions\4.droid\disability-parking-locator-droid\bin\Release\Xamarin.Forms.Core.pdb
-D:\dpark.us cross-platform\versions\4.droid\disability-parking-locator-droid\bin\Release\Xamarin.Forms.Core.xml
-D:\dpark.us cross-platform\versions\4.droid\disability-parking-locator-droid\bin\Release\Xamarin.Forms.Maps.xml
-D:\dpark.us cross-platform\versions\4.droid\disability-parking-locator-droid\bin\Release\Xamarin.Forms.Platform.pdb
-D:\dpark.us cross-platform\versions\4.droid\disability-parking-locator-droid\bin\Release\Xamarin.Forms.Xaml.pdb
-D:\dpark.us cross-platform\versions\4.droid\disability-parking-locator-droid\bin\Release\Xamarin.Forms.Xaml.xml
-D:\dpark.us cross-platform\versions\4.droid\disability-parking-locator-droid\obj\Release\dpark.csproj.App.config
-D:\dpark.us cross-platform\versions\4.droid\disability-parking-locator-droid\obj\Release\dpark.csprojResolveAssemblyReference.cache
-D:\dpark.us cross-platform\versions\4.droid\disability-parking-locator-droid\obj\Release\dpark.Localization.TextResources.resources
-D:\dpark.us cross-platform\versions\4.droid\disability-parking-locator-droid\obj\Release\dpark.csproj.GenerateResource.Cache
-D:\dpark.us cross-platform\versions\4.droid\disability-parking-locator-droid\obj\Release\dpark.App.xaml.g.cs
-D:\dpark.us cross-platform\versions\4.droid\disability-parking-locator-droid\obj\Release\dpark.Pages.Splash.SplashPage.xaml.g.cs
-D:\dpark.us cross-platform\versions\4.droid\disability-parking-locator-droid\obj\Release\dpark.Pages.MapSearch.DetailPage.xaml.g.cs
-D:\dpark.us cross-platform\versions\4.droid\disability-parking-locator-droid\obj\Release\dpark.Views.NonPersistentSelectedItemListView.xaml.g.cs
-D:\dpark.us cross-platform\versions\4.droid\disability-parking-locator-droid\obj\Release\dpark.Views.List.ListPageView.xaml.g.cs
-D:\dpark.us cross-platform\versions\4.droid\disability-parking-locator-droid\obj\Release\dpark.Views.MapSearch.DetailPageHeaderView.xaml.g.cs
-D:\dpark.us cross-platform\versions\4.droid\disability-parking-locator-droid\obj\Release\dpark.Views.MapSearch.DetailPageLocationView.xaml.g.cs
-D:\dpark.us cross-platform\versions\4.droid\disability-parking-locator-droid\obj\Release\dpark.Pages.List.ListPage.xaml.g.cs
-D:\dpark.us cross-platform\versions\4.droid\disability-parking-locator-droid\obj\Release\dpark.Pages.MapSearch.MapSearchPages.xaml.g.cs
-D:\dpark.us cross-platform\versions\4.droid\disability-parking-locator-droid\obj\Release\dpark.Pages.About.AboutPage.xaml.g.cs
-D:\dpark.us cross-platform\versions\4.droid\disability-parking-locator-droid\obj\Release\dpark.Pages.MenuPage.xaml.g.cs
-D:\dpark.us cross-platform\versions\4.droid\disability-parking-locator-droid\obj\Release\dpark.dll
+C:\LYONDev\dpark\bin\Release\dpark.dll.config
+C:\LYONDev\dpark\bin\Release\dpark.dll
+C:\LYONDev\dpark\bin\Release\ImageCircle.Forms.Plugin.Abstractions.dll
+C:\LYONDev\dpark\bin\Release\Mono.Android.dll
+C:\LYONDev\dpark\bin\Release\Newtonsoft.Json.dll
+C:\LYONDev\dpark\bin\Release\Plugin.Connectivity.Abstractions.dll
+C:\LYONDev\dpark\bin\Release\Plugin.Connectivity.dll
+C:\LYONDev\dpark\bin\Release\Plugin.ExternalMaps.Abstractions.dll
+C:\LYONDev\dpark\bin\Release\Plugin.ExternalMaps.dll
+C:\LYONDev\dpark\bin\Release\Plugin.Geolocator.Abstractions.dll
+C:\LYONDev\dpark\bin\Release\Plugin.Geolocator.dll
+C:\LYONDev\dpark\bin\Release\Plugin.Media.Abstractions.dll
+C:\LYONDev\dpark\bin\Release\Plugin.Media.dll
+C:\LYONDev\dpark\bin\Release\System.Net.Http.Extensions.dll
+C:\LYONDev\dpark\bin\Release\System.Net.Http.Primitives.dll
+C:\LYONDev\dpark\bin\Release\Xamarin.Forms.Core.dll
+C:\LYONDev\dpark\bin\Release\Xamarin.Forms.Maps.dll
+C:\LYONDev\dpark\bin\Release\Xamarin.Forms.Platform.dll
+C:\LYONDev\dpark\bin\Release\Xamarin.Forms.Xaml.dll
+C:\LYONDev\dpark\bin\Release\ImageCircle.Forms.Plugin.Abstractions.pdb
+C:\LYONDev\dpark\bin\Release\ImageCircle.Forms.Plugin.Abstractions.xml
+C:\LYONDev\dpark\bin\Release\Mono.Android.pdb
+C:\LYONDev\dpark\bin\Release\Mono.Android.xml
+C:\LYONDev\dpark\bin\Release\Newtonsoft.Json.xml
+C:\LYONDev\dpark\bin\Release\Plugin.Connectivity.pdb
+C:\LYONDev\dpark\bin\Release\Plugin.Connectivity.xml
+C:\LYONDev\dpark\bin\Release\Plugin.Connectivity.Abstractions.pdb
+C:\LYONDev\dpark\bin\Release\Plugin.Connectivity.Abstractions.xml
+C:\LYONDev\dpark\bin\Release\Plugin.ExternalMaps.pdb
+C:\LYONDev\dpark\bin\Release\Plugin.ExternalMaps.xml
+C:\LYONDev\dpark\bin\Release\Plugin.ExternalMaps.Abstractions.pdb
+C:\LYONDev\dpark\bin\Release\Plugin.ExternalMaps.Abstractions.xml
+C:\LYONDev\dpark\bin\Release\Plugin.Geolocator.pdb
+C:\LYONDev\dpark\bin\Release\Plugin.Geolocator.xml
+C:\LYONDev\dpark\bin\Release\Plugin.Geolocator.Abstractions.pdb
+C:\LYONDev\dpark\bin\Release\Plugin.Geolocator.Abstractions.xml
+C:\LYONDev\dpark\bin\Release\Plugin.Media.pdb
+C:\LYONDev\dpark\bin\Release\Plugin.Media.xml
+C:\LYONDev\dpark\bin\Release\Plugin.Media.Abstractions.pdb
+C:\LYONDev\dpark\bin\Release\Plugin.Media.Abstractions.xml
+C:\LYONDev\dpark\bin\Release\System.Net.Http.Extensions.xml
+C:\LYONDev\dpark\bin\Release\System.Net.Http.Primitives.xml
+C:\LYONDev\dpark\bin\Release\Xamarin.Forms.Core.pdb
+C:\LYONDev\dpark\bin\Release\Xamarin.Forms.Core.xml
+C:\LYONDev\dpark\bin\Release\Xamarin.Forms.Maps.xml
+C:\LYONDev\dpark\bin\Release\Xamarin.Forms.Platform.pdb
+C:\LYONDev\dpark\bin\Release\Xamarin.Forms.Xaml.pdb
+C:\LYONDev\dpark\bin\Release\Xamarin.Forms.Xaml.xml
+C:\LYONDev\dpark\obj\Release\dpark.csproj.App.config
+C:\LYONDev\dpark\obj\Release\dpark.Localization.TextResources.resources
+C:\LYONDev\dpark\obj\Release\dpark.csproj.GenerateResource.Cache
+C:\LYONDev\dpark\obj\Release\dpark.App.xaml.g.cs
+C:\LYONDev\dpark\obj\Release\dpark.Pages.Splash.SplashPage.xaml.g.cs
+C:\LYONDev\dpark\obj\Release\dpark.Pages.MapSearch.DetailPage.xaml.g.cs
+C:\LYONDev\dpark\obj\Release\dpark.Views.NonPersistentSelectedItemListView.xaml.g.cs
+C:\LYONDev\dpark\obj\Release\dpark.Views.List.ListPageView.xaml.g.cs
+C:\LYONDev\dpark\obj\Release\dpark.Views.MapSearch.DetailPageHeaderView.xaml.g.cs
+C:\LYONDev\dpark\obj\Release\dpark.Views.MapSearch.DetailPageLocationView.xaml.g.cs
+C:\LYONDev\dpark\obj\Release\dpark.Pages.List.ListPage.xaml.g.cs
+C:\LYONDev\dpark\obj\Release\dpark.Pages.MapSearch.MapSearchPages.xaml.g.cs
+C:\LYONDev\dpark\obj\Release\dpark.Pages.About.AboutPage.xaml.g.cs
+C:\LYONDev\dpark\obj\Release\dpark.Pages.MenuPage.xaml.g.cs
+C:\LYONDev\dpark\obj\Release\dpark.Pages.Splash.Splash.xaml.g.cs
+C:\LYONDev\dpark\obj\Release\dpark.dll

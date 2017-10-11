@@ -43,7 +43,7 @@ namespace dpark.Pages
                 Icon = "slideout.png"
             };
             //setup home page
-            NavigateAsync(MenuType.MapSearch);
+            //NavigateAsync(MenuType.MapSearch);
         }
         void SetDetailIfNull(Page page)
         {
@@ -147,7 +147,7 @@ namespace dpark.Pages
         {
             Children.Add(new MyNavigationPage(new MapSearchPages
             {
-                Title = "Disability Parking Locator",
+                Title = "Map",
                 Icon = new FileImageSource { File = "map.png" },
                 BindingContext = new MainViewModel() { Navigation = this.Navigation }
             })
@@ -158,7 +158,7 @@ namespace dpark.Pages
 
             Children.Add(new MyNavigationPage(new ListPage
             {
-                Title = "Disability Parking Locator",
+                Title = "List",
                 Icon = new FileImageSource { File = "list.png" },
                 BindingContext = new ListViewModel() { Navigation = this.Navigation }
             })
@@ -169,7 +169,7 @@ namespace dpark.Pages
 
             Children.Add(new MyNavigationPage(new WebSubmitPage
             {
-                Title = "Disability Parking Locator",
+                Title = "Submit",
                 Icon = new FileImageSource { File = "submit.png" }
                 //BindingContext = new ListViewModel() { Navigation = this.Navigation }
             })
@@ -180,7 +180,7 @@ namespace dpark.Pages
 
             Children.Add(new MyNavigationPage(new AboutPage
             {
-                Title = "Disability Parking Locator",
+                Title = "About",
                 Icon = new FileImageSource { File = "about.png" },
                 BindingContext = new AboutViewModel() { Navigation = this.Navigation }
             })
@@ -194,8 +194,7 @@ namespace dpark.Pages
         protected override void OnCurrentPageChanged()
         {
             base.OnCurrentPageChanged();
-            this.Title ="Disability Parking Locator";
-            //this.Icon = new FileImageSource { File = "icon.png" };
+            this.Title = this.CurrentPage.Title;
         }
     }
 

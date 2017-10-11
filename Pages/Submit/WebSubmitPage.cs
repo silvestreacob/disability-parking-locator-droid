@@ -1,7 +1,7 @@
 ﻿using Android.App;
 using Android.Content;
 using Xamarin.Forms;
-using Xamarin.Forms.PlatformConfiguration;
+//using Xamarin.Forms.PlatformConfiguration;
 
 namespace dpark.Pages.Submit
 {

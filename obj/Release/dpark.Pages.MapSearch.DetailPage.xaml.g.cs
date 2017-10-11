@@ -11,8 +11,7 @@
 namespace dpark.Pages.MapSearch {
     
     
-    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("D:\\dpark.us cross-platform\\versions\\4.droid\\disability-parking-locator-droid\\Page" +
-        "s\\MapSearch\\DetailPage.xaml")]
+    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("C:\\LYONDev\\dpark\\Pages\\MapSearch\\DetailPage.xaml")]
     public partial class DetailPage : global::dpark.Pages.MapSearch.DetailPageXaml {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]

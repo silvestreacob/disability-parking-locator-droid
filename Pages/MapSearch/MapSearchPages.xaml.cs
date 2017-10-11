@@ -17,29 +17,24 @@ namespace dpark.Pages.MapSearch
             BindingContext = new MainViewModel();
 
             //SetToolBarItems();
-            customMap.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(21.300, -157.8167), Distance.FromMiles(5))); //Honolulu initial location   
+            customMap.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(21.300, -157.8167), Distance.FromMiles(7))); //Honolulu initial location   
 
-            //RelativeLayout relativeLayout = new RelativeLayout();
-
-            //relativeLayout.Children.Add(
-            //    view: customMap,
-            //    widthConstraint: Constraint.RelativeToParent(parent => parent.Width),
-            //    heightConstraint: Constraint.RelativeToParent(parent => parent.Height)
-            //);
-
-            //StackLayout stackLayout = new StackLayout();
-            //Content = relativeLayout;
         }
 
         protected override async void OnAppearing()
         {
             base.OnAppearing();
 
+            //try
+            //{
             if (AppData.Spaces.IsDataUpdated == false)
                 return;
 
+
+            await ViewModel.LoadPin(customMap);
             AppData.Spaces.IsDataUpdated = false;
-            await ViewModel.LoadPin(customMap);           
+            //}
+            //catch (Exception ex) { await DisplayAlert("Error", ex.Message, "OK"); }
         }
 
         void SetToolBarItems()
@@ -53,7 +48,7 @@ namespace dpark.Pages.MapSearch
             ToolbarItem refreshToolBarItem = new ToolbarItem();
             refreshToolBarItem.Text = TextResources.Refresh_Space;
             refreshToolBarItem.Icon = "icon.png";
-            refreshToolBarItem.Priority = 0;
+            //refreshToolBarItem.Priority = 0;
             refreshToolBarItem.Clicked += RefreshToolBarItem_Clicked;
             return refreshToolBarItem;
         }
@@ -68,6 +63,10 @@ namespace dpark.Pages.MapSearch
 
         async public void OnSearch(object sender, EventArgs e)
         {
+            IsIndicator.IsEnabled = true;
+            IsIndicator.IsVisible = true;
+            IsIndicator.IsRunning = true;
+
             var result = await ViewModel.OnButtonSearched(customMap, SearchFor.Text);
 
 
@@ -88,7 +87,11 @@ namespace dpark.Pages.MapSearch
                     TextResources.SearchSpaceNearby_Message,
                     TextResources.TryAgain);
             }
-          
+
+            IsIndicator.IsEnabled = false;
+            IsIndicator.IsVisible = false;
+            IsIndicator.IsRunning = false;
+
         }
     }
 

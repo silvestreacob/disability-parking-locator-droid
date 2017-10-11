@@ -29,5 +29,7 @@ namespace dpark.Statics
         /// Secondary (light) label color.
         /// </summary>
         public static readonly Color _007 = Color.FromHex("FFFFFF");
+
+        public static readonly Color _008 = Color.FromHex("8E8E8E");
     }
 }

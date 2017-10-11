@@ -7,6 +7,7 @@ namespace dpark.ViewModels.About
         public string Overview { get; private set; }
         public string Notes { get; private set; }
         public string ListHeading { get; private set; }
+        public string Version { get; private set; }
 
         public AboutViewModel()
         {
@@ -23,6 +24,8 @@ namespace dpark.ViewModels.About
                 "The app is built with Xamarin Platform and Xamarin.Forms, and takes advantage of " +
                 "several other supporting technologies. Interested in collaborating? " +
                 "Please send us a note.";
+
+            Version = App.VersionInfo;
         }
     }
 }

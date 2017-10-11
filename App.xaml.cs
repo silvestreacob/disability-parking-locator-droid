@@ -4,6 +4,10 @@ using Xamarin.Forms;
 using Plugin.Connectivity;
 using dpark.Localization;
 using dpark.Models.Data;
+using dpark.Models;
+using System.Threading;
+using dpark.Models.WebService;
+using System.Diagnostics;
 
 namespace dpark
 {
@@ -17,12 +21,62 @@ namespace dpark
 
         public static double ScreenHeight;
         public static double ScreenWidth;
+        public static string VersionInfo;
+        public static double logoHeight;
+        public static double logoWidth;
+
+        public static CancellationTokenSource CancellationToken { get; set; }
+        private Label _label = new Label();
+        private Client ServiceProvider { get; set; }
+
         public App()
 		{
 			InitializeComponent();
 
             app = this;
-            MainPage = new Pages.Splash.SplashPage();
+            MainPage = new Pages.Splash.Splash();
+        }
+
+        protected override async void OnStart()
+        {
+            base.OnStart();
+            if (AppData.Spaces.IsListDataUpdated == true)
+            {
+                GoToRoot();
+                return;
+            }
+
+            await App.ExecuteIfConnected(async () =>
+            {
+
+                ServiceProvider = new Client();
+                if (await ServiceProvider.GetSpaces())
+                {
+                    Debug.WriteLine("Finish loading data");
+
+                    AppData.Spaces.IsListDataUpdated = true;
+                    AppData.Spaces.IsDataUpdated = true;
+                    GoToRoot();
+                }
+
+            });
+        }
+        
+        protected override void OnSleep()
+        {
+            // Handle when your app sleeps
+            if (App.CancellationToken != null)
+            {
+                App.CancellationToken.Cancel();
+                //App.CancellationToken = null;
+            }
+        }
+
+        protected override void OnResume()
+        {
+            // Handle when your app resumes
+            if (AppData.Spaces.IsListDataUpdated == true)
+                GoToRoot();
         }
 
         public static void GoToRoot()
@@ -42,47 +96,7 @@ namespace dpark
             //Android phones
             else if (Device.RuntimePlatform == Device.Android && Device.Idiom == TargetIdiom.Phone)
             {
-                CurrentApp.MainPage = new Pages.RootTabAndroid();
-                //CurrentApp.MainPage = new Pages.MapSearch.MapSearchPages();
-                //CurrentApp.MainPage = new Pages.List.ListPage()
-                //{
-                //    //Title = "Results List",
-                //    Icon = new FileImageSource { File = "list.png" },
-                //    BindingContext = new ViewModels.List.ListViewModel()
-                //};
-                //CurrentApp.MainPage = new Pages.Submit.WebSubmitPage();
-                //CurrentApp.MainPage = new Pages.About.AboutPage();
-                //CurrentApp.MainPage = new TabbedPage
-                //{
-                //    Title = "Disability Parking Locator",
-                //    Icon = new FileImageSource { File = "icon.png" },
-                //    Children =
-                //        {
-                //            new NavigationPage(new Pages.MapSearch.MapSearchPages())
-                //            {
-                //                 //Title = "Map",
-                //                 Icon = new FileImageSource { File = "mapsearch.png" },
-                //                 BindingContext = new ViewModels.MapSearch.MainViewModel()
-                //            },
-                //            new NavigationPage(new Pages.List.ListPage())
-                //            {
-                //                //Title = "Results List",
-                //                Icon = new FileImageSource { File = "list.png" },
-                //                BindingContext = new ViewModels.List.ListViewModel()
-                //            },
-                //            new NavigationPage(new Pages.Submit.WebSubmitPage())
-                //            {
-                //                //Title = "Submit",
-                //                Icon = new FileImageSource { File = "submit.png" }
-                //            },
-                //            new NavigationPage(new Pages.About.AboutPage())
-                //            {
-                //                //Title = "About",
-                //                Icon = new FileImageSource { File = "about.png" },
-                //                BindingContext = new ViewModels.About.AboutViewModel()
-                //            },
-                //        }
-                //};
+                CurrentApp.MainPage = new Pages.RootTabAndroid();               
             }
 
             else

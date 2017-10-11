@@ -14,7 +14,7 @@ namespace dpark.Pages.MapSearch
     public class DetailMapPage : ModelBoundContentPage<DetailInfoViewModel>
     {
         Map map;
-        Button backButton;
+        //Button backButton;
         public DetailMapPage()
         {
             map = new Map()

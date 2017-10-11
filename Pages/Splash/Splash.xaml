@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="dpark.Pages.Splash.Splash"
+             xmlns:statics="clr-namespace:dpark.Statics"
+             xmlns:local="clr-namespace:dpark;assembly=dpark">
+  
+    <ContentPage.Content>
+      <AbsoluteLayout
+        HorizontalOptions="FillAndExpand"
+        VerticalOptions="FillAndExpand">
+
+        <BoxView AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+                 AbsoluteLayout.LayoutFlags="All"
+                 Color="{x:Static statics:Palette._001}" />
+        
+        <Image x:Name="Logo"
+                Source="splashlogo.png"
+                HeightRequest="{x:Static local:App.logoHeight}"
+                WidthRequest="{x:Static local:App.logoWidth}"              
+                AbsoluteLayout.LayoutBounds="0.5,0.2,AutoSize,AutoSize"
+                AbsoluteLayout.LayoutFlags="PositionProportional"/>
+
+        <ActivityIndicator x:Name="LoadingActivityIndicator"
+                AbsoluteLayout.LayoutBounds="0.5, 0.7, AutoSize, AutoSize"
+                AbsoluteLayout.LayoutFlags="PositionProportional" 
+                IsEnabled="True"
+							  IsVisible="True"
+							  IsRunning="True"/>
+        
+      </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -11,8 +11,7 @@
 namespace dpark.Views {
     
     
-    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("D:\\dpark.us cross-platform\\versions\\4.droid\\disability-parking-locator-droid\\View" +
-        "s\\NonPersistentSelectedItemListView.xaml")]
+    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("C:\\LYONDev\\dpark\\Views\\NonPersistentSelectedItemListView.xaml")]
     public partial class NonPersistentSelectedItemListView : global::Xamarin.Forms.ListView {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]

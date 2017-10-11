@@ -281,7 +281,7 @@ var cp = new ContentPage {
             <remarks>To be added.</remarks>
         </member>
         <member name="F:Xamarin.Forms.Maps.MapType.Hybrid">
-            <summary>A map that combines satellite imagery and street data.</summary>
+            <summary>A map that combinse satellite imagery and street data.</summary>
         </member>
         <member name="F:Xamarin.Forms.Maps.MapType.Satellite">
             <summary>A map that contains satellite imagery.</summary>

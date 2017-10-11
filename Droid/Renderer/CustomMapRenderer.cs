@@ -20,10 +20,10 @@ namespace dpark.Droid.Renderer
 {
     public class CustomMapRenderer : MapRenderer, GoogleMap.IInfoWindowAdapter
     {
-        List<CustomPin> customPins;
+        //List<CustomPin> customPins;
         bool isDrawn;
 
-        protected override void OnElementChanged(ElementChangedEventArgs<Map> e)
+        protected override void OnElementChanged(Xamarin.Forms.Platform.Android.ElementChangedEventArgs<Map> e)
         {
             base.OnElementChanged(e);
 
@@ -36,7 +36,8 @@ namespace dpark.Droid.Renderer
             {
                 var formsMap = (CustomMap)e.NewElement;
                 //customPins = formsMap.CustomPins;
-                Control.GetMapAsync(this);                            
+                //Control.GetMapAsync(this);                           
+                ((MapView)Control).GetMapAsync(this);
             }
         }
 

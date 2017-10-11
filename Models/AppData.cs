@@ -4,6 +4,9 @@ using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using dpark.Models.Data;
 using dpark.Models.WebService;
+using System.Threading;
+using System.Diagnostics;
+using Xamarin.Forms;
 
 namespace dpark.Models
 {
@@ -18,7 +21,7 @@ namespace dpark.Models
             }
 
             #region Post Collection
-            private List<SpaceData> _posts;
+            public List<SpaceData> _posts;
             public List<SpaceData> PostsCollection
             {
                 get { return _posts; }
@@ -38,6 +41,37 @@ namespace dpark.Models
             public bool IsDataUpdated { get; set; }
             public bool IsListDataUpdated { get; set; }
             //to SplashViewModel
+            private int _counter = 0;
+            public async Task LoadInitialSpaces()
+            {
+                App.CancellationToken = new CancellationTokenSource();
+                while (!App.CancellationToken.IsCancellationRequested)
+                {
+                    try
+                    {
+    
+                        App.CancellationToken.Token.ThrowIfCancellationRequested();
+                        await Task.Delay(1000, App.CancellationToken.Token).ContinueWith(async (arg) => {
+                            if (!App.CancellationToken.Token.IsCancellationRequested)
+                            {
+                                App.CancellationToken.Token.ThrowIfCancellationRequested();
+
+                                _posts.Clear();
+                                ServiceProvider = new Client();
+                                await ServiceProvider.GetSpaces();
+                                App.GoToRoot();
+
+                                Device.BeginInvokeOnMainThread(() => (++_counter).ToString());
+                            }
+                        });
+                    }
+
+                    catch (Exception ex)
+                    {
+                        Debug.WriteLine(ex.Message);
+                    }
+                }
+            }
             async public Task<bool> LoadSpaces()
             {
                 bool isSuccess = false;

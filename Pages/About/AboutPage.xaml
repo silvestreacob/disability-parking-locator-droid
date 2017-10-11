@@ -12,6 +12,25 @@
       <TableSection>
         <ViewCell>
           <StackLayout Spacing="0" BackgroundColor="White">
+
+            <ContentView Padding="5">
+              <Label
+                TextColor="{x:Static statics:Palette._008}"
+                Style="{DynamicResource Label_Default-Small-Default}"
+                LineBreakMode="WordWrap"
+                Text="Current Version"
+                HorizontalOptions="Center"/>
+            </ContentView>
+
+            <ContentView Padding="0">
+              <Label
+                TextColor="{x:Static statics:Palette._008}"
+                Style="{DynamicResource Label_Default-Small-Default}"
+                LineBreakMode="WordWrap"
+                Text="{Binding Version}"
+                HorizontalOptions="Center"/>
+            </ContentView>
+            
             <ContentView Padding="20">
               <Label
                 TextColor="{x:Static statics:Palette._006}"
@@ -36,6 +55,8 @@
                 LineBreakMode="WordWrap"
                 Text="{Binding ListHeading}" />
             </ContentView>
+
+            
           </StackLayout>
         </ViewCell>
       </TableSection>
