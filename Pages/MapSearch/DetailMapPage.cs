@@ -25,6 +25,7 @@ namespace dpark.Pages.MapSearch
                 HorizontalOptions = LayoutOptions.FillAndExpand
             };
 
+          
             //backButton = new Button
             //{
             //    Text = "Back",

@@ -61,3 +61,4 @@ C:\LYONDev\dpark\obj\Release\dpark.Pages.About.AboutPage.xaml.g.cs
 C:\LYONDev\dpark\obj\Release\dpark.Pages.MenuPage.xaml.g.cs
 C:\LYONDev\dpark\obj\Release\dpark.Pages.Splash.Splash.xaml.g.cs
 C:\LYONDev\dpark\obj\Release\dpark.dll
+C:\LYONDev\dpark\obj\Release\dpark.csprojResolveAssemblyReference.cache

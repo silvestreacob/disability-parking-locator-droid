@@ -57,7 +57,7 @@ namespace dpark.Pages.MapSearch
                 await CrossExternalMaps.Current.NavigateTo(pin.Label, pin.Position.Latitude, pin.Position.Longitude, NavigationType.Driving);
 
                 //await ViewModel.PopModalAsync();
-                await ViewModel.PopAsync();
+                //await ViewModel.PopAsync();
             }
         }
 
@@ -69,7 +69,9 @@ namespace dpark.Pages.MapSearch
             {
                 BindingContext = new DetailInfoViewModel(ViewModel.temp)
             };
+            
             await Navigation.PushAsync(detailMapPage);
+            //await Navigation.PushAsync(detailMapPage);
         }
 
         async void FlagSpaceTapped(object sender, EventArgs e)

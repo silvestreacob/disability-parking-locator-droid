@@ -34,6 +34,7 @@ namespace dpark
 			InitializeComponent();
 
             app = this;
+            
             MainPage = new Pages.Splash.Splash();
         }
 

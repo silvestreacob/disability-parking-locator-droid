@@ -107,7 +107,21 @@ namespace dpark.Models.Data
                 var extension = ImageURL.Substring(index);
                 return string.Format(name + "-125x125" + extension);
             }
-        }       
+        }
+
+        public string DetailImageUrl
+        {
+            get
+            {
+                if (string.IsNullOrWhiteSpace(ImageURL) || !ImageURL.Contains("."))
+                    return null;
+
+                var index = ImageURL.LastIndexOf('.');
+                var name = ImageURL.Substring(0, index);
+                var extension = ImageURL.Substring(index);
+                return string.Format(name + "-300x300" + extension);
+            }
+        }
 
         public string ApproximateDistance
         {

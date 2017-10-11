@@ -195,6 +195,7 @@ namespace dpark.Pages
         {
             base.OnCurrentPageChanged();
             this.Title = this.CurrentPage.Title;
+            
         }
     }
 
@@ -210,6 +211,7 @@ namespace dpark.Pages
         {
             //BarBackgroundColor = Color.Blue;
             BarTextColor = Color.White;
+            
         }
 
         public MyNavigationPage()

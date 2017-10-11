@@ -45,6 +45,7 @@ namespace dpark.Droid
             PackageInfo info = manager.GetPackageInfo(this.PackageName, 0);
 
             App.VersionInfo = info.VersionName;
+            
             LoadApplication(new App());
         }
 

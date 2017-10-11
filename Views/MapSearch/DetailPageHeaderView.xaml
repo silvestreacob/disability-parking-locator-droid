@@ -12,7 +12,7 @@ xmlns:base="clr-namespace:dpark.Views.MapSearch">
         AbsoluteLayout.LayoutBounds="0,0,1,1"
         x:Name="SpaceImage"
         Aspect="AspectFill"
-        Source="{Binding temp.ImageURL}" />
+        Source="{Binding temp.DetailImageUrl}" />
 
       <ActivityIndicator
         AbsoluteLayout.LayoutFlags="WidthProportional, PositionProportional"
