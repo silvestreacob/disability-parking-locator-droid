@@ -15,8 +15,7 @@ namespace dpark.Pages.MapSearch
         {
             InitializeComponent();
             BindingContext = new MainViewModel();
-
-            //SetToolBarItems();
+                        
             customMap.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(21.300, -157.8167), Distance.FromMiles(7))); //Honolulu initial location   
 
         }
