@@ -19,9 +19,9 @@ using Xamarin.Forms;
 namespace dpark.Pages
 {
         
-    public class RootTabAndroid : TabbedPage
+    public class RootPage : TabbedPage
     {
-        public RootTabAndroid()
+        public RootPage()
         {
             Children.Add(new MyNavigationPage(new MapSearchPages
             {

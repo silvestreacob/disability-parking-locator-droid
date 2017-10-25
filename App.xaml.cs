@@ -90,12 +90,12 @@ namespace dpark
         {
             if (Device.RuntimePlatform == Device.Android && Device.Idiom == TargetIdiom.Phone)
             {
-                CurrentApp.MainPage = new Pages.RootTabAndroid();               
+                CurrentApp.MainPage = new Pages.RootPage();               
             }
 
             else
             {
-                CurrentApp.MainPage = new Pages.RootTabAndroid();
+                CurrentApp.MainPage = new Pages.RootPage();
             }
         }
 
