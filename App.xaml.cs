@@ -88,20 +88,7 @@ namespace dpark
 
         public static void GoToRoot()
         {
-            //Target IOS Phone
-            if (Device.RuntimePlatform == Device.iOS && Device.Idiom == TargetIdiom.Phone)
-            {
-                CurrentApp.MainPage = new Pages.RootTabPage();
-            }
-
-            //IOS Tablet design
-            else if (Device.RuntimePlatform == Device.iOS && Device.Idiom == TargetIdiom.Tablet)
-            {
-                CurrentApp.MainPage = new Pages.RootTabPage();
-            }
-
-            //Android phones
-            else if (Device.RuntimePlatform == Device.Android && Device.Idiom == TargetIdiom.Phone)
+            if (Device.RuntimePlatform == Device.Android && Device.Idiom == TargetIdiom.Phone)
             {
                 CurrentApp.MainPage = new Pages.RootTabAndroid();               
             }
