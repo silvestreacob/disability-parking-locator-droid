@@ -8,13 +8,21 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace dpark.Pages.Splash
-{
-    [XamlCompilation(XamlCompilationOptions.Compile)]
+{    
     public partial class Splash : ContentPage
     {
         public Splash()
         {
             InitializeComponent();
+        }
+
+        protected override async void OnAppearing()
+        {
+            base.OnAppearing();
+            await App.ExecuteIfConnected(async () =>
+            {
+                App.GoToRoot();
+            });
         }
     }
 }

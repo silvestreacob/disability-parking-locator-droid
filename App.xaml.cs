@@ -27,7 +27,7 @@ namespace dpark
 
         public static CancellationTokenSource CancellationToken { get; set; }
         private Label _label = new Label();
-        private Client ServiceProvider { get; set; }
+        public Client ServiceProvider { get; set; }
 
         public App()
 		{
@@ -35,8 +35,8 @@ namespace dpark
 
             app = this;
 
-            //MainPage = new Pages.Splash.Splash();
-            MainPage = new Pages.MapSearch.DetailPage();
+            MainPage = new Pages.Splash.Splash();
+            //MainPage = new Pages.MapSearch.DetailPage();
         }
 
         public static void NewEventHandler(object sender, WebNavigatedEventArgs e)
@@ -68,20 +68,17 @@ namespace dpark
 
             });
         }
-        
+               
         protected override void OnSleep()
         {
-            // Handle when your app sleeps
             if (App.CancellationToken != null)
             {
                 App.CancellationToken.Cancel();
-                //App.CancellationToken = null;
             }
         }
 
         protected override void OnResume()
         {
-            // Handle when your app resumes
             if (AppData.Spaces.IsListDataUpdated == true)
                 GoToRoot();
         }
@@ -116,9 +113,9 @@ namespace dpark
                 TextResources.NetworkConnection_Alert_Title,
                 TextResources.NetworkConnection_Alert_Message,
                 TextResources.NetworkConnection_Alert_TryAgain);
-                
-            
+                            
                 CurrentApp.MainPage = new Pages.Splash.Splash();
+                
         }
         public static bool IsConnected
         {

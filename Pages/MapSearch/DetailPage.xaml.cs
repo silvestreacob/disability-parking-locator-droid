@@ -15,36 +15,31 @@ namespace dpark.Pages.MapSearch
         public DetailPage()
         {
             InitializeComponent();
-         
-           // SetToolBarBack();
+            SetToolBarClose();
         }
 
-        void SetToolBarBack()
+        void SetToolBarClose()
         {
             ToolbarItems.Clear();
-            ToolbarItems.Add(GetRefreshToolBarItem());
+            ToolbarItems.Add(GetCloseToolBarItem());
             
         }
 
-        ToolbarItem GetRefreshToolBarItem()
+        ToolbarItem GetCloseToolBarItem()
         {
-            ToolbarItem refreshToolBarItem = new ToolbarItem();
-            refreshToolBarItem.Text = "Close";
-            refreshToolBarItem.Icon = "close.png";
-            refreshToolBarItem.Clicked += RefreshToolBarItem_Clicked;
-            return refreshToolBarItem;
+            ToolbarItem closeToolBarItem = new ToolbarItem();
+            closeToolBarItem.Text = "Close";
+            closeToolBarItem.Icon = "close.png";
+            closeToolBarItem.Clicked += CloseToolBarItem_Clicked;
+            return closeToolBarItem;
         }
 
-        async void RefreshToolBarItem_Clicked(object sender, EventArgs e)
+        async void CloseToolBarItem_Clicked(object sender, EventArgs e)
         {
-            await Application.Current.MainPage.Navigation.PopModalAsync();
+            await App.Current.MainPage.Navigation.PopModalAsync();
         }
 
-        async void OnBackButtonClicked(object sender, EventArgs args)
-        {
-            await Navigation.PopModalAsync();
-        }
-
+        
         async void GetDirectionTapped(object sender, EventArgs e)
         {
             if (await DisplayAlert(
