@@ -15,13 +15,15 @@ namespace dpark.Pages.MapSearch
         public DetailPage()
         {
             InitializeComponent();
-            SetToolBarBack();
+         
+           // SetToolBarBack();
         }
 
         void SetToolBarBack()
         {
             ToolbarItems.Clear();
             ToolbarItems.Add(GetRefreshToolBarItem());
+            
         }
 
         ToolbarItem GetRefreshToolBarItem()

@@ -40,7 +40,7 @@ namespace dpark.Pages.List
             };
             // await Navigation.PushModalAsync(detailInfoPage, true);   
 
-            await Application.Current.MainPage.Navigation.PushModalAsync(new NavigationPage(detailInfoPage));
+            await Application.Current.MainPage.Navigation.PushModalAsync(new MyNavigationPage(detailInfoPage), true);
         }
     }
 

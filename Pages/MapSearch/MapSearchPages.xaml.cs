@@ -37,30 +37,7 @@ namespace dpark.Pages.MapSearch
             //catch (Exception ex) { await DisplayAlert("Error", ex.Message, "OK"); }
         }
 
-        void SetToolBarItems()
-        {
-            ToolbarItems.Clear();
-            ToolbarItems.Add(GetRefreshToolBarItem());
-        }
-
-        ToolbarItem GetRefreshToolBarItem()
-        {
-            ToolbarItem refreshToolBarItem = new ToolbarItem();
-            refreshToolBarItem.Text = TextResources.Refresh_Space;
-            refreshToolBarItem.Icon = "icon.png";
-            //refreshToolBarItem.Priority = 0;
-            refreshToolBarItem.Clicked += RefreshToolBarItem_Clicked;
-            return refreshToolBarItem;
-        }
-
-        void RefreshToolBarItem_Clicked(object sender, EventArgs e)
-        {
-            customMap.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(21.300, -157.8167), Distance.FromMiles(7))); //Honolulu initial location 
-            ViewModel.IsFirstime = false;    
-            ViewModel.IsInitialized = false;
-            ViewModel.RefreshPin(customMap);
-        }
-
+        
         async public void OnSearch(object sender, EventArgs e)
         {
             IsIndicator.IsEnabled = true;

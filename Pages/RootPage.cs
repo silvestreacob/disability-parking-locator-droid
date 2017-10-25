@@ -18,19 +18,7 @@ using Xamarin.Forms;
 
 namespace dpark.Pages
 {
-   /* public class RootPage : ContentPage
-    {
-        public RootPage()
-        {
-            Content = new StackLayout
-            {
-                Children = {
-                    new Label { Text = "Hello Page" }
-                }
-            };
-        }
-    }*/
-    public class RootPage : MasterDetailPage
+      public class RootPage : MasterDetailPage
     {
         Dictionary<MenuType, NavigationPage> Pages { get; set; }
         public RootPage()

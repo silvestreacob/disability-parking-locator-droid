@@ -34,8 +34,9 @@ namespace dpark
 			InitializeComponent();
 
             app = this;
-            
-            MainPage = new Pages.Splash.Splash();
+
+            //MainPage = new Pages.Splash.Splash();
+            MainPage = new Pages.MapSearch.DetailPage();
         }
 
         public static void NewEventHandler(object sender, WebNavigatedEventArgs e)
@@ -107,7 +108,7 @@ namespace dpark
 
             else
             {
-
+                CurrentApp.MainPage = new Pages.RootTabAndroid();
             }
         }
 
@@ -128,7 +129,8 @@ namespace dpark
                 TextResources.NetworkConnection_Alert_Title,
                 TextResources.NetworkConnection_Alert_Message,
                 TextResources.NetworkConnection_Alert_TryAgain);
-
+                
+            
                 CurrentApp.MainPage = new Pages.Splash.Splash();
         }
         public static bool IsConnected

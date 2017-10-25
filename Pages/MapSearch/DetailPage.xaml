@@ -7,7 +7,8 @@
   xmlns:statics="clr-namespace:dpark.Statics"
   xmlns:views="clr-namespace:dpark.Views.MapSearch"
   xmlns:local="clr-namespace:dpark;assembly=dpark"
-  BackgroundColor="White">
+  BackgroundColor="White"
+  Title ="Details">
    
   <base:DetailPageXaml.Content>    
     <OnPlatform x:TypeArguments="View">      
@@ -77,32 +78,67 @@
         </StackLayout>
       </OnPlatform.iOS>
 
-      <OnPlatform.Android>
+      <OnPlatform.Android>       
         
-        
-        <ScrollView>
+        <!--<ScrollView>
           <StackLayout Spacing="0">
             <views:DetailPageHeaderView/>
             <views:DetailPageLocationView/>
 
          
-              <StackLayout Spacing="5" Padding="30,10">
-                <StackLayout  BackgroundColor="White">
+              <StackLayout Spacing="0" Padding="0">
+                
                   <Label Text="Options"
-                         FontSize="Medium"
-                         FontAttributes="Bold"
+                         FontSize="Small"
                          TextColor="{x:Static statics:Palette._005}"/>
                   
-                 
-                  <Button Text="Get Directions" Image="map_android.png" Clicked="GetDirectionTapped"/>
+                 <BoxView HeightRequest="4" HorizontalOptions="FillAndExpand" Color="Gainsboro"/>
+                 <StackLayout Padding="30,0">
+                    <Button HeightRequest="50" HorizontalOptions="Start" BackgroundColor="White" Text="Get Directions" Image="map_android.png" Clicked="GetDirectionTapped"/>
+                 </StackLayout>
+                 <BoxView HeightRequest="4" HorizontalOptions="FillAndExpand" Color="Gainsboro"/>
+                
                   <Button Text="Show on Map" Image="map_android.png" Clicked="ShowMapTapped"/>
+                 
+                
+                 
                   <Button Text="Flag Space" Image="map_android.png" Clicked="FlagSpaceTapped"/>
-                </StackLayout>
+                
               </StackLayout>
               
           </StackLayout>    
-        </ScrollView>
+        </ScrollView>-->
+      <TableView Intent="Form" HasUnevenRows="true">
+			      <TableRoot>
+              
+				      <TableSection Title="Details">
+                  <ViewCell>
+                    <views:DetailPageLocationView/>
+                  </ViewCell>
+              </TableSection>
+              
+				      <TableSection Title="Options">
+                  <ImageCell
+                      Text="Get Directions"
+                      ImageSource="map_android.png"
+                      StyleId="disclosure"
+                      Tapped="GetDirectionTapped"/>
 
+                  <ImageCell
+                      Text="Show on Map"
+                      ImageSource="map_android.png"
+                      StyleId="disclosure"
+                      Tapped="ShowMapTapped"/>
+
+                  <ImageCell
+                      Text="Flag Space"
+                      ImageSource="map_android.png"
+                      StyleId="disclosure"
+                      Tapped="FlagSpaceTapped"/>
+
+                </TableSection>
+			      </TableRoot>
+		      </TableView>
       </OnPlatform.Android>
       
     </OnPlatform>
