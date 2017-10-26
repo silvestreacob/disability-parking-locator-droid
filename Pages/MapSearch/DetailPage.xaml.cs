@@ -9,7 +9,6 @@ using Plugin.ExternalMaps.Abstractions;
 
 namespace dpark.Pages.MapSearch
 {
-    //[XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class DetailPage : DetailPageXaml
     {
         public DetailPage()
@@ -52,15 +51,11 @@ namespace dpark.Pages.MapSearch
                 var pin = await ViewModel.GetPin();
 
                 await CrossExternalMaps.Current.NavigateTo(pin.Label, pin.Position.Latitude, pin.Position.Longitude, NavigationType.Driving);
-
-                //await ViewModel.PopModalAsync();
-                //await ViewModel.PopAsync();
             }
         }
 
         async void ShowMapTapped(object sender, EventArgs e)
         {
-            //await ViewModel.PopModalAsync();
 
             var detailMapPage = new DetailMapPage()
             {
@@ -68,12 +63,11 @@ namespace dpark.Pages.MapSearch
             };
             
             await Navigation.PushAsync(detailMapPage);
-            //await Navigation.PushAsync(detailMapPage);
+
         }
 
         async void FlagSpaceTapped(object sender, EventArgs e)
         {
-            // await ViewModel.PopModalAsync();
 
             var flagSpace = new FlagSpacePage();
             await Navigation.PushAsync(flagSpace);
