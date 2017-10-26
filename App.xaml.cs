@@ -63,6 +63,8 @@ namespace dpark
 
                     AppData.Spaces.IsListDataUpdated = true;
                     AppData.Spaces.IsDataUpdated = true;
+
+                    await Task.Delay(20000);
                     GoToRoot();
                 }
 

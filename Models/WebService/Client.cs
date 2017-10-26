@@ -27,12 +27,11 @@ namespace dpark.Models.WebService
 
         async private Task<string> Get(string request)
         {
-           // #if DEBUG
-            var client = new HttpClient { BaseAddress = new Uri(Config.ServerAddress) };
-            Debug.WriteLine("This is CLIENT: " + client);
-            //#else
-            //var client = new HttpClient { BaseAddress = new Uri(Config.ServerAddress), Timeout = new TimeSpan(0, 0, 10)};
-            //#endif
+
+            //var client = new HttpClient { BaseAddress = new Uri(Config.ServerAddress) };
+          
+            var client = new HttpClient { BaseAddress = new Uri(Config.ServerAddress), Timeout = new TimeSpan(0, 0, 10)};
+
 
             var response = await client.GetAsync(request);
             return response.Content.ReadAsStringAsync().Result;
