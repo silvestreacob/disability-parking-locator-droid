@@ -17,6 +17,7 @@ namespace dpark.Pages.MapSearch
 
         public DetailMapPage()
         {
+            this.Title = "Map";
             map = new Map()
             {
                 MapType = MapType.Street,
@@ -25,7 +26,7 @@ namespace dpark.Pages.MapSearch
                 HorizontalOptions = LayoutOptions.FillAndExpand
             };
 
-                             }
+        }
         protected async override void OnAppearing()
         {
             base.OnAppearing();
