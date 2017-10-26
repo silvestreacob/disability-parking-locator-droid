@@ -14,8 +14,7 @@
     <OnPlatform x:TypeArguments="View">      
      <OnPlatform.iOS>
         <StackLayout Spacing="0">                    
-            <AbsoluteLayout>           
-              
+            <AbsoluteLayout>                         
             
              <StackLayout AbsoluteLayout.LayoutBounds="0.5, 0, AutoSize, AutoSize" AbsoluteLayout.LayoutFlags="PositionProportional">              
               <TableView Intent="Menu"
@@ -52,8 +51,8 @@
                   <ImageCell
                       Text="Flag Space"
                       ImageSource="flag"
-                      StyleId="disclosure"
-                      Tapped="FlagSpaceTapped"/>
+                      StyleId="disclosure"/>
+                      <!--Tapped="FlagSpaceTapped"/>-->
 
                 </TableSection>
               </TableRoot>
@@ -70,7 +69,7 @@
              <StackLayout HorizontalOptions="Start"
                          VerticalOptions="Center"
                          Padding="5,0,0,0">
-              <Button x:Name="backButton" Text="Back" TextColor="White" Image="back_ios.png" Clicked="OnBackButtonClicked"/>
+              
             </StackLayout>
           </StackLayout>
           </AbsoluteLayout>                   
@@ -79,63 +78,49 @@
       </OnPlatform.iOS>
 
       <OnPlatform.Android>       
-        
-        <!--<ScrollView>
-          <StackLayout Spacing="0">
-            <views:DetailPageHeaderView/>
-            <views:DetailPageLocationView/>
-
-         
-              <StackLayout Spacing="0" Padding="0">
-                
-                  <Label Text="Options"
-                         FontSize="Small"
-                         TextColor="{x:Static statics:Palette._005}"/>
-                  
-                 <BoxView HeightRequest="4" HorizontalOptions="FillAndExpand" Color="Gainsboro"/>
-                 <StackLayout Padding="30,0">
-                    <Button HeightRequest="50" HorizontalOptions="Start" BackgroundColor="White" Text="Get Directions" Image="map_android.png" Clicked="GetDirectionTapped"/>
-                 </StackLayout>
-                 <BoxView HeightRequest="4" HorizontalOptions="FillAndExpand" Color="Gainsboro"/>
-                
-                  <Button Text="Show on Map" Image="map_android.png" Clicked="ShowMapTapped"/>
-                 
-                
-                 
-                  <Button Text="Flag Space" Image="map_android.png" Clicked="FlagSpaceTapped"/>
-                
-              </StackLayout>
-              
-          </StackLayout>    
-        </ScrollView>-->
-      <TableView Intent="Form" HasUnevenRows="true">
+            <TableView Intent="Form" 
+                       HasUnevenRows="true">
 			      <TableRoot>
               
-				      <TableSection Title="Details">
-                  <ViewCell>
-                    <views:DetailPageLocationView/>
-                  </ViewCell>
+              <TableSection>
+                <ViewCell>               
+                    <views:DetailPageHeaderView/>
+                </ViewCell>
               </TableSection>
               
-				      <TableSection Title="Options">
-                  <ImageCell
+              
+				      <TableSection>
+                  <ViewCell>
+                    <views:DetailPageLocationView/>
+                    <!--<views:DetailPageOptionView/>-->
+                  </ViewCell>                             
+              </TableSection>
+                            
+				      <TableSection>
+                   <ImageCell
                       Text="Get Directions"
-                      ImageSource="map_android.png"
-                      StyleId="disclosure"
+                      TextColor="Black"
+                      Detail="Route your travel to the selected parking space"
+                      DetailColor="Gray"
+                      ImageSource="ic_directions.png"
                       Tapped="GetDirectionTapped"/>
 
                   <ImageCell
                       Text="Show on Map"
-                      ImageSource="map_android.png"
-                      StyleId="disclosure"
+                      Detail="Show Details on a Map"
+                      TextColor="Black"
+                      DetailColor="Gray"
+                      ImageSource="ic_showmap.png"
                       Tapped="ShowMapTapped"/>
 
-                  <ImageCell
-                      Text="Flag Space"
-                      ImageSource="map_android.png"
-                      StyleId="disclosure"
-                      Tapped="FlagSpaceTapped"/>
-
+                <ImageCell
+                    Text="Flag Space"
+                    Detail="Flag this spot if you find odd"
+                    TextColor="Black"
+                    DetailColor="Gray"
+                    ImageSource="ic_report_problem.png"
+                    Tapped="FlagSpaceTapped"/>
+                   
                 </TableSection>
 			      </TableRoot>
 		      </TableView>

@@ -73,11 +73,11 @@ namespace dpark.Pages.MapSearch
 
         async void FlagSpaceTapped(object sender, EventArgs e)
         {
-           // await ViewModel.PopModalAsync();
+            // await ViewModel.PopModalAsync();
 
             var flagSpace = new FlagSpacePage();
             await Navigation.PushAsync(flagSpace);
-        }      
+        }
     }
 
     public abstract class DetailPageXaml : ModelBoundContentPage<DetailInfoViewModel> { }

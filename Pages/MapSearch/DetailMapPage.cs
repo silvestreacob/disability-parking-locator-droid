@@ -14,7 +14,7 @@ namespace dpark.Pages.MapSearch
     public class DetailMapPage : ModelBoundContentPage<DetailInfoViewModel>
     {
         Map map;
-        //Button backButton;
+
         public DetailMapPage()
         {
             map = new Map()
@@ -25,24 +25,13 @@ namespace dpark.Pages.MapSearch
                 HorizontalOptions = LayoutOptions.FillAndExpand
             };
 
-          
-            //backButton = new Button
-            //{
-            //    Text = "Back",
-            //    TextColor = Color.White,
-            //    Image = "back_ios.png"
-            //};
-            //backButton.Clicked += OnBackButtonClicked;
-        }
+                             }
         protected async override void OnAppearing()
         {
             base.OnAppearing();
             await MakeMap();
         }
-        async void OnBackButtonClicked(object sender, EventArgs args)
-        {
-            await Navigation.PopModalAsync();
-        }
+       
         public async Task MakeMap()
         {
             Task<Pin> getPinTask = ViewModel.GetPin();

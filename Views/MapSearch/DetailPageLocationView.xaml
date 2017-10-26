@@ -7,16 +7,17 @@
   xmlns:statics="clr-namespace:dpark.Statics"
   xmlns:core="clr-namespace:System">
   
-  <StackLayout Spacing="5" Padding="30,10">
-    <StackLayout>
+  <StackLayout Spacing="5" Padding="10,10" BackgroundColor="Silver">
+    <StackLayout Padding="20,10" BackgroundColor="White">
+      <StackLayout>
       <Label Text="Title"
-             FontSize="Medium"
+             Style="{DynamicResource Label_Default-Medium-Default}"
              FontAttributes="Bold"
              TextColor="{x:Static statics:Palette._005}"/>
 
       <Label x:Name="txtTitle"
              Text="{Binding temp.Title}"
-             Style="{DynamicResource Label_Default-Medium-Default}"
+             FontSize="Medium"
              FontAttributes="Bold"
              LineBreakMode="WordWrap"
              TextColor="{x:Static statics:Palette._006}"/>
@@ -25,7 +26,7 @@
 
     <StackLayout>
       <Label Text="Location"
-             FontSize="Medium"
+             Style="{DynamicResource Label_Default-Medium-Default}"
              FontAttributes="Bold"
              TextColor="{x:Static statics:Palette._005}"/>
 
@@ -40,6 +41,7 @@
              LineBreakMode="WordWrap"
              TextColor="{x:Static statics:Palette._006}"/>
 
+    </StackLayout>
     </StackLayout>
   </StackLayout>
 </base:DetailPageLocationViewXaml>

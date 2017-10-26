@@ -35,8 +35,8 @@ namespace dpark
 
             app = this;
 
-            MainPage = new Pages.Splash.Splash();
-            //MainPage = new Pages.MapSearch.DetailPage();
+           MainPage = new Pages.Splash.Splash();
+           //MainPage = new Pages.MapSearch.DetailPage();
         }
 
         public static void NewEventHandler(object sender, WebNavigatedEventArgs e)

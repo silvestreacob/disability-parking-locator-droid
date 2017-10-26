@@ -6,8 +6,8 @@
   xmlns:statics="clr-namespace:dpark.Statics"
   xmlns:base="clr-namespace:dpark.Pages.About">
 
-  <TableView Intent="Menu" HasUnevenRows="true">
-    <TableRoot>
+  <TableView Intent="Menu" HasUnevenRows="true"  BackgroundColor="White">
+    <TableRoot >
 
       <TableSection>
         <ViewCell>

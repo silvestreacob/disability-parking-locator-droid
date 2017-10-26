@@ -9,6 +9,7 @@ using dpark.Pages.MapSearch;
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
 using System.Threading.Tasks;
+using dpark.Pages.FlagSpace;
 
 namespace dpark.ViewModels.MapSearch
 {
@@ -33,5 +34,6 @@ namespace dpark.ViewModels.MapSearch
 
             return pin;
         }
+
     }
 }
