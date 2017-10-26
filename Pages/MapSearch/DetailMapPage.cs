@@ -51,7 +51,6 @@ namespace dpark.Pages.MapSearch
                 heightConstraint: Constraint.RelativeToParent(parent => parent.Height)
             );
 
-            //StackLayout stackLayout = new StackLayout();
             Content = relativeLayout;
         }
     }
