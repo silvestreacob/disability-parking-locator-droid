@@ -32,7 +32,6 @@ namespace dpark.Models.WebService
           
             var client = new HttpClient { BaseAddress = new Uri(Config.ServerAddress), Timeout = new TimeSpan(0, 0, 10)};
 
-
             var response = await client.GetAsync(request);
             return response.Content.ReadAsStringAsync().Result;
         }
