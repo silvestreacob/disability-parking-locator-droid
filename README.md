@@ -1,5 +1,5 @@
 # disability-parking-locator-droid
-Disability Parking Locator android version
+Disability Parking Locator Android version
 
 Purpose:  To help individuals with mobility issues find designated disability parking zones
 	        and disability meter spaces around the State of Hawaii.
